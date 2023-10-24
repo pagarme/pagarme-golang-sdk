@@ -11,18 +11,18 @@ Balance
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `currency` | `types.Optional[string]` | Optional | Currency |
-| `availableAmount` | `types.Optional[int64]` | Optional | Amount available for transferring |
-| `recipient` | [`types.Optional[models.GetRecipientResponse]`](../../doc/models/get-recipient-response.md) | Optional | Recipient |
-| `transferredAmount` | `types.Optional[int64]` | Optional | - |
-| `waitingFundsAmount` | `types.Optional[int64]` | Optional | - |
+| `Currency` | `Optional[string]` | Optional | Currency |
+| `AvailableAmount` | `Optional[int64]` | Optional | Amount available for transferring |
+| `Recipient` | [`Optional[models.GetRecipientResponse]`](../../doc/models/get-recipient-response.md) | Optional | Recipient |
+| `TransferredAmount` | `Optional[int64]` | Optional | - |
+| `WaitingFundsAmount` | `Optional[int64]` | Optional | - |
 
 ## Example (as JSON)
 
 ```json
 {
-  "currency": "currency0",
-  "available_amount": 182,
+  "currency": "currency2",
+  "available_amount": 96,
   "recipient": {
     "id": "id8",
     "name": "name8",
@@ -30,8 +30,8 @@ Balance
     "document": "document8",
     "description": "description2"
   },
-  "transferred_amount": 228,
-  "waiting_funds_amount": 252
+  "transferred_amount": 142,
+  "waiting_funds_amount": 174
 }
 ```
 

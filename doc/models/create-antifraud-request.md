@@ -9,8 +9,8 @@
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `mType` | `string` | Required | - |
-| `clearsale` | [`models.CreateClearSaleRequest`](../../doc/models/create-clear-sale-request.md) | Required | - |
+| `Type` | `string` | Required | - |
+| `Clearsale` | [`models.CreateClearSaleRequest`](../../doc/models/create-clear-sale-request.md) | Required | - |
 
 ## Example (as JSON)
 

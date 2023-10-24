@@ -11,16 +11,16 @@ Object used for returning lists of objects with pagination
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `total` | `types.Optional[int]` | Optional | Total number of pages |
-| `previous` | `types.Optional[string]` | Optional | Previous page |
-| `next` | `types.Optional[string]` | Optional | Next page |
+| `Total` | `Optional[int]` | Optional | Total number of pages |
+| `Previous` | `Optional[string]` | Optional | Previous page |
+| `Next` | `Optional[string]` | Optional | Next page |
 
 ## Example (as JSON)
 
 ```json
 {
-  "total": 10,
-  "previous": "previous8",
+  "total": 80,
+  "previous": "previous2",
   "next": "next2"
 }
 ```

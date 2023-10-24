@@ -11,11 +11,11 @@ Response object for getting a access token
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `id` | `types.Optional[string]` | Optional | - |
-| `code` | `types.Optional[string]` | Optional | - |
-| `status` | `types.Optional[string]` | Optional | - |
-| `createdAt` | `types.Optional[time.Time]` | Optional | - |
-| `customer` | [`types.Optional[models.GetCustomerResponse]`](../../doc/models/get-customer-response.md) | Optional | - |
+| `Id` | `Optional[string]` | Optional | - |
+| `Code` | `Optional[string]` | Optional | - |
+| `Status` | `Optional[string]` | Optional | - |
+| `CreatedAt` | `Optional[time.Time]` | Optional | - |
+| `Customer` | [`Optional[models.GetCustomerResponse]`](../../doc/models/get-customer-response.md) | Optional | - |
 
 ## Example (as JSON)
 
@@ -23,7 +23,7 @@ Response object for getting a access token
 {
   "id": "id0",
   "code": "code8",
-  "status": "status8",
+  "status": "status2",
   "created_at": "2016-03-13T12:52:32.123Z",
   "customer": {
     "id": "id0",

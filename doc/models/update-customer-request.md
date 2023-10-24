@@ -11,25 +11,25 @@ Request for updating a customer
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `name` | `*string` | Optional | Name |
-| `email` | `*string` | Optional | Email |
-| `document` | `*string` | Optional | Document number |
-| `mType` | `*string` | Optional | Person type |
-| `address` | [`*models.CreateAddressRequest`](../../doc/models/create-address-request.md) | Optional | Address |
-| `metadata` | `map[string]*string` | Optional | Metadata |
-| `phones` | [`*models.CreatePhonesRequest`](../../doc/models/create-phones-request.md) | Optional | - |
-| `code` | `*string` | Optional | Código de referência do cliente no sistema da loja. Max: 52 caracteres |
-| `gender` | `*string` | Optional | Gênero do cliente |
-| `documentType` | `*string` | Optional | - |
+| `Name` | `*string` | Optional | Name |
+| `Email` | `*string` | Optional | Email |
+| `Document` | `*string` | Optional | Document number |
+| `Type` | `*string` | Optional | Person type |
+| `Address` | [`*models.CreateAddressRequest`](../../doc/models/create-address-request.md) | Optional | Address |
+| `Metadata` | `map[string]string` | Optional | Metadata |
+| `Phones` | [`*models.CreatePhonesRequest`](../../doc/models/create-phones-request.md) | Optional | - |
+| `Code` | `*string` | Optional | Código de referência do cliente no sistema da loja. Max: 52 caracteres |
+| `Gender` | `*string` | Optional | Gênero do cliente |
+| `DocumentType` | `*string` | Optional | - |
 
 ## Example (as JSON)
 
 ```json
 {
-  "name": "name0",
-  "email": "email6",
-  "document": "document6",
-  "type": "type0",
+  "name": "name8",
+  "email": "email8",
+  "document": "document2",
+  "type": "type2",
   "address": {
     "street": "street6",
     "number": "number4",

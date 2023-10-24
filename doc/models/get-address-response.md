@@ -11,33 +11,33 @@ Response object for getting an Address
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `id` | `types.Optional[string]` | Optional | - |
-| `street` | `types.Optional[string]` | Optional | - |
-| `number` | `types.Optional[string]` | Optional | - |
-| `complement` | `types.Optional[string]` | Optional | - |
-| `zipCode` | `types.Optional[string]` | Optional | - |
-| `neighborhood` | `types.Optional[string]` | Optional | - |
-| `city` | `types.Optional[string]` | Optional | - |
-| `state` | `types.Optional[string]` | Optional | - |
-| `country` | `types.Optional[string]` | Optional | - |
-| `status` | `types.Optional[string]` | Optional | - |
-| `createdAt` | `types.Optional[time.Time]` | Optional | - |
-| `updatedAt` | `types.Optional[time.Time]` | Optional | - |
-| `customer` | [`types.Optional[models.GetCustomerResponse]`](../../doc/models/get-customer-response.md) | Optional | - |
-| `metadata` | `types.Optional[map[string]string]` | Optional | - |
-| `line1` | `types.Optional[string]` | Optional | Line 1 for address |
-| `line2` | `types.Optional[string]` | Optional | Line 2 for address |
-| `deletedAt` | `types.Optional[time.Time]` | Optional | - |
+| `Id` | `Optional[string]` | Optional | - |
+| `Street` | `Optional[string]` | Optional | - |
+| `Number` | `Optional[string]` | Optional | - |
+| `Complement` | `Optional[string]` | Optional | - |
+| `ZipCode` | `Optional[string]` | Optional | - |
+| `Neighborhood` | `Optional[string]` | Optional | - |
+| `City` | `Optional[string]` | Optional | - |
+| `State` | `Optional[string]` | Optional | - |
+| `Country` | `Optional[string]` | Optional | - |
+| `Status` | `Optional[string]` | Optional | - |
+| `CreatedAt` | `Optional[time.Time]` | Optional | - |
+| `UpdatedAt` | `Optional[time.Time]` | Optional | - |
+| `Customer` | [`Optional[models.GetCustomerResponse]`](../../doc/models/get-customer-response.md) | Optional | - |
+| `Metadata` | `Optional[map[string]string]` | Optional | - |
+| `Line1` | `Optional[string]` | Optional | Line 1 for address |
+| `Line2` | `Optional[string]` | Optional | Line 2 for address |
+| `DeletedAt` | `Optional[time.Time]` | Optional | - |
 
 ## Example (as JSON)
 
 ```json
 {
-  "id": "id0",
-  "street": "street0",
-  "number": "number2",
-  "complement": "complement4",
-  "zip_code": "zip_code4"
+  "id": "id2",
+  "street": "street2",
+  "number": "number0",
+  "complement": "complement8",
+  "zip_code": "zip_code6"
 }
 ```
 

@@ -11,7 +11,7 @@ Invoice Update Status Request
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `status` | `string` | Required | Status |
+| `Status` | `string` | Required | Status |
 
 ## Example (as JSON)
 

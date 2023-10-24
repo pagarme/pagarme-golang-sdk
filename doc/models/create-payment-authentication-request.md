@@ -11,14 +11,14 @@ The payment authentication request
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `mType` | `string` | Required | The Authentication type |
-| `threedSecure` | [`models.CreateThreeDSecureRequest`](../../doc/models/create-three-d-secure-request.md) | Required | The 3D-S authentication object |
+| `Type` | `string` | Required | The Authentication type |
+| `ThreedSecure` | [`models.CreateThreeDSecureRequest`](../../doc/models/create-three-d-secure-request.md) | Required | The 3D-S authentication object |
 
 ## Example (as JSON)
 
 ```json
 {
-  "type": "type0",
+  "type": "type8",
   "threed_secure": {
     "mpi": "mpi0",
     "cavv": "cavv8",

@@ -1,7 +1,7 @@
 # Recipients
 
 ```go
-recipientsController := client.RecipientsController
+recipientsController := client.RecipientsController()
 ```
 
 ## Class Name
@@ -39,10 +39,11 @@ Updates a recipient
 
 ```go
 UpdateRecipient(
+    ctx context.Context,
     recipientId string,
     request models.UpdateRecipientRequest,
     idempotencyKey *string) (
-    https.ApiResponse[models.GetRecipientResponse],
+    models.ApiResponse[models.GetRecipientResponse],
     error)
 ```
 
@@ -61,6 +62,7 @@ UpdateRecipient(
 ## Example Usage
 
 ```go
+ctx := context.Background()
 recipientId := "recipient_id0"
 
 request := models.UpdateRecipientRequest{
@@ -69,12 +71,12 @@ request := models.UpdateRecipientRequest{
     Description: "description6",
     Type:        "type4",
     Status:      "status8",
-    Metadata:    map[string]*string{
+    Metadata:    map[string]string{
 "key0" : "metadata3",
 },
 }
 
-apiResponse, err := recipientsController.UpdateRecipient(recipientId, &request, nil)
+apiResponse, err := recipientsController.UpdateRecipient(ctx, recipientId, &request, nil)
 if err != nil {
     log.Fatalln(err)
 } else {
@@ -91,10 +93,11 @@ Creates an anticipation
 
 ```go
 CreateAnticipation(
+    ctx context.Context,
     recipientId string,
     request models.CreateAnticipationRequest,
     idempotencyKey *string) (
-    https.ApiResponse[models.GetAnticipationResponse],
+    models.ApiResponse[models.GetAnticipationResponse],
     error)
 ```
 
@@ -113,6 +116,7 @@ CreateAnticipation(
 ## Example Usage
 
 ```go
+ctx := context.Background()
 recipientId := "recipient_id0"
 
 requestPaymentDate, err := time.Parse(time.RFC3339, "2016-03-13T12:52:32.123Z")
@@ -125,7 +129,7 @@ request := models.CreateAnticipationRequest{
     PaymentDate: requestPaymentDate,
 }
 
-apiResponse, err := recipientsController.CreateAnticipation(recipientId, &request, nil)
+apiResponse, err := recipientsController.CreateAnticipation(ctx, recipientId, &request, nil)
 if err != nil {
     log.Fatalln(err)
 } else {
@@ -142,10 +146,11 @@ Gets the anticipation limits for a recipient
 
 ```go
 GetAnticipationLimits(
+    ctx context.Context,
     recipientId string,
     timeframe string,
     paymentDate time.Time) (
-    https.ApiResponse[models.GetAnticipationLimitResponse],
+    models.ApiResponse[models.GetAnticipationLimitResponse],
     error)
 ```
 
@@ -164,6 +169,7 @@ GetAnticipationLimits(
 ## Example Usage
 
 ```go
+ctx := context.Background()
 recipientId := "recipient_id0"
 timeframe := "timeframe2"
 paymentDate, err := time.Parse(time.RFC3339, "2016-03-13T12:52:32.123Z")
@@ -171,7 +177,7 @@ if err != nil {
     log.Fatalln(err)
 }
 
-apiResponse, err := recipientsController.GetAnticipationLimits(recipientId, timeframe, paymentDate)
+apiResponse, err := recipientsController.GetAnticipationLimits(ctx, recipientId, timeframe, paymentDate)
 if err != nil {
     log.Fatalln(err)
 } else {
@@ -188,9 +194,10 @@ Retrieves paginated recipients information
 
 ```go
 GetRecipients(
+    ctx context.Context,
     page *int,
     size *int) (
-    https.ApiResponse[models.ListRecipientResponse],
+    models.ApiResponse[models.ListRecipientResponse],
     error)
 ```
 
@@ -208,7 +215,9 @@ GetRecipients(
 ## Example Usage
 
 ```go
-apiResponse, err := recipientsController.GetRecipients(nil, nil)
+ctx := context.Background()
+
+apiResponse, err := recipientsController.GetRecipients(ctx, nil, nil)
 if err != nil {
     log.Fatalln(err)
 } else {
@@ -223,9 +232,10 @@ if err != nil {
 
 ```go
 GetWithdrawById(
+    ctx context.Context,
     recipientId string,
     withdrawalId string) (
-    https.ApiResponse[models.GetWithdrawResponse],
+    models.ApiResponse[models.GetWithdrawResponse],
     error)
 ```
 
@@ -243,10 +253,11 @@ GetWithdrawById(
 ## Example Usage
 
 ```go
+ctx := context.Background()
 recipientId := "recipient_id0"
 withdrawalId := "withdrawal_id2"
 
-apiResponse, err := recipientsController.GetWithdrawById(recipientId, withdrawalId)
+apiResponse, err := recipientsController.GetWithdrawById(ctx, recipientId, withdrawalId)
 if err != nil {
     log.Fatalln(err)
 } else {
@@ -263,10 +274,11 @@ Updates the default bank account from a recipient
 
 ```go
 UpdateRecipientDefaultBankAccount(
+    ctx context.Context,
     recipientId string,
     request models.UpdateRecipientBankAccountRequest,
     idempotencyKey *string) (
-    https.ApiResponse[models.GetRecipientResponse],
+    models.ApiResponse[models.GetRecipientResponse],
     error)
 ```
 
@@ -285,20 +297,21 @@ UpdateRecipientDefaultBankAccount(
 ## Example Usage
 
 ```go
+ctx := context.Background()
 recipientId := "recipient_id0"
 
 requestBankAccount := models.CreateBankAccountRequest{
-    HolderName:        "holder_name6",
-    HolderType:        "holder_type2",
-    HolderDocument:    "holder_document4",
-    Bank:              "bank8",
-    BranchNumber:      "branch_number6",
-    AccountNumber:     "account_number0",
-    AccountCheckDigit: "account_check_digit6",
-    Type:              "type0",
-    Metadata:          map[string]*string{
-"key0" : "metadata9",
-"key1" : "metadata8",
+    HolderName:        "holder_name0",
+    HolderType:        "holder_type6",
+    HolderDocument:    "holder_document8",
+    Bank:              "bank2",
+    BranchNumber:      "branch_number0",
+    AccountNumber:     "account_number4",
+    AccountCheckDigit: "account_check_digit0",
+    Type:              "type6",
+    Metadata:          map[string]string{
+"key0" : "metadata1",
+"key1" : "metadata0",
 },
 }
 
@@ -307,7 +320,7 @@ request := models.UpdateRecipientBankAccountRequest{
     BankAccount: requestBankAccount,
 }
 
-apiResponse, err := recipientsController.UpdateRecipientDefaultBankAccount(recipientId, &request, nil)
+apiResponse, err := recipientsController.UpdateRecipientDefaultBankAccount(ctx, recipientId, &request, nil)
 if err != nil {
     log.Fatalln(err)
 } else {
@@ -324,10 +337,11 @@ Updates recipient metadata
 
 ```go
 UpdateRecipientMetadata(
+    ctx context.Context,
     recipientId string,
     request models.UpdateMetadataRequest,
     idempotencyKey *string) (
-    https.ApiResponse[models.GetRecipientResponse],
+    models.ApiResponse[models.GetRecipientResponse],
     error)
 ```
 
@@ -346,15 +360,16 @@ UpdateRecipientMetadata(
 ## Example Usage
 
 ```go
+ctx := context.Background()
 recipientId := "recipient_id0"
 
 request := models.UpdateMetadataRequest{
-    Metadata: map[string]*string{
+    Metadata: map[string]string{
 "key0" : "metadata3",
 },
 }
 
-apiResponse, err := recipientsController.UpdateRecipientMetadata(recipientId, &request, nil)
+apiResponse, err := recipientsController.UpdateRecipientMetadata(ctx, recipientId, &request, nil)
 if err != nil {
     log.Fatalln(err)
 } else {
@@ -371,13 +386,14 @@ Gets a paginated list of transfers for the recipient
 
 ```go
 GetTransfers(
+    ctx context.Context,
     recipientId string,
     page *int,
     size *int,
     status *string,
     createdSince *time.Time,
     createdUntil *time.Time) (
-    https.ApiResponse[models.ListTransferResponse],
+    models.ApiResponse[models.ListTransferResponse],
     error)
 ```
 
@@ -399,9 +415,10 @@ GetTransfers(
 ## Example Usage
 
 ```go
+ctx := context.Background()
 recipientId := "recipient_id0"
 
-apiResponse, err := recipientsController.GetTransfers(recipientId, nil, nil, nil, nil, nil)
+apiResponse, err := recipientsController.GetTransfers(ctx, recipientId, nil, nil, nil, nil, nil)
 if err != nil {
     log.Fatalln(err)
 } else {
@@ -418,9 +435,10 @@ Gets a transfer
 
 ```go
 GetTransfer(
+    ctx context.Context,
     recipientId string,
     transferId string) (
-    https.ApiResponse[models.GetTransferResponse],
+    models.ApiResponse[models.GetTransferResponse],
     error)
 ```
 
@@ -438,10 +456,11 @@ GetTransfer(
 ## Example Usage
 
 ```go
+ctx := context.Background()
 recipientId := "recipient_id0"
 transferId := "transfer_id6"
 
-apiResponse, err := recipientsController.GetTransfer(recipientId, transferId)
+apiResponse, err := recipientsController.GetTransfer(ctx, recipientId, transferId)
 if err != nil {
     log.Fatalln(err)
 } else {
@@ -456,9 +475,10 @@ if err != nil {
 
 ```go
 CreateWithdraw(
+    ctx context.Context,
     recipientId string,
     request models.CreateWithdrawRequest) (
-    https.ApiResponse[models.GetWithdrawResponse],
+    models.ApiResponse[models.GetWithdrawResponse],
     error)
 ```
 
@@ -476,13 +496,14 @@ CreateWithdraw(
 ## Example Usage
 
 ```go
+ctx := context.Background()
 recipientId := "recipient_id0"
 
 request := models.CreateWithdrawRequest{
-    Amount: 242,
+    Amount:   242,
 }
 
-apiResponse, err := recipientsController.CreateWithdraw(recipientId, &request)
+apiResponse, err := recipientsController.CreateWithdraw(ctx, recipientId, &request)
 if err != nil {
     log.Fatalln(err)
 } else {
@@ -499,10 +520,11 @@ Updates recipient metadata
 
 ```go
 UpdateAutomaticAnticipationSettings(
+    ctx context.Context,
     recipientId string,
     request models.UpdateAutomaticAnticipationSettingsRequest,
     idempotencyKey *string) (
-    https.ApiResponse[models.GetRecipientResponse],
+    models.ApiResponse[models.GetRecipientResponse],
     error)
 ```
 
@@ -521,11 +543,13 @@ UpdateAutomaticAnticipationSettings(
 ## Example Usage
 
 ```go
+ctx := context.Background()
 recipientId := "recipient_id0"
 
-request := models.UpdateAutomaticAnticipationSettingsRequest{}
+request := models.UpdateAutomaticAnticipationSettingsRequest{
+}
 
-apiResponse, err := recipientsController.UpdateAutomaticAnticipationSettings(recipientId, &request, nil)
+apiResponse, err := recipientsController.UpdateAutomaticAnticipationSettings(ctx, recipientId, &request, nil)
 if err != nil {
     log.Fatalln(err)
 } else {
@@ -542,9 +566,10 @@ Gets an anticipation
 
 ```go
 GetAnticipation(
+    ctx context.Context,
     recipientId string,
     anticipationId string) (
-    https.ApiResponse[models.GetAnticipationResponse],
+    models.ApiResponse[models.GetAnticipationResponse],
     error)
 ```
 
@@ -562,10 +587,11 @@ GetAnticipation(
 ## Example Usage
 
 ```go
+ctx := context.Background()
 recipientId := "recipient_id0"
 anticipationId := "anticipation_id0"
 
-apiResponse, err := recipientsController.GetAnticipation(recipientId, anticipationId)
+apiResponse, err := recipientsController.GetAnticipation(ctx, recipientId, anticipationId)
 if err != nil {
     log.Fatalln(err)
 } else {
@@ -580,10 +606,11 @@ if err != nil {
 
 ```go
 UpdateRecipientTransferSettings(
+    ctx context.Context,
     recipientId string,
     request models.UpdateTransferSettingsRequest,
     idempotencyKey *string) (
-    https.ApiResponse[models.GetRecipientResponse],
+    models.ApiResponse[models.GetRecipientResponse],
     error)
 ```
 
@@ -602,6 +629,7 @@ UpdateRecipientTransferSettings(
 ## Example Usage
 
 ```go
+ctx := context.Background()
 recipientId := "recipient_id0"
 
 request := models.UpdateTransferSettingsRequest{
@@ -610,7 +638,7 @@ request := models.UpdateTransferSettingsRequest{
     TransferDay:      "transfer_day6",
 }
 
-apiResponse, err := recipientsController.UpdateRecipientTransferSettings(recipientId, &request, nil)
+apiResponse, err := recipientsController.UpdateRecipientTransferSettings(ctx, recipientId, &request, nil)
 if err != nil {
     log.Fatalln(err)
 } else {
@@ -627,6 +655,7 @@ Retrieves a paginated list of anticipations from a recipient
 
 ```go
 GetAnticipations(
+    ctx context.Context,
     recipientId string,
     page *int,
     size *int,
@@ -636,7 +665,7 @@ GetAnticipations(
     paymentDateUntil *time.Time,
     createdSince *time.Time,
     createdUntil *time.Time) (
-    https.ApiResponse[models.ListAnticipationResponse],
+    models.ApiResponse[models.ListAnticipationResponse],
     error)
 ```
 
@@ -661,9 +690,10 @@ GetAnticipations(
 ## Example Usage
 
 ```go
+ctx := context.Background()
 recipientId := "recipient_id0"
 
-apiResponse, err := recipientsController.GetAnticipations(recipientId, nil, nil, nil, nil, nil, nil, nil, nil)
+apiResponse, err := recipientsController.GetAnticipations(ctx, recipientId, nil, nil, nil, nil, nil, nil, nil, nil)
 if err != nil {
     log.Fatalln(err)
 } else {
@@ -680,8 +710,9 @@ Retrieves recipient information
 
 ```go
 GetRecipient(
+    ctx context.Context,
     recipientId string) (
-    https.ApiResponse[models.GetRecipientResponse],
+    models.ApiResponse[models.GetRecipientResponse],
     error)
 ```
 
@@ -698,9 +729,10 @@ GetRecipient(
 ## Example Usage
 
 ```go
+ctx := context.Background()
 recipientId := "recipient_id0"
 
-apiResponse, err := recipientsController.GetRecipient(recipientId)
+apiResponse, err := recipientsController.GetRecipient(ctx, recipientId)
 if err != nil {
     log.Fatalln(err)
 } else {
@@ -717,8 +749,9 @@ Get balance information for a recipient
 
 ```go
 GetBalance(
+    ctx context.Context,
     recipientId string) (
-    https.ApiResponse[models.GetBalanceResponse],
+    models.ApiResponse[models.GetBalanceResponse],
     error)
 ```
 
@@ -735,9 +768,10 @@ GetBalance(
 ## Example Usage
 
 ```go
+ctx := context.Background()
 recipientId := "recipient_id0"
 
-apiResponse, err := recipientsController.GetBalance(recipientId)
+apiResponse, err := recipientsController.GetBalance(ctx, recipientId)
 if err != nil {
     log.Fatalln(err)
 } else {
@@ -754,13 +788,14 @@ Gets a paginated list of transfers for the recipient
 
 ```go
 GetWithdrawals(
+    ctx context.Context,
     recipientId string,
     page *int,
     size *int,
     status *string,
     createdSince *time.Time,
     createdUntil *time.Time) (
-    https.ApiResponse[models.ListWithdrawals],
+    models.ApiResponse[models.ListWithdrawals],
     error)
 ```
 
@@ -782,9 +817,10 @@ GetWithdrawals(
 ## Example Usage
 
 ```go
+ctx := context.Background()
 recipientId := "recipient_id0"
 
-apiResponse, err := recipientsController.GetWithdrawals(recipientId, nil, nil, nil, nil, nil)
+apiResponse, err := recipientsController.GetWithdrawals(ctx, recipientId, nil, nil, nil, nil, nil)
 if err != nil {
     log.Fatalln(err)
 } else {
@@ -801,10 +837,11 @@ Creates a transfer for a recipient
 
 ```go
 CreateTransfer(
+    ctx context.Context,
     recipientId string,
     request models.CreateTransferRequest,
     idempotencyKey *string) (
-    https.ApiResponse[models.GetTransferResponse],
+    models.ApiResponse[models.GetTransferResponse],
     error)
 ```
 
@@ -823,16 +860,17 @@ CreateTransfer(
 ## Example Usage
 
 ```go
+ctx := context.Background()
 recipientId := "recipient_id0"
 
 request := models.CreateTransferRequest{
     Amount:   242,
-    Metadata: map[string]*string{
+    Metadata: map[string]string{
 "key0" : "metadata3",
 },
 }
 
-apiResponse, err := recipientsController.CreateTransfer(recipientId, &request, nil)
+apiResponse, err := recipientsController.CreateTransfer(ctx, recipientId, &request, nil)
 if err != nil {
     log.Fatalln(err)
 } else {
@@ -849,9 +887,10 @@ Creates a new recipient
 
 ```go
 CreateRecipient(
+    ctx context.Context,
     request models.CreateRecipientRequest,
     idempotencyKey *string) (
-    https.ApiResponse[models.GetRecipientResponse],
+    models.ApiResponse[models.GetRecipientResponse],
     error)
 ```
 
@@ -869,17 +908,21 @@ CreateRecipient(
 ## Example Usage
 
 ```go
+ctx := context.Background()
+
 requestDefaultBankAccount := models.CreateBankAccountRequest{
-    HolderName:        "holder_name0",
-    HolderType:        "holder_type6",
-    HolderDocument:    "holder_document8",
-    Bank:              "bank2",
-    BranchNumber:      "branch_number0",
-    AccountNumber:     "account_number4",
-    AccountCheckDigit: "account_check_digit0",
-    Type:              "type4",
-    Metadata:          map[string]*string{
+    HolderName:        "holder_name4",
+    HolderType:        "holder_type0",
+    HolderDocument:    "holder_document2",
+    Bank:              "bank6",
+    BranchNumber:      "branch_number4",
+    AccountNumber:     "account_number8",
+    AccountCheckDigit: "account_check_digit4",
+    Type:              "type2",
+    Metadata:          map[string]string{
 "key0" : "metadata5",
+"key1" : "metadata4",
+"key2" : "metadata3",
 },
 }
 
@@ -889,7 +932,7 @@ request := models.CreateRecipientRequest{
     Description:        "description6",
     Document:           "document0",
     Type:               "type4",
-    Metadata:           map[string]*string{
+    Metadata:           map[string]string{
 "key0" : "metadata3",
 },
     Code:               "code4",
@@ -897,7 +940,7 @@ request := models.CreateRecipientRequest{
     DefaultBankAccount: requestDefaultBankAccount,
 }
 
-apiResponse, err := recipientsController.CreateRecipient(&request, nil)
+apiResponse, err := recipientsController.CreateRecipient(ctx, &request, nil)
 if err != nil {
     log.Fatalln(err)
 } else {
@@ -914,8 +957,9 @@ Retrieves recipient information
 
 ```go
 GetRecipientByCode(
+    ctx context.Context,
     code string) (
-    https.ApiResponse[models.GetRecipientResponse],
+    models.ApiResponse[models.GetRecipientResponse],
     error)
 ```
 
@@ -932,9 +976,10 @@ GetRecipientByCode(
 ## Example Usage
 
 ```go
+ctx := context.Background()
 code := "code8"
 
-apiResponse, err := recipientsController.GetRecipientByCode(code)
+apiResponse, err := recipientsController.GetRecipientByCode(ctx, code)
 if err != nil {
     log.Fatalln(err)
 } else {
@@ -948,8 +993,9 @@ if err != nil {
 # Get Default Recipient
 
 ```go
-GetDefaultRecipient() (
-    https.ApiResponse[models.GetRecipientResponse],
+GetDefaultRecipient(
+    ctx context.Context) (
+    models.ApiResponse[models.GetRecipientResponse],
     error)
 ```
 
@@ -960,7 +1006,8 @@ GetDefaultRecipient() (
 ## Example Usage
 
 ```go
-apiResponse, err := recipientsController.GetDefaultRecipient()
+ctx := context.Background()
+apiResponse, err := recipientsController.GetDefaultRecipient(ctx)
 if err != nil {
     log.Fatalln(err)
 } else {

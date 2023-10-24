@@ -9,21 +9,21 @@
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `status` | `types.Optional[string]` | Optional | - |
-| `returnCode` | `types.Optional[string]` | Optional | - |
-| `returnMessage` | `types.Optional[string]` | Optional | - |
-| `providerName` | `types.Optional[string]` | Optional | - |
-| `score` | `types.Optional[string]` | Optional | - |
+| `Status` | `Optional[string]` | Optional | - |
+| `ReturnCode` | `Optional[string]` | Optional | - |
+| `ReturnMessage` | `Optional[string]` | Optional | - |
+| `ProviderName` | `Optional[string]` | Optional | - |
+| `Score` | `Optional[string]` | Optional | - |
 
 ## Example (as JSON)
 
 ```json
 {
-  "status": "status8",
-  "return_code": "return_code0",
-  "return_message": "return_message2",
-  "provider_name": "provider_name2",
-  "score": "score0"
+  "status": "status0",
+  "return_code": "return_code8",
+  "return_message": "return_message6",
+  "provider_name": "provider_name6",
+  "score": "score8"
 }
 ```
 

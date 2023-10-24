@@ -15,27 +15,26 @@ Response object for getting a bank transfer transaction
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `url` | `*string` | Optional | Payment url |
-| `bankTid` | `*string` | Optional | Transaction identifier for the bank |
-| `bank` | `*string` | Optional | Bank |
-| `paidAt` | `*time.Time` | Optional | Payment date |
-| `paidAmount` | `*int` | Optional | Paid amount |
+| `Url` | `*string` | Optional | Payment url |
+| `BankTid` | `*string` | Optional | Transaction identifier for the bank |
+| `Bank` | `*string` | Optional | Bank |
+| `PaidAt` | `*time.Time` | Optional | Payment date |
+| `PaidAmount` | `*int` | Optional | Paid amount |
 
 ## Example (as JSON)
 
 ```json
 {
-  "gateway_id": "gateway_id2",
-  "amount": 244,
-  "status": "status0",
+  "gateway_id": "gateway_id8",
+  "amount": 40,
+  "status": "status6",
   "success": false,
   "created_at": "2016-03-13T12:52:32.123Z",
-  "transaction_type": "bank_transfer",
-  "url": "url4",
-  "bank_tid": "bank_tid4",
-  "bank": "bank8",
+  "url": "url2",
+  "bank_tid": "bank_tid2",
+  "bank": "bank6",
   "paid_at": "2016-03-13T12:52:32.123Z",
-  "paid_amount": 210
+  "paid_amount": 176
 }
 ```
 

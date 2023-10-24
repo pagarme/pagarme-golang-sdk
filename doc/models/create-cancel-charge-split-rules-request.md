@@ -11,17 +11,17 @@ Creates a refund with split rules
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `id` | `string` | Required | The split rule gateway id |
-| `amount` | `int` | Required | The split rule amount |
-| `mType` | `string` | Required | The amount type (flat ou percentage) |
+| `Id` | `string` | Required | The split rule gateway id |
+| `Amount` | `int` | Required | The split rule amount |
+| `Type` | `string` | Required | The amount type (flat ou percentage) |
 
 ## Example (as JSON)
 
 ```json
 {
-  "id": "id0",
-  "Amount": 156,
-  "type": "type0"
+  "id": "id6",
+  "Amount": 222,
+  "type": "type6"
 }
 ```
 

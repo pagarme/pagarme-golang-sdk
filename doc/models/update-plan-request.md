@@ -11,21 +11,21 @@ Request for updating a plan
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `name` | `string` | Required | Plan's name |
-| `description` | `string` | Required | Description |
-| `installments` | `[]int` | Required | Number os installments |
-| `statementDescriptor` | `string` | Required | Text that will be shown on the credit card's statement |
-| `currency` | `string` | Required | Currency |
-| `interval` | `string` | Required | Interval |
-| `intervalCount` | `int` | Required | Interval count |
-| `paymentMethods` | `[]string` | Required | Payment methods accepted by the plan |
-| `billingType` | `string` | Required | Billing type |
-| `status` | `string` | Required | Plan status |
-| `shippable` | `bool` | Required | Indicates if the plan is shippable |
-| `billingDays` | `[]int` | Required | Billing days accepted by the plan |
-| `metadata` | `map[string]string` | Required | Metadata |
-| `minimumPrice` | `*int` | Optional | Minimum price |
-| `trialPeriodDays` | `*int` | Optional | Number of trial period in days, where the customer will not be charged |
+| `Name` | `string` | Required | Plan's name |
+| `Description` | `string` | Required | Description |
+| `Installments` | `[]int` | Required | Number os installments |
+| `StatementDescriptor` | `string` | Required | Text that will be shown on the credit card's statement |
+| `Currency` | `string` | Required | Currency |
+| `Interval` | `string` | Required | Interval |
+| `IntervalCount` | `int` | Required | Interval count |
+| `PaymentMethods` | `[]string` | Required | Payment methods accepted by the plan |
+| `BillingType` | `string` | Required | Billing type |
+| `Status` | `string` | Required | Plan status |
+| `Shippable` | `bool` | Required | Indicates if the plan is shippable |
+| `BillingDays` | `[]int` | Required | Billing days accepted by the plan |
+| `Metadata` | `map[string]string` | Required | Metadata |
+| `MinimumPrice` | `*int` | Optional | Minimum price |
+| `TrialPeriodDays` | `*int` | Optional | Number of trial period in days, where the customer will not be charged |
 
 ## Example (as JSON)
 
@@ -34,14 +34,14 @@ Request for updating a plan
   "name": "name0",
   "description": "description0",
   "installments": [
-    119,
-    120,
-    121
+    121,
+    122,
+    123
   ],
   "statement_descriptor": "statement_descriptor0",
   "currency": "currency0",
-  "interval": "interval2",
-  "interval_count": 82,
+  "interval": "interval8",
+  "interval_count": 84,
   "payment_methods": [
     "payment_methods5",
     "payment_methods6"
@@ -50,17 +50,16 @@ Request for updating a plan
   "status": "status8",
   "shippable": false,
   "billing_days": [
-    143,
-    144,
-    145
+    171,
+    170
   ],
   "metadata": {
     "key0": "metadata3",
     "key1": "metadata4",
     "key2": "metadata5"
   },
-  "minimum_price": 176,
-  "trial_period_days": 54
+  "minimum_price": 174,
+  "trial_period_days": 56
 }
 ```
 

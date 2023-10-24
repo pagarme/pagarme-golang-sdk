@@ -11,21 +11,21 @@ Request for updating a card
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `holderName` | `string` | Required | Holder name |
-| `expMonth` | `int` | Required | Expiration month |
-| `expYear` | `int` | Required | Expiration year |
-| `billingAddressId` | `types.Optional[string]` | Optional | Id of the address to be used as billing address |
-| `billingAddress` | [`models.CreateAddressRequest`](../../doc/models/create-address-request.md) | Required | Billing address |
-| `metadata` | `map[string]string` | Required | Metadata |
-| `label` | `string` | Required | - |
+| `HolderName` | `string` | Required | Holder name |
+| `ExpMonth` | `int` | Required | Expiration month |
+| `ExpYear` | `int` | Required | Expiration year |
+| `BillingAddressId` | `Optional[string]` | Optional | Id of the address to be used as billing address |
+| `BillingAddress` | [`models.CreateAddressRequest`](../../doc/models/create-address-request.md) | Required | Billing address |
+| `Metadata` | `map[string]string` | Required | Metadata |
+| `Label` | `string` | Required | - |
 
 ## Example (as JSON)
 
 ```json
 {
-  "holder_name": "holder_name4",
-  "exp_month": 42,
-  "exp_year": 254,
+  "holder_name": "holder_name6",
+  "exp_month": 236,
+  "exp_year": 60,
   "billing_address_id": "billing_address_id6",
   "billing_address": {
     "street": "street8",

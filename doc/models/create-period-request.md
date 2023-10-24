@@ -9,7 +9,7 @@
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `endAt` | `*time.Time` | Optional | - |
+| `EndAt` | `*time.Time` | Optional | - |
 
 ## Example (as JSON)
 

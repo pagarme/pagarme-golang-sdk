@@ -1,7 +1,7 @@
 # Customers
 
 ```go
-customersController := client.CustomersController
+customersController := client.CustomersController()
 ```
 
 ## Class Name
@@ -39,11 +39,12 @@ Updates a card
 
 ```go
 UpdateCard(
+    ctx context.Context,
     customerId string,
     cardId string,
     request models.UpdateCardRequest,
     idempotencyKey *string) (
-    https.ApiResponse[models.GetCardResponse],
+    models.ApiResponse[models.GetCardResponse],
     error)
 ```
 
@@ -63,6 +64,7 @@ UpdateCard(
 ## Example Usage
 
 ```go
+ctx := context.Background()
 customerId := "customer_id8"
 cardId := "card_id4"
 
@@ -71,8 +73,8 @@ requestBillingAddress := models.CreateAddressRequest{
     Number:       "number4",
     ZipCode:      "zip_code2",
     Neighborhood: "neighborhood4",
-    City:         "city8",
-    State:        "state4",
+    City:         "city2",
+    State:        "state6",
     Country:      "country2",
     Complement:   "complement6",
     Line1:        "line_18",
@@ -80,17 +82,17 @@ requestBillingAddress := models.CreateAddressRequest{
 }
 
 request := models.UpdateCardRequest{
-    HolderName:     "holder_name2",
-    ExpMonth:       10,
-    ExpYear:        30,
-    Metadata:       map[string]*string{
+    HolderName:       "holder_name2",
+    ExpMonth:         10,
+    ExpYear:          30,
+    Metadata:         map[string]string{
 "key0" : "metadata3",
 },
-    Label:          "label6",
-    BillingAddress: requestBillingAddress,
+    Label:            "label6",
+    BillingAddress:   requestBillingAddress,
 }
 
-apiResponse, err := customersController.UpdateCard(customerId, cardId, &request, nil)
+apiResponse, err := customersController.UpdateCard(ctx, customerId, cardId, &request, nil)
 if err != nil {
     log.Fatalln(err)
 } else {
@@ -107,11 +109,12 @@ Updates an address
 
 ```go
 UpdateAddress(
+    ctx context.Context,
     customerId string,
     addressId string,
     request models.UpdateAddressRequest,
     idempotencyKey *string) (
-    https.ApiResponse[models.GetAddressResponse],
+    models.ApiResponse[models.GetAddressResponse],
     error)
 ```
 
@@ -131,19 +134,20 @@ UpdateAddress(
 ## Example Usage
 
 ```go
+ctx := context.Background()
 customerId := "customer_id8"
 addressId := "address_id0"
 
 request := models.UpdateAddressRequest{
     Number:     "number4",
     Complement: "complement2",
-    Metadata:   map[string]*string{
+    Metadata:   map[string]string{
 "key0" : "metadata3",
 },
     Line2:      "line_24",
 }
 
-apiResponse, err := customersController.UpdateAddress(customerId, addressId, &request, nil)
+apiResponse, err := customersController.UpdateAddress(ctx, customerId, addressId, &request, nil)
 if err != nil {
     log.Fatalln(err)
 } else {
@@ -160,10 +164,11 @@ Delete a customer's access token
 
 ```go
 DeleteAccessToken(
+    ctx context.Context,
     customerId string,
     tokenId string,
     idempotencyKey *string) (
-    https.ApiResponse[models.GetAccessTokenResponse],
+    models.ApiResponse[models.GetAccessTokenResponse],
     error)
 ```
 
@@ -182,10 +187,11 @@ DeleteAccessToken(
 ## Example Usage
 
 ```go
+ctx := context.Background()
 customerId := "customer_id8"
 tokenId := "token_id6"
 
-apiResponse, err := customersController.DeleteAccessToken(customerId, tokenId, nil)
+apiResponse, err := customersController.DeleteAccessToken(ctx, customerId, tokenId, nil)
 if err != nil {
     log.Fatalln(err)
 } else {
@@ -202,9 +208,10 @@ Creates a new customer
 
 ```go
 CreateCustomer(
+    ctx context.Context,
     request models.CreateCustomerRequest,
     idempotencyKey *string) (
-    https.ApiResponse[models.GetCustomerResponse],
+    models.ApiResponse[models.GetCustomerResponse],
     error)
 ```
 
@@ -222,36 +229,38 @@ CreateCustomer(
 ## Example Usage
 
 ```go
+ctx := context.Background()
 requestAddress := models.CreateAddressRequest{
-    Street:       "street2",
-    Number:       "number0",
-    ZipCode:      "zip_code6",
-    Neighborhood: "neighborhood8",
-    City:         "city2",
-    State:        "state8",
-    Country:      "country6",
-    Complement:   "complement8",
-    Line1:        "line_16",
-    Line2:        "line_20",
+    Street:       "street6",
+    Number:       "number4",
+    ZipCode:      "zip_code0",
+    Neighborhood: "neighborhood2",
+    City:         "city6",
+    State:        "state2",
+    Country:      "country0",
+    Complement:   "complement2",
+    Line1:        "line_10",
+    Line2:        "line_24",
 }
 
-requestPhones := models.CreatePhonesRequest{}
+requestPhones := models.CreatePhonesRequest{
+}
 
 request := models.CreateCustomerRequest{
-    Name:     "{\n    \"name\": \"Tony Stark\"\n}",
-    Email:    "email0",
-    Document: "document0",
-    Type:     "type4",
-    Metadata: map[string]*string{
+    Name:         "{\n    \"name\": \"Tony Stark\"\n}",
+    Email:        "email0",
+    Document:     "document0",
+    Type:         "type4",
+    Metadata:     map[string]string{
 "key0" : "metadata3",
 },
-    Code:     "code4",
-    Address:  requestAddress,
-    Phones:   requestPhones,
+    Code:         "code4",
+    Address:      requestAddress,
+    Phones:       requestPhones,
 }
 
 
-apiResponse, err := customersController.CreateCustomer(&request, nil)
+apiResponse, err := customersController.CreateCustomer(ctx, &request, nil)
 if err != nil {
     log.Fatalln(err)
 } else {
@@ -268,10 +277,11 @@ Creates a new address for a customer
 
 ```go
 CreateAddress(
+    ctx context.Context,
     customerId string,
     request models.CreateAddressRequest,
     idempotencyKey *string) (
-    https.ApiResponse[models.GetAddressResponse],
+    models.ApiResponse[models.GetAddressResponse],
     error)
 ```
 
@@ -290,6 +300,7 @@ CreateAddress(
 ## Example Usage
 
 ```go
+ctx := context.Background()
 customerId := "customer_id8"
 request := models.CreateAddressRequest{
     Street:       "street6",
@@ -305,7 +316,7 @@ request := models.CreateAddressRequest{
 }
 
 
-apiResponse, err := customersController.CreateAddress(customerId, &request, nil)
+apiResponse, err := customersController.CreateAddress(ctx, customerId, &request, nil)
 if err != nil {
     log.Fatalln(err)
 } else {
@@ -322,8 +333,9 @@ Delete a Customer's access tokens
 
 ```go
 DeleteAccessTokens(
+    ctx context.Context,
     customerId string) (
-    https.ApiResponse[models.ListAccessTokensResponse],
+    models.ApiResponse[models.ListAccessTokensResponse],
     error)
 ```
 
@@ -340,9 +352,10 @@ DeleteAccessTokens(
 ## Example Usage
 
 ```go
+ctx := context.Background()
 customerId := "customer_id8"
 
-apiResponse, err := customersController.DeleteAccessTokens(customerId)
+apiResponse, err := customersController.DeleteAccessTokens(ctx, customerId)
 if err != nil {
     log.Fatalln(err)
 } else {
@@ -359,9 +372,10 @@ Get a customer's address
 
 ```go
 GetAddress(
+    ctx context.Context,
     customerId string,
     addressId string) (
-    https.ApiResponse[models.GetAddressResponse],
+    models.ApiResponse[models.GetAddressResponse],
     error)
 ```
 
@@ -379,10 +393,11 @@ GetAddress(
 ## Example Usage
 
 ```go
+ctx := context.Background()
 customerId := "customer_id8"
 addressId := "address_id0"
 
-apiResponse, err := customersController.GetAddress(customerId, addressId)
+apiResponse, err := customersController.GetAddress(ctx, customerId, addressId)
 if err != nil {
     log.Fatalln(err)
 } else {
@@ -399,10 +414,11 @@ Delete a Customer's address
 
 ```go
 DeleteAddress(
+    ctx context.Context,
     customerId string,
     addressId string,
     idempotencyKey *string) (
-    https.ApiResponse[models.GetAddressResponse],
+    models.ApiResponse[models.GetAddressResponse],
     error)
 ```
 
@@ -421,10 +437,11 @@ DeleteAddress(
 ## Example Usage
 
 ```go
+ctx := context.Background()
 customerId := "customer_id8"
 addressId := "address_id0"
 
-apiResponse, err := customersController.DeleteAddress(customerId, addressId, nil)
+apiResponse, err := customersController.DeleteAddress(ctx, customerId, addressId, nil)
 if err != nil {
     log.Fatalln(err)
 } else {
@@ -441,10 +458,11 @@ Creates a new card for a customer
 
 ```go
 CreateCard(
+    ctx context.Context,
     customerId string,
     request models.CreateCardRequest,
     idempotencyKey *string) (
-    https.ApiResponse[models.GetCardResponse],
+    models.ApiResponse[models.GetCardResponse],
     error)
 ```
 
@@ -463,13 +481,14 @@ CreateCard(
 ## Example Usage
 
 ```go
+ctx := context.Background()
 customerId := "customer_id8"
-request := models.CreateCardRequest{}
-requestType := "credit"
-request.Type = &requestType
+request := models.CreateCardRequest{
+    Type:             models.ToPointer("credit"),
+}
 
 
-apiResponse, err := customersController.CreateCard(customerId, &request, nil)
+apiResponse, err := customersController.CreateCard(ctx, customerId, &request, nil)
 if err != nil {
     log.Fatalln(err)
 } else {
@@ -486,13 +505,14 @@ Get all Customers
 
 ```go
 GetCustomers(
+    ctx context.Context,
     name *string,
     document *string,
     page *int,
     size *int,
     email *string,
     code *string) (
-    https.ApiResponse[models.ListCustomersResponse],
+    models.ApiResponse[models.ListCustomersResponse],
     error)
 ```
 
@@ -514,10 +534,11 @@ GetCustomers(
 ## Example Usage
 
 ```go
+ctx := context.Background()
 page := 1
 size := 10
 
-apiResponse, err := customersController.GetCustomers(nil, nil, &page, &size, nil, nil)
+apiResponse, err := customersController.GetCustomers(ctx, nil, nil, &page, &size, nil, nil)
 if err != nil {
     log.Fatalln(err)
 } else {
@@ -534,10 +555,11 @@ Updates a customer
 
 ```go
 UpdateCustomer(
+    ctx context.Context,
     customerId string,
     request models.UpdateCustomerRequest,
     idempotencyKey *string) (
-    https.ApiResponse[models.GetCustomerResponse],
+    models.ApiResponse[models.GetCustomerResponse],
     error)
 ```
 
@@ -556,11 +578,13 @@ UpdateCustomer(
 ## Example Usage
 
 ```go
+ctx := context.Background()
 customerId := "customer_id8"
 
-request := models.UpdateCustomerRequest{}
+request := models.UpdateCustomerRequest{
+}
 
-apiResponse, err := customersController.UpdateCustomer(customerId, &request, nil)
+apiResponse, err := customersController.UpdateCustomer(ctx, customerId, &request, nil)
 if err != nil {
     log.Fatalln(err)
 } else {
@@ -577,10 +601,11 @@ Creates a access token for a customer
 
 ```go
 CreateAccessToken(
+    ctx context.Context,
     customerId string,
     request models.CreateAccessTokenRequest,
     idempotencyKey *string) (
-    https.ApiResponse[models.GetAccessTokenResponse],
+    models.ApiResponse[models.GetAccessTokenResponse],
     error)
 ```
 
@@ -599,11 +624,13 @@ CreateAccessToken(
 ## Example Usage
 
 ```go
+ctx := context.Background()
 customerId := "customer_id8"
 
-request := models.CreateAccessTokenRequest{}
+request := models.CreateAccessTokenRequest{
+}
 
-apiResponse, err := customersController.CreateAccessToken(customerId, &request, nil)
+apiResponse, err := customersController.CreateAccessToken(ctx, customerId, &request, nil)
 if err != nil {
     log.Fatalln(err)
 } else {
@@ -620,10 +647,11 @@ Get all access tokens from a customer
 
 ```go
 GetAccessTokens(
+    ctx context.Context,
     customerId string,
     page *int,
     size *int) (
-    https.ApiResponse[models.ListAccessTokensResponse],
+    models.ApiResponse[models.ListAccessTokensResponse],
     error)
 ```
 
@@ -642,9 +670,10 @@ GetAccessTokens(
 ## Example Usage
 
 ```go
+ctx := context.Background()
 customerId := "customer_id8"
 
-apiResponse, err := customersController.GetAccessTokens(customerId, nil, nil)
+apiResponse, err := customersController.GetAccessTokens(ctx, customerId, nil, nil)
 if err != nil {
     log.Fatalln(err)
 } else {
@@ -661,10 +690,11 @@ Get all cards from a customer
 
 ```go
 GetCards(
+    ctx context.Context,
     customerId string,
     page *int,
     size *int) (
-    https.ApiResponse[models.ListCardsResponse],
+    models.ApiResponse[models.ListCardsResponse],
     error)
 ```
 
@@ -683,9 +713,10 @@ GetCards(
 ## Example Usage
 
 ```go
+ctx := context.Background()
 customerId := "customer_id8"
 
-apiResponse, err := customersController.GetCards(customerId, nil, nil)
+apiResponse, err := customersController.GetCards(ctx, customerId, nil, nil)
 if err != nil {
     log.Fatalln(err)
 } else {
@@ -702,10 +733,11 @@ Renew a card
 
 ```go
 RenewCard(
+    ctx context.Context,
     customerId string,
     cardId string,
     idempotencyKey *string) (
-    https.ApiResponse[models.GetCardResponse],
+    models.ApiResponse[models.GetCardResponse],
     error)
 ```
 
@@ -724,10 +756,11 @@ RenewCard(
 ## Example Usage
 
 ```go
+ctx := context.Background()
 customerId := "customer_id8"
 cardId := "card_id4"
 
-apiResponse, err := customersController.RenewCard(customerId, cardId, nil)
+apiResponse, err := customersController.RenewCard(ctx, customerId, cardId, nil)
 if err != nil {
     log.Fatalln(err)
 } else {
@@ -744,9 +777,10 @@ Get a Customer's access token
 
 ```go
 GetAccessToken(
+    ctx context.Context,
     customerId string,
     tokenId string) (
-    https.ApiResponse[models.GetAccessTokenResponse],
+    models.ApiResponse[models.GetAccessTokenResponse],
     error)
 ```
 
@@ -764,10 +798,11 @@ GetAccessToken(
 ## Example Usage
 
 ```go
+ctx := context.Background()
 customerId := "customer_id8"
 tokenId := "token_id6"
 
-apiResponse, err := customersController.GetAccessToken(customerId, tokenId)
+apiResponse, err := customersController.GetAccessToken(ctx, customerId, tokenId)
 if err != nil {
     log.Fatalln(err)
 } else {
@@ -784,10 +819,11 @@ Updates the metadata a customer
 
 ```go
 UpdateCustomerMetadata(
+    ctx context.Context,
     customerId string,
     request models.UpdateMetadataRequest,
     idempotencyKey *string) (
-    https.ApiResponse[models.GetCustomerResponse],
+    models.ApiResponse[models.GetCustomerResponse],
     error)
 ```
 
@@ -806,15 +842,16 @@ UpdateCustomerMetadata(
 ## Example Usage
 
 ```go
+ctx := context.Background()
 customerId := "customer_id8"
 
 request := models.UpdateMetadataRequest{
-    Metadata: map[string]*string{
+    Metadata: map[string]string{
 "key0" : "metadata3",
 },
 }
 
-apiResponse, err := customersController.UpdateCustomerMetadata(customerId, &request, nil)
+apiResponse, err := customersController.UpdateCustomerMetadata(ctx, customerId, &request, nil)
 if err != nil {
     log.Fatalln(err)
 } else {
@@ -831,10 +868,11 @@ Delete a customer's card
 
 ```go
 DeleteCard(
+    ctx context.Context,
     customerId string,
     cardId string,
     idempotencyKey *string) (
-    https.ApiResponse[models.GetCardResponse],
+    models.ApiResponse[models.GetCardResponse],
     error)
 ```
 
@@ -853,10 +891,11 @@ DeleteCard(
 ## Example Usage
 
 ```go
+ctx := context.Background()
 customerId := "customer_id8"
 cardId := "card_id4"
 
-apiResponse, err := customersController.DeleteCard(customerId, cardId, nil)
+apiResponse, err := customersController.DeleteCard(ctx, customerId, cardId, nil)
 if err != nil {
     log.Fatalln(err)
 } else {
@@ -873,10 +912,11 @@ Gets all adressess from a customer
 
 ```go
 GetAddresses(
+    ctx context.Context,
     customerId string,
     page *int,
     size *int) (
-    https.ApiResponse[models.ListAddressesResponse],
+    models.ApiResponse[models.ListAddressesResponse],
     error)
 ```
 
@@ -895,9 +935,10 @@ GetAddresses(
 ## Example Usage
 
 ```go
+ctx := context.Background()
 customerId := "customer_id8"
 
-apiResponse, err := customersController.GetAddresses(customerId, nil, nil)
+apiResponse, err := customersController.GetAddresses(ctx, customerId, nil, nil)
 if err != nil {
     log.Fatalln(err)
 } else {
@@ -914,8 +955,9 @@ Get a customer
 
 ```go
 GetCustomer(
+    ctx context.Context,
     customerId string) (
-    https.ApiResponse[models.GetCustomerResponse],
+    models.ApiResponse[models.GetCustomerResponse],
     error)
 ```
 
@@ -932,9 +974,10 @@ GetCustomer(
 ## Example Usage
 
 ```go
+ctx := context.Background()
 customerId := "customer_id8"
 
-apiResponse, err := customersController.GetCustomer(customerId)
+apiResponse, err := customersController.GetCustomer(ctx, customerId)
 if err != nil {
     log.Fatalln(err)
 } else {
@@ -951,9 +994,10 @@ Get a customer's card
 
 ```go
 GetCard(
+    ctx context.Context,
     customerId string,
     cardId string) (
-    https.ApiResponse[models.GetCardResponse],
+    models.ApiResponse[models.GetCardResponse],
     error)
 ```
 
@@ -971,10 +1015,11 @@ GetCard(
 ## Example Usage
 
 ```go
+ctx := context.Background()
 customerId := "customer_id8"
 cardId := "card_id4"
 
-apiResponse, err := customersController.GetCard(customerId, cardId)
+apiResponse, err := customersController.GetCard(ctx, customerId, cardId)
 if err != nil {
     log.Fatalln(err)
 } else {

@@ -11,19 +11,19 @@ Request for updating a price bracket
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `startQuantity` | `int` | Required | Start quantity of the bracket |
-| `price` | `int` | Required | Price |
-| `endQuantity` | `*int` | Optional | End quantity of the bracket |
-| `overagePrice` | `*int` | Optional | Overage price |
+| `StartQuantity` | `int` | Required | Start quantity of the bracket |
+| `Price` | `int` | Required | Price |
+| `EndQuantity` | `*int` | Optional | End quantity of the bracket |
+| `OveragePrice` | `*int` | Optional | Overage price |
 
 ## Example (as JSON)
 
 ```json
 {
-  "start_quantity": 46,
-  "price": 16,
-  "end_quantity": 54,
-  "overage_price": 68
+  "start_quantity": 154,
+  "price": 164,
+  "end_quantity": 162,
+  "overage_price": 176
 }
 ```
 

@@ -11,13 +11,13 @@ Atualização do valor mínimo da assinatura
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `minimumPrice` | `*int` | Optional | Valor mínimo da assinatura |
+| `MinimumPrice` | `*int` | Optional | Valor mínimo da assinatura |
 
 ## Example (as JSON)
 
 ```json
 {
-  "minimum_price": 176
+  "minimum_price": 212
 }
 ```
 

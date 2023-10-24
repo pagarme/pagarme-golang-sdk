@@ -9,9 +9,9 @@
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `transferEnabled` | `types.Optional[bool]` | Optional | - |
-| `transferInterval` | `types.Optional[string]` | Optional | - |
-| `transferDay` | `types.Optional[int]` | Optional | - |
+| `TransferEnabled` | `Optional[bool]` | Optional | - |
+| `TransferInterval` | `Optional[string]` | Optional | - |
+| `TransferDay` | `Optional[int]` | Optional | - |
 
 ## Example (as JSON)
 
@@ -19,7 +19,7 @@
 {
   "transfer_enabled": false,
   "transfer_interval": "transfer_interval0",
-  "transfer_day": 18
+  "transfer_day": 52
 }
 ```
 

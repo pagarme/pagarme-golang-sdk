@@ -11,15 +11,15 @@ Api Error Exception
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `message` | `*string` | Required | - |
-| `mErrors` | `interface{}` | Required | - |
-| `request` | `interface{}` | Required | - |
+| `Message` | `*string` | Required | - |
+| `Errors` | `interface{}` | Required | - |
+| `Request` | `interface{}` | Required | - |
 
 ## Example (as JSON)
 
 ```json
 {
-  "message": "message0",
+  "message": "message4",
   "errors": {
     "key1": "val1",
     "key2": "val2"

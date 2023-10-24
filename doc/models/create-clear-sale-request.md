@@ -9,13 +9,13 @@
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `customSla` | `int` | Required | - |
+| `CustomSla` | `int` | Required | - |
 
 ## Example (as JSON)
 
 ```json
 {
-  "custom_sla": 224
+  "custom_sla": 150
 }
 ```
 

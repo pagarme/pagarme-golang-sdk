@@ -15,22 +15,21 @@ Generic response object for getting a MovementObjectFeeCollection.
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `description` | `types.Optional[string]` | Optional | - |
-| `paymentDate` | `types.Optional[string]` | Optional | - |
-| `recipientId` | `types.Optional[string]` | Optional | - |
+| `Description` | `Optional[string]` | Optional | - |
+| `PaymentDate` | `Optional[string]` | Optional | - |
+| `RecipientId` | `Optional[string]` | Optional | - |
 
 ## Example (as JSON)
 
 ```json
 {
-  "object": "feeCollection",
-  "id": "id4",
+  "id": "id2",
   "status": "status4",
-  "amount": "amount6",
-  "created_at": "created_at2",
-  "description": "description0",
-  "payment_date": "payment_date8",
-  "recipient_id": "recipient_id0"
+  "amount": "amount4",
+  "created_at": "created_at0",
+  "description": "description4",
+  "payment_date": "payment_date4",
+  "recipient_id": "recipient_id6"
 }
 ```
 

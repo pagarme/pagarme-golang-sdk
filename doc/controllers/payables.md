@@ -1,7 +1,7 @@
 # Payables
 
 ```go
-payablesController := client.PayablesController
+payablesController := client.PayablesController()
 ```
 
 ## Class Name
@@ -18,6 +18,7 @@ payablesController := client.PayablesController
 
 ```go
 GetPayables(
+    ctx context.Context,
     mType *string,
     splitId *string,
     bulkAnticipationId *string,
@@ -36,7 +37,7 @@ GetPayables(
     page *int,
     size *int,
     gatewayId *int64) (
-    https.ApiResponse[models.ListPayablesResponse],
+    models.ApiResponse[models.ListPayablesResponse],
     error)
 ```
 
@@ -70,7 +71,9 @@ GetPayables(
 ## Example Usage
 
 ```go
-apiResponse, err := payablesController.GetPayables(nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil)
+ctx := context.Background()
+
+apiResponse, err := payablesController.GetPayables(ctx, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil)
 if err != nil {
     log.Fatalln(err)
 } else {
@@ -85,8 +88,9 @@ if err != nil {
 
 ```go
 GetPayableById(
+    ctx context.Context,
     id int64) (
-    https.ApiResponse[models.GetPayableResponse],
+    models.ApiResponse[models.GetPayableResponse],
     error)
 ```
 
@@ -103,9 +107,10 @@ GetPayableById(
 ## Example Usage
 
 ```go
+ctx := context.Background()
 id := int64(112)
 
-apiResponse, err := payablesController.GetPayableById(id)
+apiResponse, err := payablesController.GetPayableById(ctx, id)
 if err != nil {
     log.Fatalln(err)
 } else {

@@ -9,15 +9,15 @@ The following parameters are configurable for the HttpConfiguration:
 |  --- | --- | --- |
 | `timeout` | `float64` | Timeout in milliseconds.<br>*Default*: `0` |
 | `transport` | `http.RoundTripper` | Establishes network connection and caches them for reuse.<br>*Default*: `http.DefaultTransport` |
-| `retryConfiguration` | `https.RetryConfiguration` | Configurations to retry requests.<br>*Default*: `DefaultRetryConfiguration()` |
+| `retryConfiguration` | [`pagarmeapisdk.RetryConfiguration`](retry-configuration.md) | Configurations to retry requests.<br>*Default*: `DefaultRetryConfiguration()` |
 
 The httpConfiguration can be initialized as follows:
 
 ```go
-httpConfiguration := https.NewHttpConfiguration(
-    https.WithTimeout(0),
-    https.WithTransport(http.DefaultTransport),
-    https.WithRetryConfiguration(DefaultRetryConfiguration()),
+httpConfiguration := CreateHttpConfiguration(
+    pagarmeapisdk.WithTimeout(0),
+    pagarmeapisdk.WithTransport(http.DefaultTransport),
+    pagarmeapisdk.WithRetryConfiguration(DefaultRetryConfiguration()),
 )
 ```
 

@@ -11,8 +11,8 @@ Response object for geetting an order location request
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `latitude` | `types.Optional[string]` | Optional | Latitude |
-| `longitude` | `types.Optional[string]` | Optional | Longitude |
+| `Latitude` | `Optional[string]` | Optional | Latitude |
+| `Longitude` | `Optional[string]` | Optional | Longitude |
 
 ## Example (as JSON)
 

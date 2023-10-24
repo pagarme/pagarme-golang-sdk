@@ -5,6 +5,7 @@ import (
     "net/http"
 )
 
+// BasicAuthentication returns an authenticator function that provides authentication for API calls.
 func BasicAuthentication(config Configuration) https.Authenticator {
     return func(requiresAuth bool) https.HttpInterceptor {
         if !requiresAuth {

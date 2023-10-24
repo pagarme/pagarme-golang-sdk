@@ -9,24 +9,22 @@
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `enabled` | `types.Optional[bool]` | Optional | - |
-| `mType` | `types.Optional[string]` | Optional | - |
-| `volumePercentage` | `types.Optional[int]` | Optional | - |
-| `delay` | `types.Optional[int]` | Optional | - |
-| `days` | `types.Optional[[]int]` | Optional | - |
+| `Enabled` | `Optional[bool]` | Optional | - |
+| `Type` | `Optional[string]` | Optional | - |
+| `VolumePercentage` | `Optional[int]` | Optional | - |
+| `Delay` | `Optional[int]` | Optional | - |
+| `Days` | `Optional[[]int]` | Optional | - |
 
 ## Example (as JSON)
 
 ```json
 {
   "enabled": false,
-  "type": "type0",
-  "volume_percentage": 62,
-  "delay": 228,
+  "type": "type8",
+  "volume_percentage": 178,
+  "delay": 112,
   "days": [
-    188,
-    189,
-    190
+    88
   ]
 }
 ```

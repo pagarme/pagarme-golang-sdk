@@ -11,13 +11,13 @@ Request for creating a new Access Token
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `expiresIn` | `*int` | Optional | Minutes to expire the token |
+| `ExpiresIn` | `*int` | Optional | Minutes to expire the token |
 
 ## Example (as JSON)
 
 ```json
 {
-  "expires_in": 226
+  "expires_in": 86
 }
 ```
 

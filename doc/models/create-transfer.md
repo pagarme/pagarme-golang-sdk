@@ -9,22 +9,21 @@
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `amount` | `int` | Required | - |
-| `sourceId` | `string` | Required | - |
-| `targetId` | `string` | Required | - |
-| `metadata` | `*[]string` | Optional | - |
+| `Amount` | `int` | Required | - |
+| `SourceId` | `string` | Required | - |
+| `TargetId` | `string` | Required | - |
+| `Metadata` | `[]string` | Optional | - |
 
 ## Example (as JSON)
 
 ```json
 {
-  "amount": 46,
+  "amount": 252,
   "source_id": "source_id6",
-  "target_id": "target_id0",
+  "target_id": "target_id8",
   "metadata": [
-    "metadata3",
-    "metadata4",
-    "metadata5"
+    "metadata1",
+    "metadata2"
   ]
 }
 ```

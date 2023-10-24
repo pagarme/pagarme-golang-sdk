@@ -11,7 +11,7 @@ Request for updating the due date from a subscription
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `nextBillingAt` | `time.Time` | Required | The date when the next subscription billing must occur |
+| `NextBillingAt` | `time.Time` | Required | The date when the next subscription billing must occur |
 
 ## Example (as JSON)
 

@@ -11,17 +11,17 @@ Informações de transferência do recebedor
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `transferEnabled` | `bool` | Required | - |
-| `transferInterval` | `string` | Required | - |
-| `transferDay` | `int` | Required | - |
+| `TransferEnabled` | `bool` | Required | - |
+| `TransferInterval` | `string` | Required | - |
+| `TransferDay` | `int` | Required | - |
 
 ## Example (as JSON)
 
 ```json
 {
   "transfer_enabled": false,
-  "transfer_interval": "transfer_interval0",
-  "transfer_day": 18
+  "transfer_interval": "transfer_interval4",
+  "transfer_day": 82
 }
 ```
 

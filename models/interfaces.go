@@ -1,39 +1,38 @@
 package models
 
 import (
-    "github.com/apimatic/go-core-runtime/types"
     "time"
 )
 
 // Response object for listing transactions
 type ListTransactionsResponseInterface interface {
-    GetData() types.Optional[[]GetTransactionResponseInterface]
-    GetPaging() types.Optional[PagingResponse]
+    GetData() Optional[[]GetTransactionResponseInterface]
+    GetPaging() Optional[PagingResponse]
 }
 
 // Response object for getting a charge
 type GetChargeResponseInterface interface {
-    GetId() types.Optional[string]
-    GetCode() types.Optional[string]
-    GetGatewayId() types.Optional[string]
-    GetAmount() types.Optional[int]
-    GetStatus() types.Optional[string]
-    GetCurrency() types.Optional[string]
-    GetPaymentMethod() types.Optional[string]
-    GetDueAt() types.Optional[time.Time]
-    GetCreatedAt() types.Optional[time.Time]
-    GetUpdatedAt() types.Optional[time.Time]
-    GetLastTransaction() types.Optional[GetTransactionResponseInterface]
-    GetInvoice() types.Optional[GetInvoiceResponse]
-    GetOrder() types.Optional[GetOrderResponse]
-    GetCustomer() types.Optional[GetCustomerResponse]
-    GetMetadata() types.Optional[map[string]string]
-    GetPaidAt() types.Optional[time.Time]
-    GetCanceledAt() types.Optional[time.Time]
-    GetCanceledAmount() types.Optional[int]
-    GetPaidAmount() types.Optional[int]
-    GetInterestAndFinePaid() types.Optional[int]
-    GetRecurrencyCycle() types.Optional[string]
+    GetId() Optional[string]
+    GetCode() Optional[string]
+    GetGatewayId() Optional[string]
+    GetAmount() Optional[int]
+    GetStatus() Optional[string]
+    GetCurrency() Optional[string]
+    GetPaymentMethod() Optional[string]
+    GetDueAt() Optional[time.Time]
+    GetCreatedAt() Optional[time.Time]
+    GetUpdatedAt() Optional[time.Time]
+    GetLastTransaction() Optional[GetTransactionResponseInterface]
+    GetInvoice() Optional[GetInvoiceResponse]
+    GetOrder() Optional[GetOrderResponse]
+    GetCustomer() Optional[GetCustomerResponse]
+    GetMetadata() Optional[map[string]string]
+    GetPaidAt() Optional[time.Time]
+    GetCanceledAt() Optional[time.Time]
+    GetCanceledAmount() Optional[int]
+    GetPaidAmount() Optional[int]
+    GetInterestAndFinePaid() Optional[int]
+    GetRecurrencyCycle() Optional[string]
 }
 
 // Response object for getting a bank transfer transaction
@@ -49,196 +48,196 @@ type GetBankTransferTransactionResponseInterface interface {
 // Response object for getting a safety pay transaction
 type GetSafetyPayTransactionResponseInterface interface {
     GetTransactionResponseInterface
-    GetUrl() types.Optional[string]
-    GetBankTid() types.Optional[string]
-    GetPaidAt() types.Optional[time.Time]
-    GetPaidAmount() types.Optional[int]
+    GetUrl() Optional[string]
+    GetBankTid() Optional[string]
+    GetPaidAt() Optional[time.Time]
+    GetPaidAmount() Optional[int]
 }
 
 // Response for voucher transactions
 type GetVoucherTransactionResponseInterface interface {
     GetTransactionResponseInterface
-    GetStatementDescriptor() types.Optional[string]
-    GetAcquirerName() types.Optional[string]
-    GetAcquirerAffiliationCode() types.Optional[string]
-    GetAcquirerTid() types.Optional[string]
-    GetAcquirerNsu() types.Optional[string]
-    GetAcquirerAuthCode() types.Optional[string]
-    GetAcquirerMessage() types.Optional[string]
-    GetAcquirerReturnCode() types.Optional[string]
-    GetOperationType() types.Optional[string]
-    GetCard() types.Optional[GetCardResponse]
+    GetStatementDescriptor() Optional[string]
+    GetAcquirerName() Optional[string]
+    GetAcquirerAffiliationCode() Optional[string]
+    GetAcquirerTid() Optional[string]
+    GetAcquirerNsu() Optional[string]
+    GetAcquirerAuthCode() Optional[string]
+    GetAcquirerMessage() Optional[string]
+    GetAcquirerReturnCode() Optional[string]
+    GetOperationType() Optional[string]
+    GetCard() Optional[GetCardResponse]
 }
 
 // Response object for getting a boleto transaction
 type GetBoletoTransactionResponseInterface interface {
     GetTransactionResponseInterface
-    GetUrl() types.Optional[string]
-    GetBarcode() types.Optional[string]
-    GetNossoNumero() types.Optional[string]
-    GetBank() types.Optional[string]
-    GetDocumentNumber() types.Optional[string]
-    GetInstructions() types.Optional[string]
-    GetBillingAddress() types.Optional[GetBillingAddressResponse]
-    GetDueAt() types.Optional[time.Time]
-    GetQrCode() types.Optional[string]
-    GetLine() types.Optional[string]
-    GetPdfPassword() types.Optional[string]
-    GetPdf() types.Optional[string]
-    GetPaidAt() types.Optional[time.Time]
-    GetPaidAmount() types.Optional[string]
-    GetType() types.Optional[string]
-    GetCreditAt() types.Optional[time.Time]
-    GetStatementDescriptor() types.Optional[string]
+    GetUrl() Optional[string]
+    GetBarcode() Optional[string]
+    GetNossoNumero() Optional[string]
+    GetBank() Optional[string]
+    GetDocumentNumber() Optional[string]
+    GetInstructions() Optional[string]
+    GetBillingAddress() Optional[GetBillingAddressResponse]
+    GetDueAt() Optional[time.Time]
+    GetQrCode() Optional[string]
+    GetLine() Optional[string]
+    GetPdfPassword() Optional[string]
+    GetPdf() Optional[string]
+    GetPaidAt() Optional[time.Time]
+    GetPaidAmount() Optional[string]
+    GetType() Optional[string]
+    GetCreditAt() Optional[time.Time]
+    GetStatementDescriptor() Optional[string]
 }
 
 // Response object for getting a debit card transaction
 type GetDebitCardTransactionResponseInterface interface {
     GetTransactionResponseInterface
-    GetStatementDescriptor() types.Optional[string]
-    GetAcquirerName() types.Optional[string]
-    GetAcquirerAffiliationCode() types.Optional[string]
-    GetAcquirerTid() types.Optional[string]
-    GetAcquirerNsu() types.Optional[string]
-    GetAcquirerAuthCode() types.Optional[string]
-    GetOperationType() types.Optional[string]
-    GetCard() types.Optional[GetCardResponse]
-    GetAcquirerMessage() types.Optional[string]
-    GetAcquirerReturnCode() types.Optional[string]
-    GetMpi() types.Optional[string]
-    GetEci() types.Optional[string]
-    GetAuthenticationType() types.Optional[string]
-    GetThreedAuthenticationUrl() types.Optional[string]
-    GetFundingSource() types.Optional[string]
+    GetStatementDescriptor() Optional[string]
+    GetAcquirerName() Optional[string]
+    GetAcquirerAffiliationCode() Optional[string]
+    GetAcquirerTid() Optional[string]
+    GetAcquirerNsu() Optional[string]
+    GetAcquirerAuthCode() Optional[string]
+    GetOperationType() Optional[string]
+    GetCard() Optional[GetCardResponse]
+    GetAcquirerMessage() Optional[string]
+    GetAcquirerReturnCode() Optional[string]
+    GetMpi() Optional[string]
+    GetEci() Optional[string]
+    GetAuthenticationType() Optional[string]
+    GetThreedAuthenticationUrl() Optional[string]
+    GetFundingSource() Optional[string]
 }
 
 // Generic response object for getting a transaction.
 type GetTransactionResponseInterface interface {
-    GetGatewayId() types.Optional[string]
-    GetAmount() types.Optional[int]
-    GetStatus() types.Optional[string]
-    GetSuccess() types.Optional[bool]
-    GetCreatedAt() types.Optional[time.Time]
-    GetUpdatedAt() types.Optional[time.Time]
-    GetAttemptCount() types.Optional[int]
-    GetMaxAttempts() types.Optional[int]
-    GetSplits() types.Optional[[]GetSplitResponse]
-    GetNextAttempt() types.Optional[time.Time]
+    GetGatewayId() Optional[string]
+    GetAmount() Optional[int]
+    GetStatus() Optional[string]
+    GetSuccess() Optional[bool]
+    GetCreatedAt() Optional[time.Time]
+    GetUpdatedAt() Optional[time.Time]
+    GetAttemptCount() Optional[int]
+    GetMaxAttempts() Optional[int]
+    GetSplits() Optional[[]GetSplitResponse]
+    GetNextAttempt() Optional[time.Time]
     GetTransactionType() *string
-    GetId() types.Optional[string]
-    GetGatewayResponse() types.Optional[GetGatewayResponseResponse]
-    GetAntifraudResponse() types.Optional[GetAntifraudResponse]
-    GetMetadata() types.Optional[map[string]string]
-    GetSplit() types.Optional[[]GetSplitResponse]
-    GetInterest() types.Optional[GetInterestResponse]
-    GetFine() types.Optional[GetFineResponse]
-    GetMaxDaysToPayPastDue() types.Optional[int]
+    GetId() Optional[string]
+    GetGatewayResponse() Optional[GetGatewayResponseResponse]
+    GetAntifraudResponse() Optional[GetAntifraudResponse]
+    GetMetadata() Optional[map[string]string]
+    GetSplit() Optional[[]GetSplitResponse]
+    GetInterest() Optional[GetInterestResponse]
+    GetFine() Optional[GetFineResponse]
+    GetMaxDaysToPayPastDue() Optional[int]
 }
 
 // Response object for getting a private label transaction
 type GetPrivateLabelTransactionResponseInterface interface {
     GetTransactionResponseInterface
-    GetStatementDescriptor() types.Optional[string]
-    GetAcquirerName() types.Optional[string]
-    GetAcquirerAffiliationCode() types.Optional[string]
-    GetAcquirerTid() types.Optional[string]
-    GetAcquirerNsu() types.Optional[string]
-    GetAcquirerAuthCode() types.Optional[string]
-    GetOperationType() types.Optional[string]
-    GetCard() types.Optional[GetCardResponse]
-    GetAcquirerMessage() types.Optional[string]
-    GetAcquirerReturnCode() types.Optional[string]
-    GetInstallments() types.Optional[int]
+    GetStatementDescriptor() Optional[string]
+    GetAcquirerName() Optional[string]
+    GetAcquirerAffiliationCode() Optional[string]
+    GetAcquirerTid() Optional[string]
+    GetAcquirerNsu() Optional[string]
+    GetAcquirerAuthCode() Optional[string]
+    GetOperationType() Optional[string]
+    GetCard() Optional[GetCardResponse]
+    GetAcquirerMessage() Optional[string]
+    GetAcquirerReturnCode() Optional[string]
+    GetInstallments() Optional[int]
 }
 
 // Response object for getting a cash transaction
 type GetCashTransactionResponseInterface interface {
     GetTransactionResponseInterface
-    GetDescription() types.Optional[string]
+    GetDescription() Optional[string]
 }
 
 // Response object for getting a credit card transaction
 type GetCreditCardTransactionResponseInterface interface {
     GetTransactionResponseInterface
-    GetStatementDescriptor() types.Optional[string]
+    GetStatementDescriptor() Optional[string]
     GetAcquirerName() *string
-    GetAcquirerAffiliationCode() types.Optional[string]
+    GetAcquirerAffiliationCode() Optional[string]
     GetAcquirerTid() *string
     GetAcquirerNsu() *string
-    GetAcquirerAuthCode() types.Optional[string]
-    GetOperationType() types.Optional[string]
-    GetCard() types.Optional[GetCardResponse]
-    GetAcquirerMessage() types.Optional[string]
-    GetAcquirerReturnCode() types.Optional[string]
-    GetInstallments() types.Optional[int]
-    GetThreedAuthenticationUrl() types.Optional[string]
-    GetFundingSource() types.Optional[string]
+    GetAcquirerAuthCode() Optional[string]
+    GetOperationType() Optional[string]
+    GetCard() Optional[GetCardResponse]
+    GetAcquirerMessage() Optional[string]
+    GetAcquirerReturnCode() Optional[string]
+    GetInstallments() Optional[int]
+    GetThreedAuthenticationUrl() Optional[string]
+    GetFundingSource() Optional[string]
 }
 
 // Response object for listing charge transactions
 type ListChargeTransactionsResponseInterface interface {
-    GetData() types.Optional[[]GetTransactionResponseInterface]
-    GetPaging() types.Optional[PagingResponse]
+    GetData() Optional[[]GetTransactionResponseInterface]
+    GetPaging() Optional[PagingResponse]
 }
 
 // Response object when getting a pix transaction
 type GetPixTransactionResponseInterface interface {
     GetTransactionResponseInterface
-    GetQrCode() types.Optional[string]
-    GetQrCodeUrl() types.Optional[string]
-    GetExpiresAt() types.Optional[time.Time]
-    GetAdditionalInformation() types.Optional[[]PixAdditionalInformation]
-    GetEndToEndId() types.Optional[string]
-    GetPayer() types.Optional[GetPixPayerResponse]
-    GetPixProviderTid() types.Optional[string]
+    GetQrCode() Optional[string]
+    GetQrCodeUrl() Optional[string]
+    GetExpiresAt() Optional[time.Time]
+    GetAdditionalInformation() Optional[[]PixAdditionalInformation]
+    GetEndToEndId() Optional[string]
+    GetPayer() Optional[GetPixPayerResponse]
+    GetPixProviderTid() Optional[string]
 }
 
 // Generic response object for getting a BalanceOperation.
 type GetBalanceOperationResponseInterface interface {
-    GetId() types.Optional[string]
-    GetStatus() types.Optional[string]
-    GetBalanceAmount() types.Optional[string]
-    GetBalanceOldAmount() types.Optional[string]
-    GetType() types.Optional[string]
-    GetAmount() types.Optional[string]
-    GetFee() types.Optional[string]
-    GetCreatedAt() types.Optional[string]
-    GetMovementObject() *GetMovementObjectBaseResponseInterface
+    GetId() Optional[string]
+    GetStatus() Optional[string]
+    GetBalanceAmount() Optional[string]
+    GetBalanceOldAmount() Optional[string]
+    GetType() Optional[string]
+    GetAmount() Optional[string]
+    GetFee() Optional[string]
+    GetCreatedAt() Optional[string]
+    GetMovementObject() GetMovementObjectBaseResponseInterface
 }
 
 // Generic response object for getting a MovementObjectBase.
 type GetMovementObjectBaseResponseInterface interface {
     GetObject() *string
-    GetId() types.Optional[string]
-    GetStatus() types.Optional[string]
-    GetAmount() types.Optional[string]
-    GetCreatedAt() types.Optional[string]
-    GetType() types.Optional[string]
-    GetChargeId() types.Optional[string]
-    GetGatewayId() types.Optional[string]
+    GetId() Optional[string]
+    GetStatus() Optional[string]
+    GetAmount() Optional[string]
+    GetCreatedAt() Optional[string]
+    GetType() Optional[string]
+    GetChargeId() Optional[string]
+    GetGatewayId() Optional[string]
 }
 
 // Generic response object for getting a MovementObjectRefund.
 type GetMovementObjectRefundResponseInterface interface {
     GetMovementObjectBaseResponseInterface
-    GetFraudCoverageFee() types.Optional[string]
-    GetChargeFeeRecipientId() types.Optional[string]
-    GetBankAccountId() types.Optional[string]
-    GetLocalTransactionId() types.Optional[string]
-    GetUpdatedAt() types.Optional[string]
+    GetFraudCoverageFee() Optional[string]
+    GetChargeFeeRecipientId() Optional[string]
+    GetBankAccountId() Optional[string]
+    GetLocalTransactionId() Optional[string]
+    GetUpdatedAt() Optional[string]
 }
 
 // Generic response object for getting a MovementObjectFeeCollection.
 type GetMovementObjectFeeCollectionResponseInterface interface {
     GetMovementObjectBaseResponseInterface
-    GetDescription() types.Optional[string]
-    GetPaymentDate() types.Optional[string]
-    GetRecipientId() types.Optional[string]
+    GetDescription() Optional[string]
+    GetPaymentDate() Optional[string]
+    GetRecipientId() Optional[string]
 }
 
 type GetMovementObjectPayableResponseInterface interface {
     GetMovementObjectBaseResponseInterface
-    GetFee() types.Optional[string]
+    GetFee() Optional[string]
     GetAnticipationFee() string
     GetFraudCoverageFee() string
     GetInstallment() string
@@ -257,12 +256,12 @@ type GetMovementObjectPayableResponseInterface interface {
 
 type GetMovementObjectTransferResponseInterface interface {
     GetMovementObjectBaseResponseInterface
-    GetSourceType() types.Optional[string]
-    GetSourceId() types.Optional[string]
-    GetTargetType() types.Optional[string]
-    GetTargetId() types.Optional[string]
-    GetFee() types.Optional[string]
-    GetFundingDate() types.Optional[string]
-    GetFundingEstimatedDate() types.Optional[string]
-    GetBankAccount() types.Optional[string]
+    GetSourceType() Optional[string]
+    GetSourceId() Optional[string]
+    GetTargetType() Optional[string]
+    GetTargetId() Optional[string]
+    GetFee() Optional[string]
+    GetFundingDate() Optional[string]
+    GetFundingEstimatedDate() Optional[string]
+    GetBankAccount() Optional[string]
 }

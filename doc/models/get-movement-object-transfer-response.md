@@ -13,29 +13,28 @@
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `sourceType` | `types.Optional[string]` | Optional | - |
-| `sourceId` | `types.Optional[string]` | Optional | - |
-| `targetType` | `types.Optional[string]` | Optional | - |
-| `targetId` | `types.Optional[string]` | Optional | - |
-| `fee` | `types.Optional[string]` | Optional | - |
-| `fundingDate` | `types.Optional[string]` | Optional | - |
-| `fundingEstimatedDate` | `types.Optional[string]` | Optional | - |
-| `bankAccount` | `types.Optional[string]` | Optional | - |
+| `SourceType` | `Optional[string]` | Optional | - |
+| `SourceId` | `Optional[string]` | Optional | - |
+| `TargetType` | `Optional[string]` | Optional | - |
+| `TargetId` | `Optional[string]` | Optional | - |
+| `Fee` | `Optional[string]` | Optional | - |
+| `FundingDate` | `Optional[string]` | Optional | - |
+| `FundingEstimatedDate` | `Optional[string]` | Optional | - |
+| `BankAccount` | `Optional[string]` | Optional | - |
 
 ## Example (as JSON)
 
 ```json
 {
-  "object": "transfer",
-  "id": "id6",
-  "status": "status2",
-  "amount": "amount8",
-  "created_at": "created_at4",
-  "source_type": "source_type0",
-  "source_id": "source_id6",
-  "target_type": "target_type2",
-  "target_id": "target_id0",
-  "fee": "fee2"
+  "id": "id2",
+  "status": "status4",
+  "amount": "amount4",
+  "created_at": "created_at0",
+  "source_type": "source_type6",
+  "source_id": "source_id0",
+  "target_type": "target_type8",
+  "target_id": "target_id4",
+  "fee": "fee8"
 }
 ```
 

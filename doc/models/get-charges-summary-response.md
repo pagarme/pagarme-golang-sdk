@@ -9,13 +9,13 @@
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `total` | `types.Optional[int]` | Optional | - |
+| `Total` | `Optional[int]` | Optional | - |
 
 ## Example (as JSON)
 
 ```json
 {
-  "total": 10
+  "total": 150
 }
 ```
 

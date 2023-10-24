@@ -11,7 +11,7 @@ Request to update the end date of the current subscription cycle
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `endAt` | `*time.Time` | Optional | Current cycle end date |
+| `EndAt` | `*time.Time` | Optional | Current cycle end date |
 
 ## Example (as JSON)
 

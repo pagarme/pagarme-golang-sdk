@@ -11,8 +11,8 @@ Response object for listing BalanceOperation objects
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `data` | [`types.Optional[[]models.GetBalanceOperationResponse]`](../../doc/models/get-balance-operation-response.md) | Optional | The BalanceOperation object |
-| `paging` | [`types.Optional[models.PagingResponse]`](../../doc/models/paging-response.md) | Optional | - |
+| `Data` | [`Optional[[]models.GetBalanceOperationResponse]`](../../doc/models/get-balance-operation-response.md) | Optional | The BalanceOperation object |
+| `Paging` | [`Optional[models.PagingResponse]`](../../doc/models/paging-response.md) | Optional | - |
 
 ## Example (as JSON)
 
@@ -20,18 +20,25 @@ Response object for listing BalanceOperation objects
 {
   "data": [
     {
-      "id": "id5",
-      "status": "status7",
-      "balance_amount": "balance_amount5",
-      "balance_old_amount": "balance_old_amount3",
-      "type": "type5"
+      "id": "id0",
+      "status": "status2",
+      "balance_amount": "balance_amount0",
+      "balance_old_amount": "balance_old_amount8",
+      "type": "type0"
     },
     {
-      "id": "id6",
-      "status": "status8",
-      "balance_amount": "balance_amount6",
-      "balance_old_amount": "balance_old_amount4",
-      "type": "type6"
+      "id": "id0",
+      "status": "status2",
+      "balance_amount": "balance_amount0",
+      "balance_old_amount": "balance_old_amount8",
+      "type": "type0"
+    },
+    {
+      "id": "id0",
+      "status": "status2",
+      "balance_amount": "balance_amount0",
+      "balance_old_amount": "balance_old_amount8",
+      "type": "type0"
     }
   ],
   "paging": {

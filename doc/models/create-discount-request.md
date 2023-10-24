@@ -11,21 +11,21 @@ Request for creating a new discount
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `value` | `float64` | Required | The discount value |
-| `discountType` | `string` | Required | Discount type. Can be either flat or percentage. |
-| `itemId` | `string` | Required | The item where the discount will be applied |
-| `cycles` | `*int` | Optional | Number of cycles that the discount will be applied |
-| `description` | `*string` | Optional | Description |
+| `Value` | `float64` | Required | The discount value |
+| `DiscountType` | `string` | Required | Discount type. Can be either flat or percentage. |
+| `ItemId` | `string` | Required | The item where the discount will be applied |
+| `Cycles` | `*int` | Optional | Number of cycles that the discount will be applied |
+| `Description` | `*string` | Optional | Description |
 
 ## Example (as JSON)
 
 ```json
 {
-  "value": 251.52,
-  "discount_type": "discount_type8",
-  "item_id": "item_id0",
-  "cycles": 168,
-  "description": "description0"
+  "value": 146.6,
+  "discount_type": "discount_type6",
+  "item_id": "item_id2",
+  "cycles": 164,
+  "description": "description2"
 }
 ```
 

@@ -11,9 +11,9 @@ The ApplePay header request
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `publicKeyHash` | `*string` | Optional | SHA–256 hash, Base64 string codified |
-| `ephemeralPublicKey` | `string` | Required | X.509 encoded key bytes, Base64 encoded as a string |
-| `transactionId` | `*string` | Optional | Transaction identifier, generated on Device |
+| `PublicKeyHash` | `*string` | Optional | SHA–256 hash, Base64 string codified |
+| `EphemeralPublicKey` | `string` | Required | X.509 encoded key bytes, Base64 encoded as a string |
+| `TransactionId` | `*string` | Optional | Transaction identifier, generated on Device |
 
 ## Example (as JSON)
 

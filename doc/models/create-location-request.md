@@ -11,15 +11,15 @@ Request for creating a location
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `latitude` | `string` | Required | Latitude |
-| `longitude` | `string` | Required | Longitude |
+| `Latitude` | `string` | Required | Latitude |
+| `Longitude` | `string` | Required | Longitude |
 
 ## Example (as JSON)
 
 ```json
 {
-  "latitude": "latitude6",
-  "longitude": "longitude4"
+  "latitude": "latitude0",
+  "longitude": "longitude0"
 }
 ```
 

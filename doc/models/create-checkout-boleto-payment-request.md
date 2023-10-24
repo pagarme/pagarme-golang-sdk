@@ -9,16 +9,16 @@
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `bank` | `string` | Required | Bank identifier |
-| `instructions` | `string` | Required | Instructions |
-| `dueAt` | `time.Time` | Required | Due date |
+| `Bank` | `string` | Required | Bank identifier |
+| `Instructions` | `string` | Required | Instructions |
+| `DueAt` | `time.Time` | Required | Due date |
 
 ## Example (as JSON)
 
 ```json
 {
-  "bank": "bank8",
-  "instructions": "instructions2",
+  "bank": "bank4",
+  "instructions": "instructions4",
   "due_at": "2016-03-13T12:52:32.123Z"
 }
 ```

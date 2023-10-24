@@ -11,16 +11,16 @@ The card payment contactless request
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `mType` | `string` | Required | The authentication type |
-| `applePay` | [`*models.CreateApplePayRequest`](../../doc/models/create-apple-pay-request.md) | Optional | The ApplePay encrypted request |
-| `googlePay` | [`*models.CreateGooglePayRequest`](../../doc/models/create-google-pay-request.md) | Optional | The GooglePay encrypted request |
-| `emv` | [`*models.CreateEmvDecryptRequest`](../../doc/models/create-emv-decrypt-request.md) | Optional | The Emv encrypted request |
+| `Type` | `string` | Required | The authentication type |
+| `ApplePay` | [`*models.CreateApplePayRequest`](../../doc/models/create-apple-pay-request.md) | Optional | The ApplePay encrypted request |
+| `GooglePay` | [`*models.CreateGooglePayRequest`](../../doc/models/create-google-pay-request.md) | Optional | The GooglePay encrypted request |
+| `Emv` | [`*models.CreateEmvDecryptRequest`](../../doc/models/create-emv-decrypt-request.md) | Optional | The Emv encrypted request |
 
 ## Example (as JSON)
 
 ```json
 {
-  "type": "type0",
+  "type": "type4",
   "apple_pay": {
     "version": "version6",
     "data": "data0",
@@ -36,7 +36,7 @@ The card payment contactless request
     "version": "version4",
     "data": "data8",
     "header": {
-      "ephemeral_public_key": "ephemeral_public_key2"
+      "ephemeral_public_key": "ephemeral_public_key6"
     },
     "signature": "signature6",
     "merchant_identifier": "merchant_identifier2"
@@ -45,24 +45,34 @@ The card payment contactless request
     "icc_data": "icc_data8",
     "card_sequence_number": "card_sequence_number4",
     "data": {
-      "cipher": "cipher8",
+      "cipher": "cipher4",
       "dukpt": {
-        "ksn": "ksn4"
+        "ksn": "ksn0"
       },
       "tags": [
         {
-          "tag": "tag3",
-          "lenght": "lenght1",
-          "value": "value1"
+          "tag": "tag4",
+          "lenght": "lenght2",
+          "value": "value2"
+        },
+        {
+          "tag": "tag4",
+          "lenght": "lenght2",
+          "value": "value2"
+        },
+        {
+          "tag": "tag4",
+          "lenght": "lenght2",
+          "value": "value2"
         }
       ]
     },
     "poi": {
-      "system_name": "system_name0",
-      "model": "model8",
-      "provider": "provider8",
-      "serial_number": "serial_number4",
-      "version_number": "version_number0"
+      "system_name": "system_name4",
+      "model": "model2",
+      "provider": "provider4",
+      "serial_number": "serial_number2",
+      "version_number": "version_number6"
     }
   }
 }

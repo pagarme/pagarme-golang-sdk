@@ -9,15 +9,15 @@
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `targetId` | `types.Optional[string]` | Optional | - |
-| `mType` | `types.Optional[string]` | Optional | - |
+| `TargetId` | `Optional[string]` | Optional | - |
+| `Type` | `Optional[string]` | Optional | - |
 
 ## Example (as JSON)
 
 ```json
 {
-  "target_id": "target_id0",
-  "type": "type0"
+  "target_id": "target_id4",
+  "type": "type6"
 }
 ```
 

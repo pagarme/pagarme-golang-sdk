@@ -11,26 +11,26 @@ Contains the settings for creating a boleto payment
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `retries` | `int` | Required | Number of retries |
-| `bank` | `types.Optional[string]` | Optional | The bank code, containing three characters. The available codes are on the API specification |
-| `instructions` | `string` | Required | The instructions field that will be printed on the boleto. |
-| `dueAt` | `types.Optional[time.Time]` | Optional | Boleto due date |
-| `billingAddress` | [`models.CreateAddressRequest`](../../doc/models/create-address-request.md) | Required | Card's billing address |
-| `billingAddressId` | `types.Optional[string]` | Optional | The address id for the billing address |
-| `nossoNumero` | `types.Optional[string]` | Optional | Customer identification number with the bank |
-| `documentNumber` | `string` | Required | Boleto identification |
-| `statementDescriptor` | `string` | Required | Soft Descriptor |
-| `interest` | [`types.Optional[models.CreateInterestRequest]`](../../doc/models/create-interest-request.md) | Optional | - |
-| `fine` | [`types.Optional[models.CreateFineRequest]`](../../doc/models/create-fine-request.md) | Optional | - |
-| `maxDaysToPayPastDue` | `types.Optional[int]` | Optional | - |
+| `Retries` | `int` | Required | Number of retries |
+| `Bank` | `Optional[string]` | Optional | The bank code, containing three characters. The available codes are on the API specification |
+| `Instructions` | `string` | Required | The instructions field that will be printed on the boleto. |
+| `DueAt` | `Optional[time.Time]` | Optional | Boleto due date |
+| `BillingAddress` | [`models.CreateAddressRequest`](../../doc/models/create-address-request.md) | Required | Card's billing address |
+| `BillingAddressId` | `Optional[string]` | Optional | The address id for the billing address |
+| `NossoNumero` | `Optional[string]` | Optional | Customer identification number with the bank |
+| `DocumentNumber` | `string` | Required | Boleto identification |
+| `StatementDescriptor` | `string` | Required | Soft Descriptor |
+| `Interest` | [`Optional[models.CreateInterestRequest]`](../../doc/models/create-interest-request.md) | Optional | - |
+| `Fine` | [`Optional[models.CreateFineRequest]`](../../doc/models/create-fine-request.md) | Optional | - |
+| `MaxDaysToPayPastDue` | `Optional[int]` | Optional | - |
 
 ## Example (as JSON)
 
 ```json
 {
-  "retries": 230,
+  "retries": 14,
   "bank": "bank8",
-  "instructions": "instructions2",
+  "instructions": "instructions8",
   "due_at": "2016-03-13T12:52:32.123Z",
   "billing_address": {
     "street": "street8",
@@ -50,7 +50,7 @@ Contains the settings for creating a boleto payment
   },
   "billing_address_id": "billing_address_id6",
   "nosso_numero": "nosso_numero0",
-  "document_number": "document_number6",
+  "document_number": "document_number4",
   "statement_descriptor": "statement_descriptor0",
   "interest": {
     "days": 156,
