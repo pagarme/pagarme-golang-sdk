@@ -11,12 +11,16 @@ import (
 type GetOrderResponse struct {
     Id         Optional[string]                       `json:"id"`
     Code       Optional[string]                       `json:"code"`
+    Amount     Optional[int]                          `json:"amount"`
     Currency   Optional[string]                       `json:"currency"`
+    // Indicates whether the order is closed
+    Closed     Optional[bool]                         `json:"closed"`
     Items      Optional[[]GetOrderItemResponse]       `json:"items"`
     Customer   Optional[GetCustomerResponse]          `json:"customer"`
     Status     Optional[string]                       `json:"status"`
     CreatedAt  Optional[time.Time]                    `json:"created_at"`
     UpdatedAt  Optional[time.Time]                    `json:"updated_at"`
+    ClosedAt   Optional[time.Time]                    `json:"closed_at"`
     Charges    Optional[[]GetChargeResponse]          `json:"charges"`
     InvoiceUrl Optional[string]                       `json:"invoice_url"`
     Shipping   Optional[GetShippingResponse]          `json:"shipping"`
@@ -31,8 +35,6 @@ type GetOrderResponse struct {
     Location   Optional[GetLocationResponse]          `json:"location"`
     // Device's informations
     Device     Optional[GetDeviceResponse]            `json:"device"`
-    // Indicates whether the order is closed
-    Closed     Optional[bool]                         `json:"closed"`
 }
 
 // MarshalJSON implements the json.Marshaler interface for GetOrderResponse.
@@ -52,8 +54,14 @@ func (g *GetOrderResponse) toMap() map[string]any {
     if g.Code.IsValueSet() {
         structMap["code"] = g.Code.Value()
     }
+    if g.Amount.IsValueSet() {
+        structMap["amount"] = g.Amount.Value()
+    }
     if g.Currency.IsValueSet() {
         structMap["currency"] = g.Currency.Value()
+    }
+    if g.Closed.IsValueSet() {
+        structMap["closed"] = g.Closed.Value()
     }
     if g.Items.IsValueSet() {
         structMap["items"] = g.Items.Value()
@@ -79,6 +87,14 @@ func (g *GetOrderResponse) toMap() map[string]any {
             UpdatedAtVal = &val
         }
         structMap["updated_at"] = UpdatedAtVal
+    }
+    if g.ClosedAt.IsValueSet() {
+        var ClosedAtVal *string = nil
+        if g.ClosedAt.Value() != nil {
+            val := g.ClosedAt.Value().Format(time.RFC3339)
+            ClosedAtVal = &val
+        }
+        structMap["closed_at"] = ClosedAtVal
     }
     if g.Charges.IsValueSet() {
         structMap["charges"] = g.Charges.Value()
@@ -107,9 +123,6 @@ func (g *GetOrderResponse) toMap() map[string]any {
     if g.Device.IsValueSet() {
         structMap["device"] = g.Device.Value()
     }
-    if g.Closed.IsValueSet() {
-        structMap["closed"] = g.Closed.Value()
-    }
     return structMap
 }
 
@@ -119,12 +132,15 @@ func (g *GetOrderResponse) UnmarshalJSON(input []byte) error {
     temp := &struct {
         Id         Optional[string]                       `json:"id"`
         Code       Optional[string]                       `json:"code"`
+        Amount     Optional[int]                          `json:"amount"`
         Currency   Optional[string]                       `json:"currency"`
+        Closed     Optional[bool]                         `json:"closed"`
         Items      Optional[[]GetOrderItemResponse]       `json:"items"`
         Customer   Optional[GetCustomerResponse]          `json:"customer"`
         Status     Optional[string]                       `json:"status"`
         CreatedAt  Optional[string]                       `json:"created_at"`
         UpdatedAt  Optional[string]                       `json:"updated_at"`
+        ClosedAt   Optional[string]                       `json:"closed_at"`
         Charges    Optional[[]GetChargeResponse]          `json:"charges"`
         InvoiceUrl Optional[string]                       `json:"invoice_url"`
         Shipping   Optional[GetShippingResponse]          `json:"shipping"`
@@ -134,7 +150,6 @@ func (g *GetOrderResponse) UnmarshalJSON(input []byte) error {
         SessionId  Optional[string]                       `json:"session_id"`
         Location   Optional[GetLocationResponse]          `json:"location"`
         Device     Optional[GetDeviceResponse]            `json:"device"`
-        Closed     Optional[bool]                         `json:"closed"`
     }{}
     err := json.Unmarshal(input, &temp)
     if err != nil {
@@ -143,7 +158,9 @@ func (g *GetOrderResponse) UnmarshalJSON(input []byte) error {
     
     g.Id = temp.Id
     g.Code = temp.Code
+    g.Amount = temp.Amount
     g.Currency = temp.Currency
+    g.Closed = temp.Closed
     g.Items = temp.Items
     g.Customer = temp.Customer
     g.Status = temp.Status
@@ -163,6 +180,14 @@ func (g *GetOrderResponse) UnmarshalJSON(input []byte) error {
         }
         g.UpdatedAt.SetValue(&UpdatedAtVal)
     }
+    g.ClosedAt.ShouldSetValue(temp.ClosedAt.IsValueSet())
+    if temp.ClosedAt.Value() != nil {
+        ClosedAtVal, err := time.Parse(time.RFC3339, (*temp.ClosedAt.Value()))
+        if err != nil {
+            log.Fatalf("Cannot Parse closed_at as % s format.", time.RFC3339)
+        }
+        g.ClosedAt.SetValue(&ClosedAtVal)
+    }
     g.Charges = temp.Charges
     g.InvoiceUrl = temp.InvoiceUrl
     g.Shipping = temp.Shipping
@@ -172,6 +197,5 @@ func (g *GetOrderResponse) UnmarshalJSON(input []byte) error {
     g.SessionId = temp.SessionId
     g.Location = temp.Location
     g.Device = temp.Device
-    g.Closed = temp.Closed
     return nil
 }

@@ -21,7 +21,8 @@ GetBalanceOperations(
     ctx context.Context,
     status *string,
     createdSince *time.Time,
-    createdUntil *time.Time) (
+    createdUntil *time.Time,
+    recipientId *string) (
     models.ApiResponse[models.ListBalanceOperationResponse],
     error)
 ```
@@ -33,6 +34,7 @@ GetBalanceOperations(
 | `status` | `*string` | Query, Optional | - |
 | `createdSince` | `*time.Time` | Query, Optional | - |
 | `createdUntil` | `*time.Time` | Query, Optional | - |
+| `recipientId` | `*string` | Query, Optional | - |
 
 ## Response Type
 
@@ -43,7 +45,7 @@ GetBalanceOperations(
 ```go
 ctx := context.Background()
 
-apiResponse, err := balanceOperationsController.GetBalanceOperations(ctx, nil, nil, nil)
+apiResponse, err := balanceOperationsController.GetBalanceOperations(ctx, nil, nil, nil, nil)
 if err != nil {
     log.Fatalln(err)
 } else {

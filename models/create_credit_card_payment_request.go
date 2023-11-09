@@ -36,6 +36,7 @@ type CreateCreditCardPaymentRequest struct {
     OperationType        *string                              `json:"operation_type,omitempty"`
     // Defines whether the card has been used one or more times.
     RecurrencyCycle      *string                              `json:"recurrency_cycle,omitempty"`
+    Payload              *CreateCardPayloadRequest            `json:"payload,omitempty"`
 }
 
 // MarshalJSON implements the json.Marshaler interface for CreateCreditCardPaymentRequest.
@@ -94,6 +95,9 @@ func (c *CreateCreditCardPaymentRequest) toMap() map[string]any {
     if c.RecurrencyCycle != nil {
         structMap["recurrency_cycle"] = c.RecurrencyCycle
     }
+    if c.Payload != nil {
+        structMap["payload"] = c.Payload
+    }
     return structMap
 }
 
@@ -116,6 +120,7 @@ func (c *CreateCreditCardPaymentRequest) UnmarshalJSON(input []byte) error {
         AutoRecovery         *bool                                `json:"auto_recovery,omitempty"`
         OperationType        *string                              `json:"operation_type,omitempty"`
         RecurrencyCycle      *string                              `json:"recurrency_cycle,omitempty"`
+        Payload              *CreateCardPayloadRequest            `json:"payload,omitempty"`
     }{}
     err := json.Unmarshal(input, &temp)
     if err != nil {
@@ -137,5 +142,6 @@ func (c *CreateCreditCardPaymentRequest) UnmarshalJSON(input []byte) error {
     c.AutoRecovery = temp.AutoRecovery
     c.OperationType = temp.OperationType
     c.RecurrencyCycle = temp.RecurrencyCycle
+    c.Payload = temp.Payload
     return nil
 }

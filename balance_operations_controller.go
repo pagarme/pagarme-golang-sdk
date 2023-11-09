@@ -20,14 +20,15 @@ func NewBalanceOperationsController(baseController baseController) *BalanceOpera
     return &balanceOperationsController
 }
 
-// GetBalanceOperations takes context, status, createdSince, createdUntil as parameters and
+// GetBalanceOperations takes context, status, createdSince, createdUntil, recipientId as parameters and
 // returns an models.ApiResponse with models.ListBalanceOperationResponse data and
 // an error if there was an issue with the request or response.
 func (b *BalanceOperationsController) GetBalanceOperations(
     ctx context.Context,
     status *string,
     createdSince *time.Time,
-    createdUntil *time.Time) (
+    createdUntil *time.Time,
+    recipientId *string) (
     models.ApiResponse[models.ListBalanceOperationResponse],
     error) {
     req := b.prepareRequest(ctx, "GET", "/balance/operations")
@@ -40,6 +41,9 @@ func (b *BalanceOperationsController) GetBalanceOperations(
     }
     if createdUntil != nil {
         req.QueryParam("created_until", createdUntil.Format(time.RFC3339))
+    }
+    if recipientId != nil {
+        req.QueryParam("recipient_id", *recipientId)
     }
     var result models.ListBalanceOperationResponse
     decoder, resp, err := req.CallAsJson()

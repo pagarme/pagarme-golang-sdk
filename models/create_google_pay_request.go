@@ -7,16 +7,16 @@ import (
 // CreateGooglePayRequest represents a CreateGooglePayRequest struct.
 // The GooglePay Token Payment Request
 type CreateGooglePayRequest struct {
-    // The token version
-    Version            string                       `json:"version"`
-    // The cryptography data
-    Data               string                       `json:"data"`
-    // The GooglePay header request
-    Header             CreateGooglePayHeaderRequest `json:"header"`
-    // Detached PKCS #7 signature, Base64 encoded as string
-    Signature          string                       `json:"signature"`
-    // GooglePay Merchant identifier
-    MerchantIdentifier string                       `json:"merchant_identifier"`
+    // Informação sobre a versão do token. Único valor aceito é EC_v2
+    Version                Optional[string]                                       `json:"version"`
+    // Dados de pagamento criptografados. Corresponde ao encryptedMessage do token Google.
+    Data                   Optional[string]                                       `json:"data"`
+    // The GooglePay intermediate signing key request
+    IntermediateSigningKey Optional[CreateGooglePayIntermediateSigningKeyRequest] `json:"intermediate_signing_key"`
+    // Assinatura dos dados de pagamento. Verifica se a origem da mensagem é o Google. Corresponde ao signature do token Google.
+    Signature              Optional[string]                                       `json:"signature"`
+    SignedMessage          Optional[string]                                       `json:"signed_message"`
+    MerchantIdentifier     Optional[string]                                       `json:"merchant_identifier"`
 }
 
 // MarshalJSON implements the json.Marshaler interface for CreateGooglePayRequest.
@@ -30,11 +30,24 @@ func (c *CreateGooglePayRequest) MarshalJSON() (
 // toMap converts the CreateGooglePayRequest object to a map representation for JSON marshaling.
 func (c *CreateGooglePayRequest) toMap() map[string]any {
     structMap := make(map[string]any)
-    structMap["version"] = c.Version
-    structMap["data"] = c.Data
-    structMap["header"] = c.Header
-    structMap["signature"] = c.Signature
-    structMap["merchant_identifier"] = c.MerchantIdentifier
+    if c.Version.IsValueSet() {
+        structMap["version"] = c.Version.Value()
+    }
+    if c.Data.IsValueSet() {
+        structMap["data"] = c.Data.Value()
+    }
+    if c.IntermediateSigningKey.IsValueSet() {
+        structMap["intermediate_signing_key"] = c.IntermediateSigningKey.Value()
+    }
+    if c.Signature.IsValueSet() {
+        structMap["signature"] = c.Signature.Value()
+    }
+    if c.SignedMessage.IsValueSet() {
+        structMap["signed_message"] = c.SignedMessage.Value()
+    }
+    if c.MerchantIdentifier.IsValueSet() {
+        structMap["merchant_identifier"] = c.MerchantIdentifier.Value()
+    }
     return structMap
 }
 
@@ -42,11 +55,12 @@ func (c *CreateGooglePayRequest) toMap() map[string]any {
 // It customizes the JSON unmarshaling process for CreateGooglePayRequest objects.
 func (c *CreateGooglePayRequest) UnmarshalJSON(input []byte) error {
     temp := &struct {
-        Version            string                       `json:"version"`
-        Data               string                       `json:"data"`
-        Header             CreateGooglePayHeaderRequest `json:"header"`
-        Signature          string                       `json:"signature"`
-        MerchantIdentifier string                       `json:"merchant_identifier"`
+        Version                Optional[string]                                       `json:"version"`
+        Data                   Optional[string]                                       `json:"data"`
+        IntermediateSigningKey Optional[CreateGooglePayIntermediateSigningKeyRequest] `json:"intermediate_signing_key"`
+        Signature              Optional[string]                                       `json:"signature"`
+        SignedMessage          Optional[string]                                       `json:"signed_message"`
+        MerchantIdentifier     Optional[string]                                       `json:"merchant_identifier"`
     }{}
     err := json.Unmarshal(input, &temp)
     if err != nil {
@@ -55,8 +69,9 @@ func (c *CreateGooglePayRequest) UnmarshalJSON(input []byte) error {
     
     c.Version = temp.Version
     c.Data = temp.Data
-    c.Header = temp.Header
+    c.IntermediateSigningKey = temp.IntermediateSigningKey
     c.Signature = temp.Signature
+    c.SignedMessage = temp.SignedMessage
     c.MerchantIdentifier = temp.MerchantIdentifier
     return nil
 }
