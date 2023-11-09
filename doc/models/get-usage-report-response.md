@@ -9,17 +9,17 @@
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `url` | `types.Optional[string]` | Optional | - |
-| `usageReportUrl` | `types.Optional[string]` | Optional | - |
-| `groupedReportUrl` | `types.Optional[string]` | Optional | - |
+| `Url` | `Optional[string]` | Optional | - |
+| `UsageReportUrl` | `Optional[string]` | Optional | - |
+| `GroupedReportUrl` | `Optional[string]` | Optional | - |
 
 ## Example (as JSON)
 
 ```json
 {
-  "url": "url4",
-  "usage_report_url": "usage_report_url2",
-  "grouped_report_url": "grouped_report_url2"
+  "url": "url2",
+  "usage_report_url": "usage_report_url0",
+  "grouped_report_url": "grouped_report_url0"
 }
 ```
 

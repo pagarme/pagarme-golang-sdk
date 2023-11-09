@@ -11,36 +11,49 @@ Generic response object for getting a transaction.
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `gatewayId` | `types.Optional[string]` | Optional | Gateway transaction id |
-| `amount` | `types.Optional[int]` | Optional | Amount in cents |
-| `status` | `types.Optional[string]` | Optional | Transaction status |
-| `success` | `types.Optional[bool]` | Optional | Indicates if the transaction ocurred successfuly |
-| `createdAt` | `types.Optional[time.Time]` | Optional | Creation date |
-| `updatedAt` | `types.Optional[time.Time]` | Optional | Last update date |
-| `attemptCount` | `types.Optional[int]` | Optional | Number of attempts tried |
-| `maxAttempts` | `types.Optional[int]` | Optional | Max attempts |
-| `splits` | [`types.Optional[[]models.GetSplitResponse]`](../../doc/models/get-split-response.md) | Optional | Splits |
-| `nextAttempt` | `types.Optional[time.Time]` | Optional | Date and time of the next attempt |
-| `transactionType` | `*string` | Optional | - |
-| `id` | `types.Optional[string]` | Optional | Código da transação |
-| `gatewayResponse` | [`types.Optional[models.GetGatewayResponseResponse]`](../../doc/models/get-gateway-response-response.md) | Optional | The Gateway Response |
-| `antifraudResponse` | [`types.Optional[models.GetAntifraudResponse]`](../../doc/models/get-antifraud-response.md) | Optional | - |
-| `metadata` | `types.Optional[map[string]string]` | Optional | - |
-| `split` | [`types.Optional[[]models.GetSplitResponse]`](../../doc/models/get-split-response.md) | Optional | - |
-| `interest` | [`types.Optional[models.GetInterestResponse]`](../../doc/models/get-interest-response.md) | Optional | - |
-| `fine` | [`types.Optional[models.GetFineResponse]`](../../doc/models/get-fine-response.md) | Optional | - |
-| `maxDaysToPayPastDue` | `types.Optional[int]` | Optional | - |
+| `GatewayId` | `Optional[string]` | Optional | Gateway transaction id |
+| `Amount` | `Optional[int]` | Optional | Amount in cents |
+| `Status` | `Optional[string]` | Optional | Transaction status |
+| `Success` | `Optional[bool]` | Optional | Indicates if the transaction ocurred successfuly |
+| `CreatedAt` | `Optional[time.Time]` | Optional | Creation date |
+| `UpdatedAt` | `Optional[time.Time]` | Optional | Last update date |
+| `AttemptCount` | `Optional[int]` | Optional | Number of attempts tried |
+| `MaxAttempts` | `Optional[int]` | Optional | Max attempts |
+| `Splits` | [`Optional[[]models.GetSplitResponse]`](../../doc/models/get-split-response.md) | Optional | Splits |
+| `NextAttempt` | `Optional[time.Time]` | Optional | Date and time of the next attempt |
+| `TransactionType` | `*string` | Optional | - |
+| `Id` | `Optional[string]` | Optional | Código da transação |
+| `GatewayResponse` | [`Optional[models.GetGatewayResponseResponse]`](../../doc/models/get-gateway-response-response.md) | Optional | The Gateway Response |
+| `AntifraudResponse` | [`Optional[models.GetAntifraudResponse]`](../../doc/models/get-antifraud-response.md) | Optional | - |
+| `Metadata` | `Optional[map[string]string]` | Optional | - |
+| `Split` | [`Optional[[]models.GetSplitResponse]`](../../doc/models/get-split-response.md) | Optional | - |
+| `Interest` | [`Optional[models.GetInterestResponse]`](../../doc/models/get-interest-response.md) | Optional | - |
+| `Fine` | [`Optional[models.GetFineResponse]`](../../doc/models/get-fine-response.md) | Optional | - |
+| `MaxDaysToPayPastDue` | `Optional[int]` | Optional | - |
 
 ## Example (as JSON)
 
 ```json
 {
-  "gateway_id": "gateway_id0",
-  "amount": 46,
-  "status": "status8",
+  "gateway_id": "gateway_id8",
+  "amount": 40,
+  "status": "status6",
   "success": false,
   "created_at": "2016-03-13T12:52:32.123Z",
-  "transaction_type": "transaction"
+  "qr_code": "qr_code0",
+  "qr_code_url": "qr_code_url6",
+  "expires_at": "2016-03-13T12:52:32.123Z",
+  "additional_information": [
+    {
+      "Name": "Name0",
+      "Value": "Value2"
+    },
+    {
+      "Name": "Name0",
+      "Value": "Value2"
+    }
+  ],
+  "end_to_end_id": "end_to_end_id6"
 }
 ```
 

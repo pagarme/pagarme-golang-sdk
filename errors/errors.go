@@ -10,6 +10,7 @@ import (
     "github.com/apimatic/go-core-runtime/apiError"
 )
 
+// Error is a custom error.
 // Api Error Exception
 type Error struct {
     apiError.ApiError
@@ -18,7 +19,8 @@ type Error struct {
     Request           interface{} `json:"request"`
 }
 
-// Constructor for Error.
+// NewError is a constructor for Error.
+// It creates and returns a pointer to a new Error instance with the given statusCode and body.
 func NewError(
     statusCode int,
     body string) *Error {
@@ -30,7 +32,8 @@ func NewError(
     }
 }
 
-// Implementing the Error method for the error interface.
+// Error implements the Error method for the error interface.
+// It returns a formatted error message for Error.
 func (e *Error) Error() string {
     return fmt.Sprintf("Error occured %v", e.Body)
 }

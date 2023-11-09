@@ -11,24 +11,28 @@ Generic response object for getting a MovementObjectBase.
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `object` | `*string` | Optional | - |
-| `id` | `types.Optional[string]` | Optional | - |
-| `status` | `types.Optional[string]` | Optional | - |
-| `amount` | `types.Optional[string]` | Optional | - |
-| `createdAt` | `types.Optional[string]` | Optional | - |
-| `mType` | `types.Optional[string]` | Optional | - |
-| `chargeId` | `types.Optional[string]` | Optional | - |
-| `gatewayId` | `types.Optional[string]` | Optional | - |
+| `Object` | `*string` | Optional | - |
+| `Id` | `Optional[string]` | Optional | - |
+| `Status` | `Optional[string]` | Optional | - |
+| `Amount` | `Optional[string]` | Optional | - |
+| `CreatedAt` | `Optional[string]` | Optional | - |
+| `Type` | `Optional[string]` | Optional | - |
+| `ChargeId` | `Optional[string]` | Optional | - |
+| `GatewayId` | `Optional[string]` | Optional | - |
 
 ## Example (as JSON)
 
 ```json
 {
-  "object": "MovementObject",
-  "id": "id0",
-  "status": "status8",
-  "amount": "amount8",
-  "created_at": "created_at2"
+  "id": "id2",
+  "status": "status4",
+  "amount": "amount4",
+  "created_at": "created_at0",
+  "source_type": "source_type6",
+  "source_id": "source_id0",
+  "target_type": "target_type8",
+  "target_id": "target_id4",
+  "fee": "fee8"
 }
 ```
 

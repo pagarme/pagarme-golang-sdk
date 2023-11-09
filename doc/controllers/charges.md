@@ -1,7 +1,7 @@
 # Charges
 
 ```go
-chargesController := client.ChargesController
+chargesController := client.ChargesController()
 ```
 
 ## Class Name
@@ -31,10 +31,11 @@ Updates the metadata from a charge
 
 ```go
 UpdateChargeMetadata(
+    ctx context.Context,
     chargeId string,
     request models.UpdateMetadataRequest,
     idempotencyKey *string) (
-    https.ApiResponse[models.GetChargeResponse],
+    models.ApiResponse[models.GetChargeResponse],
     error)
 ```
 
@@ -53,15 +54,16 @@ UpdateChargeMetadata(
 ## Example Usage
 
 ```go
+ctx := context.Background()
 chargeId := "charge_id8"
 
 request := models.UpdateMetadataRequest{
-    Metadata: map[string]*string{
+    Metadata: map[string]string{
 "key0" : "metadata3",
 },
 }
 
-apiResponse, err := chargesController.UpdateChargeMetadata(chargeId, &request, nil)
+apiResponse, err := chargesController.UpdateChargeMetadata(ctx, chargeId, &request, nil)
 if err != nil {
     log.Fatalln(err)
 } else {
@@ -78,10 +80,11 @@ Updates a charge's payment method
 
 ```go
 UpdateChargePaymentMethod(
+    ctx context.Context,
     chargeId string,
     request models.UpdateChargePaymentMethodRequest,
     idempotencyKey *string) (
-    https.ApiResponse[models.GetChargeResponse],
+    models.ApiResponse[models.GetChargeResponse],
     error)
 ```
 
@@ -100,17 +103,17 @@ UpdateChargePaymentMethod(
 ## Example Usage
 
 ```go
+ctx := context.Background()
 chargeId := "charge_id8"
 
-requestCreditCard := models.CreateCreditCardPaymentRequest{}
-requestCreditCardInstallments := 1
-requestCreditCard.Installments = &requestCreditCardInstallments
-requestCreditCardCapture := true
-requestCreditCard.Capture = &requestCreditCardCapture
-requestCreditCardRecurrencyCycle := "\"first\" or \"subsequent\""
-requestCreditCard.RecurrencyCycle = &requestCreditCardRecurrencyCycle
+requestCreditCard := models.CreateCreditCardPaymentRequest{
+    Installments:         models.ToPointer(1),
+    Capture:              models.ToPointer(true),
+    RecurrencyCycle:      models.ToPointer("\"first\" or \"subsequent\""),
+}
 
-requestDebitCard := models.CreateDebitCardPaymentRequest{}
+requestDebitCard := models.CreateDebitCardPaymentRequest{
+}
 
 requestBoletoBillingAddress := models.CreateAddressRequest{
     Street:       "street8",
@@ -126,34 +129,32 @@ requestBoletoBillingAddress := models.CreateAddressRequest{
 }
 
 requestBoleto := models.CreateBoletoPaymentRequest{
-    Retries:             10,
-    Instructions:        "instructions4",
-    DocumentNumber:      "document_number0",
-    StatementDescriptor: "statement_descriptor6",
+    Retries:             226,
+    Instructions:        "instructions2",
+    DocumentNumber:      "document_number6",
+    StatementDescriptor: "statement_descriptor0",
     BillingAddress:      requestBoletoBillingAddress,
 }
 
-requestVoucher := models.CreateVoucherPaymentRequest{}
-requestVoucherRecurrencyCycle := "\"first\" or \"subsequent\""
-requestVoucher.RecurrencyCycle = &requestVoucherRecurrencyCycle
+requestVoucher := models.CreateVoucherPaymentRequest{
+    RecurrencyCycle:     models.ToPointer("\"first\" or \"subsequent\""),
+}
 
 requestCash := models.CreateCashPaymentRequest{
-    Description: "description6",
+    Description: "description0",
     Confirm:     false,
 }
 
 requestBankTransfer := models.CreateBankTransferPaymentRequest{
-    Bank:    "bank4",
-    Retries: 204,
+    Bank:    "bank0",
+    Retries: 236,
 }
 
-requestPrivateLabel := models.CreatePrivateLabelPaymentRequest{}
-requestPrivateLabelInstallments := 1
-requestPrivateLabel.Installments = &requestPrivateLabelInstallments
-requestPrivateLabelCapture := true
-requestPrivateLabel.Capture = &requestPrivateLabelCapture
-requestPrivateLabelRecurrencyCycle := "\"first\" or \"subsequent\""
-requestPrivateLabel.RecurrencyCycle = &requestPrivateLabelRecurrencyCycle
+requestPrivateLabel := models.CreatePrivateLabelPaymentRequest{
+    Installments:         models.ToPointer(1),
+    Capture:              models.ToPointer(true),
+    RecurrencyCycle:      models.ToPointer("\"first\" or \"subsequent\""),
+}
 
 request := models.UpdateChargePaymentMethodRequest{
     UpdateSubscription: false,
@@ -167,7 +168,7 @@ request := models.UpdateChargePaymentMethodRequest{
     PrivateLabel:       requestPrivateLabel,
 }
 
-apiResponse, err := chargesController.UpdateChargePaymentMethod(chargeId, &request, nil)
+apiResponse, err := chargesController.UpdateChargePaymentMethod(ctx, chargeId, &request, nil)
 if err != nil {
     log.Fatalln(err)
 } else {
@@ -182,10 +183,11 @@ if err != nil {
 
 ```go
 GetChargeTransactions(
+    ctx context.Context,
     chargeId string,
     page *int,
     size *int) (
-    https.ApiResponse[models.ListChargeTransactionsResponse],
+    models.ApiResponse[models.ListChargeTransactionsResponse],
     error)
 ```
 
@@ -204,9 +206,10 @@ GetChargeTransactions(
 ## Example Usage
 
 ```go
+ctx := context.Background()
 chargeId := "charge_id8"
 
-apiResponse, err := chargesController.GetChargeTransactions(chargeId, nil, nil)
+apiResponse, err := chargesController.GetChargeTransactions(ctx, chargeId, nil, nil)
 if err != nil {
     log.Fatalln(err)
 } else {
@@ -223,10 +226,11 @@ Updates the due date from a charge
 
 ```go
 UpdateChargeDueDate(
+    ctx context.Context,
     chargeId string,
     request models.UpdateChargeDueDateRequest,
     idempotencyKey *string) (
-    https.ApiResponse[models.GetChargeResponse],
+    models.ApiResponse[models.GetChargeResponse],
     error)
 ```
 
@@ -245,11 +249,13 @@ UpdateChargeDueDate(
 ## Example Usage
 
 ```go
+ctx := context.Background()
 chargeId := "charge_id8"
 
-request := models.UpdateChargeDueDateRequest{}
+request := models.UpdateChargeDueDateRequest{
+}
 
-apiResponse, err := chargesController.UpdateChargeDueDate(chargeId, &request, nil)
+apiResponse, err := chargesController.UpdateChargeDueDate(ctx, chargeId, &request, nil)
 if err != nil {
     log.Fatalln(err)
 } else {
@@ -266,6 +272,7 @@ Lists all charges
 
 ```go
 GetCharges(
+    ctx context.Context,
     page *int,
     size *int,
     code *string,
@@ -275,7 +282,7 @@ GetCharges(
     orderId *string,
     createdSince *time.Time,
     createdUntil *time.Time) (
-    https.ApiResponse[models.ListChargesResponse],
+    models.ApiResponse[models.ListChargesResponse],
     error)
 ```
 
@@ -300,7 +307,9 @@ GetCharges(
 ## Example Usage
 
 ```go
-apiResponse, err := chargesController.GetCharges(nil, nil, nil, nil, nil, nil, nil, nil, nil)
+ctx := context.Background()
+
+apiResponse, err := chargesController.GetCharges(ctx, nil, nil, nil, nil, nil, nil, nil, nil, nil)
 if err != nil {
     log.Fatalln(err)
 } else {
@@ -317,10 +326,11 @@ Captures a charge
 
 ```go
 CaptureCharge(
+    ctx context.Context,
     chargeId string,
     request *models.CreateCaptureChargeRequest,
     idempotencyKey *string) (
-    https.ApiResponse[models.GetChargeResponse],
+    models.ApiResponse[models.GetChargeResponse],
     error)
 ```
 
@@ -339,9 +349,10 @@ CaptureCharge(
 ## Example Usage
 
 ```go
+ctx := context.Background()
 chargeId := "charge_id8"
 
-apiResponse, err := chargesController.CaptureCharge(chargeId, nil, nil)
+apiResponse, err := chargesController.CaptureCharge(ctx, chargeId, nil, nil)
 if err != nil {
     log.Fatalln(err)
 } else {
@@ -358,10 +369,11 @@ Updates the card from a charge
 
 ```go
 UpdateChargeCard(
+    ctx context.Context,
     chargeId string,
     request models.UpdateChargeCardRequest,
     idempotencyKey *string) (
-    https.ApiResponse[models.GetChargeResponse],
+    models.ApiResponse[models.GetChargeResponse],
     error)
 ```
 
@@ -380,11 +392,12 @@ UpdateChargeCard(
 ## Example Usage
 
 ```go
+ctx := context.Background()
 chargeId := "charge_id8"
 
-requestCard := models.CreateCardRequest{}
-requestCardType := "credit"
-requestCard.Type = &requestCardType
+requestCard := models.CreateCardRequest{
+    Type:             models.ToPointer("credit"),
+}
 
 request := models.UpdateChargeCardRequest{
     UpdateSubscription: false,
@@ -393,7 +406,7 @@ request := models.UpdateChargeCardRequest{
     Card:               requestCard,
 }
 
-apiResponse, err := chargesController.UpdateChargeCard(chargeId, &request, nil)
+apiResponse, err := chargesController.UpdateChargeCard(ctx, chargeId, &request, nil)
 if err != nil {
     log.Fatalln(err)
 } else {
@@ -410,8 +423,9 @@ Get a charge from its id
 
 ```go
 GetCharge(
+    ctx context.Context,
     chargeId string) (
-    https.ApiResponse[models.GetChargeResponse],
+    models.ApiResponse[models.GetChargeResponse],
     error)
 ```
 
@@ -428,9 +442,10 @@ GetCharge(
 ## Example Usage
 
 ```go
+ctx := context.Background()
 chargeId := "charge_id8"
 
-apiResponse, err := chargesController.GetCharge(chargeId)
+apiResponse, err := chargesController.GetCharge(ctx, chargeId)
 if err != nil {
     log.Fatalln(err)
 } else {
@@ -445,10 +460,11 @@ if err != nil {
 
 ```go
 GetChargesSummary(
+    ctx context.Context,
     status string,
     createdSince *time.Time,
     createdUntil *time.Time) (
-    https.ApiResponse[models.GetChargesSummaryResponse],
+    models.ApiResponse[models.GetChargesSummaryResponse],
     error)
 ```
 
@@ -467,9 +483,10 @@ GetChargesSummary(
 ## Example Usage
 
 ```go
+ctx := context.Background()
 status := "status8"
 
-apiResponse, err := chargesController.GetChargesSummary(status, nil, nil)
+apiResponse, err := chargesController.GetChargesSummary(ctx, status, nil, nil)
 if err != nil {
     log.Fatalln(err)
 } else {
@@ -486,9 +503,10 @@ Retries a charge
 
 ```go
 RetryCharge(
+    ctx context.Context,
     chargeId string,
     idempotencyKey *string) (
-    https.ApiResponse[models.GetChargeResponse],
+    models.ApiResponse[models.GetChargeResponse],
     error)
 ```
 
@@ -506,9 +524,10 @@ RetryCharge(
 ## Example Usage
 
 ```go
+ctx := context.Background()
 chargeId := "charge_id8"
 
-apiResponse, err := chargesController.RetryCharge(chargeId, nil)
+apiResponse, err := chargesController.RetryCharge(ctx, chargeId, nil)
 if err != nil {
     log.Fatalln(err)
 } else {
@@ -525,10 +544,11 @@ Cancel a charge
 
 ```go
 CancelCharge(
+    ctx context.Context,
     chargeId string,
     request *models.CreateCancelChargeRequest,
     idempotencyKey *string) (
-    https.ApiResponse[models.GetChargeResponse],
+    models.ApiResponse[models.GetChargeResponse],
     error)
 ```
 
@@ -547,9 +567,10 @@ CancelCharge(
 ## Example Usage
 
 ```go
+ctx := context.Background()
 chargeId := "charge_id8"
 
-apiResponse, err := chargesController.CancelCharge(chargeId, nil, nil)
+apiResponse, err := chargesController.CancelCharge(ctx, chargeId, nil, nil)
 if err != nil {
     log.Fatalln(err)
 } else {
@@ -566,9 +587,10 @@ Creates a new charge
 
 ```go
 CreateCharge(
+    ctx context.Context,
     request models.CreateChargeRequest,
     idempotencyKey *string) (
-    https.ApiResponse[models.GetChargeResponse],
+    models.ApiResponse[models.GetChargeResponse],
     error)
 ```
 
@@ -586,17 +608,19 @@ CreateCharge(
 ## Example Usage
 
 ```go
+ctx := context.Background()
+
 requestPayment := models.CreatePaymentRequest{
-    PaymentMethod: "payment_method2",
+    PaymentMethod:        "payment_method4",
 }
 
 request := models.CreateChargeRequest{
-    Amount:  242,
-    OrderId: "order_id0",
-    Payment: requestPayment,
+    Amount:     242,
+    OrderId:    "order_id0",
+    Payment:    requestPayment,
 }
 
-apiResponse, err := chargesController.CreateCharge(&request, nil)
+apiResponse, err := chargesController.CreateCharge(ctx, &request, nil)
 if err != nil {
     log.Fatalln(err)
 } else {
@@ -611,10 +635,11 @@ if err != nil {
 
 ```go
 ConfirmPayment(
+    ctx context.Context,
     chargeId string,
     request *models.CreateConfirmPaymentRequest,
     idempotencyKey *string) (
-    https.ApiResponse[models.GetChargeResponse],
+    models.ApiResponse[models.GetChargeResponse],
     error)
 ```
 
@@ -633,9 +658,10 @@ ConfirmPayment(
 ## Example Usage
 
 ```go
+ctx := context.Background()
 chargeId := "charge_id8"
 
-apiResponse, err := chargesController.ConfirmPayment(chargeId, nil, nil)
+apiResponse, err := chargesController.ConfirmPayment(ctx, chargeId, nil, nil)
 if err != nil {
     log.Fatalln(err)
 } else {

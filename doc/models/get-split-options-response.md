@@ -9,9 +9,9 @@
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `liable` | `types.Optional[bool]` | Optional | - |
-| `chargeProcessingFee` | `types.Optional[bool]` | Optional | - |
-| `chargeRemainderFee` | `types.Optional[string]` | Optional | - |
+| `Liable` | `Optional[bool]` | Optional | - |
+| `ChargeProcessingFee` | `Optional[bool]` | Optional | - |
+| `ChargeRemainderFee` | `Optional[string]` | Optional | - |
 
 ## Example (as JSON)
 
@@ -19,7 +19,7 @@
 {
   "liable": false,
   "charge_processing_fee": false,
-  "charge_remainder_fee": "charge_remainder_fee8"
+  "charge_remainder_fee": "charge_remainder_fee6"
 }
 ```
 

@@ -11,16 +11,16 @@ The settings for creating a private label payment
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `installments` | `*int` | Optional | Number of installments<br>**Default**: `1` |
-| `statementDescriptor` | `*string` | Optional | The text that will be shown on the private label's statement |
-| `card` | [`*models.CreateCardRequest`](../../doc/models/create-card-request.md) | Optional | Card data |
-| `cardId` | `*string` | Optional | The Card id |
-| `cardToken` | `*string` | Optional | - |
-| `recurrence` | `*bool` | Optional | Indicates a recurrence |
-| `capture` | `*bool` | Optional | Indicates if the operation should be only authorization or auth and capture.<br>**Default**: `true` |
-| `extendedLimitEnabled` | `*bool` | Optional | Indicates whether the extended label (private label) is enabled |
-| `extendedLimitCode` | `*string` | Optional | Extended Limit Code |
-| `recurrencyCycle` | `*string` | Optional | Defines whether the card has been used one or more times. |
+| `Installments` | `*int` | Optional | Number of installments<br>**Default**: `1` |
+| `StatementDescriptor` | `*string` | Optional | The text that will be shown on the private label's statement |
+| `Card` | [`*models.CreateCardRequest`](../../doc/models/create-card-request.md) | Optional | Card data |
+| `CardId` | `*string` | Optional | The Card id |
+| `CardToken` | `*string` | Optional | - |
+| `Recurrence` | `*bool` | Optional | Indicates a recurrence |
+| `Capture` | `*bool` | Optional | Indicates if the operation should be only authorization or auth and capture.<br>**Default**: `true` |
+| `ExtendedLimitEnabled` | `*bool` | Optional | Indicates whether the extended label (private label) is enabled |
+| `ExtendedLimitCode` | `*string` | Optional | Extended Limit Code |
+| `RecurrencyCycle` | `*string` | Optional | Defines whether the card has been used one or more times. |
 
 ## Example (as JSON)
 
@@ -29,7 +29,7 @@ The settings for creating a private label payment
   "installments": 1,
   "capture": true,
   "recurrency_cycle": "\"first\" or \"subsequent\"",
-  "statement_descriptor": "statement_descriptor0",
+  "statement_descriptor": "statement_descriptor8",
   "card": {
     "number": "number6",
     "holder_name": "holder_name2",
@@ -38,7 +38,7 @@ The settings for creating a private label payment
     "cvv": "cvv4"
   },
   "card_id": "card_id4",
-  "card_token": "card_token0"
+  "card_token": "card_token2"
 }
 ```
 

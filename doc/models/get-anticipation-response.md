@@ -11,24 +11,24 @@ Anticipation
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `id` | `types.Optional[string]` | Optional | Id |
-| `requestedAmount` | `types.Optional[int]` | Optional | Requested amount |
-| `approvedAmount` | `types.Optional[int]` | Optional | Approved amount |
-| `recipient` | [`types.Optional[models.GetRecipientResponse]`](../../doc/models/get-recipient-response.md) | Optional | Recipient |
-| `pgid` | `types.Optional[string]` | Optional | Anticipation id on the gateway |
-| `createdAt` | `types.Optional[time.Time]` | Optional | Creation date |
-| `updatedAt` | `types.Optional[time.Time]` | Optional | Last update date |
-| `paymentDate` | `types.Optional[time.Time]` | Optional | Payment date |
-| `status` | `types.Optional[string]` | Optional | Status |
-| `timeframe` | `types.Optional[string]` | Optional | Timeframe |
+| `Id` | `Optional[string]` | Optional | Id |
+| `RequestedAmount` | `Optional[int]` | Optional | Requested amount |
+| `ApprovedAmount` | `Optional[int]` | Optional | Approved amount |
+| `Recipient` | [`Optional[models.GetRecipientResponse]`](../../doc/models/get-recipient-response.md) | Optional | Recipient |
+| `Pgid` | `Optional[string]` | Optional | Anticipation id on the gateway |
+| `CreatedAt` | `Optional[time.Time]` | Optional | Creation date |
+| `UpdatedAt` | `Optional[time.Time]` | Optional | Last update date |
+| `PaymentDate` | `Optional[time.Time]` | Optional | Payment date |
+| `Status` | `Optional[string]` | Optional | Status |
+| `Timeframe` | `Optional[string]` | Optional | Timeframe |
 
 ## Example (as JSON)
 
 ```json
 {
-  "id": "id0",
-  "requested_amount": 246,
-  "approved_amount": 212,
+  "id": "id8",
+  "requested_amount": 130,
+  "approved_amount": 184,
   "recipient": {
     "id": "id8",
     "name": "name8",

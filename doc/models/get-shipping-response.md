@@ -11,23 +11,23 @@ Response object for getting the shipping data
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `amount` | `types.Optional[int]` | Optional | - |
-| `description` | `types.Optional[string]` | Optional | - |
-| `recipientName` | `types.Optional[string]` | Optional | - |
-| `recipientPhone` | `types.Optional[string]` | Optional | - |
-| `address` | [`types.Optional[models.GetAddressResponse]`](../../doc/models/get-address-response.md) | Optional | - |
-| `maxDeliveryDate` | `types.Optional[time.Time]` | Optional | Data máxima de entrega |
-| `estimatedDeliveryDate` | `types.Optional[time.Time]` | Optional | Prazo estimado de entrega |
-| `mType` | `types.Optional[string]` | Optional | Shipping Type |
+| `Amount` | `Optional[int]` | Optional | - |
+| `Description` | `Optional[string]` | Optional | - |
+| `RecipientName` | `Optional[string]` | Optional | - |
+| `RecipientPhone` | `Optional[string]` | Optional | - |
+| `Address` | [`Optional[models.GetAddressResponse]`](../../doc/models/get-address-response.md) | Optional | - |
+| `MaxDeliveryDate` | `Optional[time.Time]` | Optional | Data máxima de entrega |
+| `EstimatedDeliveryDate` | `Optional[time.Time]` | Optional | Prazo estimado de entrega |
+| `Type` | `Optional[string]` | Optional | Shipping Type |
 
 ## Example (as JSON)
 
 ```json
 {
-  "amount": 46,
-  "description": "description0",
-  "recipient_name": "recipient_name8",
-  "recipient_phone": "recipient_phone2",
+  "amount": 214,
+  "description": "description8",
+  "recipient_name": "recipient_name6",
+  "recipient_phone": "recipient_phone0",
   "address": {
     "id": "id6",
     "street": "street6",

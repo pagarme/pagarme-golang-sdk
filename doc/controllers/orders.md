@@ -1,7 +1,7 @@
 # Orders
 
 ```go
-ordersController := client.OrdersController
+ordersController := client.OrdersController()
 ```
 
 ## Class Name
@@ -28,6 +28,7 @@ Gets all orders
 
 ```go
 GetOrders(
+    ctx context.Context,
     page *int,
     size *int,
     code *string,
@@ -35,7 +36,7 @@ GetOrders(
     createdSince *time.Time,
     createdUntil *time.Time,
     customerId *string) (
-    https.ApiResponse[models.ListOrderResponse],
+    models.ApiResponse[models.ListOrderResponse],
     error)
 ```
 
@@ -58,7 +59,9 @@ GetOrders(
 ## Example Usage
 
 ```go
-apiResponse, err := ordersController.GetOrders(nil, nil, nil, nil, nil, nil, nil)
+ctx := context.Background()
+
+apiResponse, err := ordersController.GetOrders(ctx, nil, nil, nil, nil, nil, nil, nil)
 if err != nil {
     log.Fatalln(err)
 } else {
@@ -73,11 +76,12 @@ if err != nil {
 
 ```go
 UpdateOrderItem(
+    ctx context.Context,
     orderId string,
     itemId string,
     request models.UpdateOrderItemRequest,
     idempotencyKey *string) (
-    https.ApiResponse[models.GetOrderItemResponse],
+    models.ApiResponse[models.GetOrderItemResponse],
     error)
 ```
 
@@ -97,6 +101,7 @@ UpdateOrderItem(
 ## Example Usage
 
 ```go
+ctx := context.Background()
 orderId := "orderId2"
 itemId := "itemId8"
 
@@ -107,7 +112,7 @@ request := models.UpdateOrderItemRequest{
     Category:    "category4",
 }
 
-apiResponse, err := ordersController.UpdateOrderItem(orderId, itemId, &request, nil)
+apiResponse, err := ordersController.UpdateOrderItem(ctx, orderId, itemId, &request, nil)
 if err != nil {
     log.Fatalln(err)
 } else {
@@ -122,9 +127,10 @@ if err != nil {
 
 ```go
 DeleteAllOrderItems(
+    ctx context.Context,
     orderId string,
     idempotencyKey *string) (
-    https.ApiResponse[models.GetOrderResponse],
+    models.ApiResponse[models.GetOrderResponse],
     error)
 ```
 
@@ -142,9 +148,10 @@ DeleteAllOrderItems(
 ## Example Usage
 
 ```go
+ctx := context.Background()
 orderId := "orderId2"
 
-apiResponse, err := ordersController.DeleteAllOrderItems(orderId, nil)
+apiResponse, err := ordersController.DeleteAllOrderItems(ctx, orderId, nil)
 if err != nil {
     log.Fatalln(err)
 } else {
@@ -159,10 +166,11 @@ if err != nil {
 
 ```go
 DeleteOrderItem(
+    ctx context.Context,
     orderId string,
     itemId string,
     idempotencyKey *string) (
-    https.ApiResponse[models.GetOrderItemResponse],
+    models.ApiResponse[models.GetOrderItemResponse],
     error)
 ```
 
@@ -181,10 +189,11 @@ DeleteOrderItem(
 ## Example Usage
 
 ```go
+ctx := context.Background()
 orderId := "orderId2"
 itemId := "itemId8"
 
-apiResponse, err := ordersController.DeleteOrderItem(orderId, itemId, nil)
+apiResponse, err := ordersController.DeleteOrderItem(ctx, orderId, itemId, nil)
 if err != nil {
     log.Fatalln(err)
 } else {
@@ -199,10 +208,11 @@ if err != nil {
 
 ```go
 CloseOrder(
+    ctx context.Context,
     id string,
     request models.UpdateOrderStatusRequest,
     idempotencyKey *string) (
-    https.ApiResponse[models.GetOrderResponse],
+    models.ApiResponse[models.GetOrderResponse],
     error)
 ```
 
@@ -221,13 +231,14 @@ CloseOrder(
 ## Example Usage
 
 ```go
+ctx := context.Background()
 id := "id0"
 
 request := models.UpdateOrderStatusRequest{
     Status: "status8",
 }
 
-apiResponse, err := ordersController.CloseOrder(id, &request, nil)
+apiResponse, err := ordersController.CloseOrder(ctx, id, &request, nil)
 if err != nil {
     log.Fatalln(err)
 } else {
@@ -244,9 +255,10 @@ Creates a new Order
 
 ```go
 CreateOrder(
+    ctx context.Context,
     body models.CreateOrderRequest,
     idempotencyKey *string) (
-    https.ApiResponse[models.GetOrderResponse],
+    models.ApiResponse[models.GetOrderResponse],
     error)
 ```
 
@@ -264,57 +276,59 @@ CreateOrder(
 ## Example Usage
 
 ```go
+ctx := context.Background()
+
 bodyItems0 := models.CreateOrderItemRequest{
-    Amount:      101,
-    Description: "description3",
-    Quantity:    215,
-    Category:    "category1",
+    Amount:      164,
+    Description: "description2",
+    Quantity:    22,
+    Category:    "category6",
 }
 
 bodyItems := []models.CreateOrderItemRequest{bodyItems0}
 bodyCustomerAddress := models.CreateAddressRequest{
-    Street:       "street0",
-    Number:       "number8",
-    ZipCode:      "zip_code4",
-    Neighborhood: "neighborhood6",
-    City:         "city0",
-    State:        "state6",
-    Country:      "country4",
-    Complement:   "complement6",
-    Line1:        "line_16",
-    Line2:        "line_28",
+    Street:       "street6",
+    Number:       "number4",
+    ZipCode:      "zip_code0",
+    Neighborhood: "neighborhood2",
+    City:         "city6",
+    State:        "state2",
+    Country:      "country0",
+    Complement:   "complement2",
+    Line1:        "line_10",
+    Line2:        "line_24",
 }
 
-bodyCustomerPhones := models.CreatePhonesRequest{}
+bodyCustomerPhones := models.CreatePhonesRequest{
+}
 
 bodyCustomer := models.CreateCustomerRequest{
-    Name:     "{\n    \"name\": \"Tony Stark\"\n}",
-    Email:    "email2",
-    Document: "document2",
-    Type:     "type6",
-    Metadata: map[string]*string{
-"key0" : "metadata9",
-"key1" : "metadata0",
+    Name:         "{\n    \"name\": \"Tony Stark\"\n}",
+    Email:        "email6",
+    Document:     "document6",
+    Type:         "type0",
+    Metadata:     map[string]string{
+"key0" : "metadata3",
 },
-    Code:     "code2",
-    Address:  bodyCustomerAddress,
-    Phones:   bodyCustomerPhones,
+    Code:         "code8",
+    Address:      bodyCustomerAddress,
+    Phones:       bodyCustomerPhones,
 }
 
 bodyPayments0 := models.CreatePaymentRequest{
-    PaymentMethod: "payment_method0",
+    PaymentMethod:        "payment_method8",
 }
 
 bodyPayments := []models.CreatePaymentRequest{bodyPayments0}
 body := models.CreateOrderRequest{
-    Code:     "code4",
-    Closed:   true,
-    Items:    bodyItems,
-    Customer: bodyCustomer,
-    Payments: bodyPayments,
+    Code:             "code4",
+    Closed:           true,
+    Items:            bodyItems,
+    Customer:         bodyCustomer,
+    Payments:         bodyPayments,
 }
 
-apiResponse, err := ordersController.CreateOrder(&body, nil)
+apiResponse, err := ordersController.CreateOrder(ctx, &body, nil)
 if err != nil {
     log.Fatalln(err)
 } else {
@@ -329,10 +343,11 @@ if err != nil {
 
 ```go
 CreateOrderItem(
+    ctx context.Context,
     orderId string,
     request models.CreateOrderItemRequest,
     idempotencyKey *string) (
-    https.ApiResponse[models.GetOrderItemResponse],
+    models.ApiResponse[models.GetOrderItemResponse],
     error)
 ```
 
@@ -351,6 +366,7 @@ CreateOrderItem(
 ## Example Usage
 
 ```go
+ctx := context.Background()
 orderId := "orderId2"
 request := models.CreateOrderItemRequest{
     Amount:      242,
@@ -360,7 +376,7 @@ request := models.CreateOrderItemRequest{
 }
 
 
-apiResponse, err := ordersController.CreateOrderItem(orderId, &request, nil)
+apiResponse, err := ordersController.CreateOrderItem(ctx, orderId, &request, nil)
 if err != nil {
     log.Fatalln(err)
 } else {
@@ -375,9 +391,10 @@ if err != nil {
 
 ```go
 GetOrderItem(
+    ctx context.Context,
     orderId string,
     itemId string) (
-    https.ApiResponse[models.GetOrderItemResponse],
+    models.ApiResponse[models.GetOrderItemResponse],
     error)
 ```
 
@@ -395,10 +412,11 @@ GetOrderItem(
 ## Example Usage
 
 ```go
+ctx := context.Background()
 orderId := "orderId2"
 itemId := "itemId8"
 
-apiResponse, err := ordersController.GetOrderItem(orderId, itemId)
+apiResponse, err := ordersController.GetOrderItem(ctx, orderId, itemId)
 if err != nil {
     log.Fatalln(err)
 } else {
@@ -415,10 +433,11 @@ Updates the metadata from an order
 
 ```go
 UpdateOrderMetadata(
+    ctx context.Context,
     orderId string,
     request models.UpdateMetadataRequest,
     idempotencyKey *string) (
-    https.ApiResponse[models.GetOrderResponse],
+    models.ApiResponse[models.GetOrderResponse],
     error)
 ```
 
@@ -437,15 +456,16 @@ UpdateOrderMetadata(
 ## Example Usage
 
 ```go
+ctx := context.Background()
 orderId := "order_id6"
 
 request := models.UpdateMetadataRequest{
-    Metadata: map[string]*string{
+    Metadata: map[string]string{
 "key0" : "metadata3",
 },
 }
 
-apiResponse, err := ordersController.UpdateOrderMetadata(orderId, &request, nil)
+apiResponse, err := ordersController.UpdateOrderMetadata(ctx, orderId, &request, nil)
 if err != nil {
     log.Fatalln(err)
 } else {
@@ -462,8 +482,9 @@ Gets an order
 
 ```go
 GetOrder(
+    ctx context.Context,
     orderId string) (
-    https.ApiResponse[models.GetOrderResponse],
+    models.ApiResponse[models.GetOrderResponse],
     error)
 ```
 
@@ -480,9 +501,10 @@ GetOrder(
 ## Example Usage
 
 ```go
+ctx := context.Background()
 orderId := "order_id6"
 
-apiResponse, err := ordersController.GetOrder(orderId)
+apiResponse, err := ordersController.GetOrder(ctx, orderId)
 if err != nil {
     log.Fatalln(err)
 } else {

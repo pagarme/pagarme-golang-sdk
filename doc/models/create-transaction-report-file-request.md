@@ -9,17 +9,17 @@
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `name` | `string` | Required | - |
-| `startAt` | `*time.Time` | Optional | - |
-| `endAt` | `*string` | Optional | - |
+| `Name` | `string` | Required | - |
+| `StartAt` | `*time.Time` | Optional | - |
+| `EndAt` | `*string` | Optional | - |
 
 ## Example (as JSON)
 
 ```json
 {
-  "name": "name0",
+  "name": "name6",
   "start_at": "2016-03-13T12:52:32.123Z",
-  "end_at": "end_at0"
+  "end_at": "end_at6"
 }
 ```
 

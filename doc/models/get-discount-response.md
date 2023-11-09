@@ -11,25 +11,25 @@ Response object for getting a discount
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `id` | `types.Optional[string]` | Optional | - |
-| `value` | `types.Optional[float64]` | Optional | - |
-| `discountType` | `types.Optional[string]` | Optional | - |
-| `status` | `types.Optional[string]` | Optional | - |
-| `createdAt` | `types.Optional[time.Time]` | Optional | - |
-| `cycles` | `types.Optional[int]` | Optional | - |
-| `deletedAt` | `types.Optional[time.Time]` | Optional | - |
-| `description` | `types.Optional[string]` | Optional | - |
-| `subscription` | [`types.Optional[models.GetSubscriptionResponse]`](../../doc/models/get-subscription-response.md) | Optional | - |
-| `subscriptionItem` | [`types.Optional[models.GetSubscriptionItemResponse]`](../../doc/models/get-subscription-item-response.md) | Optional | The subscription item |
+| `Id` | `Optional[string]` | Optional | - |
+| `Value` | `Optional[float64]` | Optional | - |
+| `DiscountType` | `Optional[string]` | Optional | - |
+| `Status` | `Optional[string]` | Optional | - |
+| `CreatedAt` | `Optional[time.Time]` | Optional | - |
+| `Cycles` | `Optional[int]` | Optional | - |
+| `DeletedAt` | `Optional[time.Time]` | Optional | - |
+| `Description` | `Optional[string]` | Optional | - |
+| `Subscription` | [`Optional[models.GetSubscriptionResponse]`](../../doc/models/get-subscription-response.md) | Optional | - |
+| `SubscriptionItem` | [`Optional[models.GetSubscriptionItemResponse]`](../../doc/models/get-subscription-item-response.md) | Optional | The subscription item |
 
 ## Example (as JSON)
 
 ```json
 {
-  "id": "id0",
-  "value": 251.52,
-  "discount_type": "discount_type8",
-  "status": "status8",
+  "id": "id4",
+  "value": 139.66,
+  "discount_type": "discount_type2",
+  "status": "status6",
   "created_at": "2016-03-13T12:52:32.123Z"
 }
 ```

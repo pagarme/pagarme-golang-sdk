@@ -11,7 +11,7 @@ Request for updating the start date from a subscription
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `startAt` | `time.Time` | Required | The date when the subscription periods will start |
+| `StartAt` | `time.Time` | Required | The date when the subscription periods will start |
 
 ## Example (as JSON)
 

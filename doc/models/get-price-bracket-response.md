@@ -11,19 +11,19 @@ Response object for getting a price bracket
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `startQuantity` | `types.Optional[int]` | Optional | - |
-| `price` | `types.Optional[int]` | Optional | - |
-| `endQuantity` | `types.Optional[int]` | Optional | - |
-| `overagePrice` | `types.Optional[int]` | Optional | - |
+| `StartQuantity` | `Optional[int]` | Optional | - |
+| `Price` | `Optional[int]` | Optional | - |
+| `EndQuantity` | `Optional[int]` | Optional | - |
+| `OveragePrice` | `Optional[int]` | Optional | - |
 
 ## Example (as JSON)
 
 ```json
 {
-  "start_quantity": 46,
-  "price": 16,
-  "end_quantity": 54,
-  "overage_price": 68
+  "start_quantity": 186,
+  "price": 124,
+  "end_quantity": 194,
+  "overage_price": 208
 }
 ```
 

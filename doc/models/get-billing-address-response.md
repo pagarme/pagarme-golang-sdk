@@ -11,26 +11,26 @@ Response object for getting a billing address
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `street` | `types.Optional[string]` | Optional | - |
-| `number` | `types.Optional[string]` | Optional | - |
-| `zipCode` | `types.Optional[string]` | Optional | - |
-| `neighborhood` | `types.Optional[string]` | Optional | - |
-| `city` | `types.Optional[string]` | Optional | - |
-| `state` | `types.Optional[string]` | Optional | - |
-| `country` | `types.Optional[string]` | Optional | - |
-| `complement` | `types.Optional[string]` | Optional | - |
-| `line1` | `types.Optional[string]` | Optional | Line 1 for address |
-| `line2` | `types.Optional[string]` | Optional | Line 2 for address |
+| `Street` | `Optional[string]` | Optional | - |
+| `Number` | `Optional[string]` | Optional | - |
+| `ZipCode` | `Optional[string]` | Optional | - |
+| `Neighborhood` | `Optional[string]` | Optional | - |
+| `City` | `Optional[string]` | Optional | - |
+| `State` | `Optional[string]` | Optional | - |
+| `Country` | `Optional[string]` | Optional | - |
+| `Complement` | `Optional[string]` | Optional | - |
+| `Line1` | `Optional[string]` | Optional | Line 1 for address |
+| `Line2` | `Optional[string]` | Optional | Line 2 for address |
 
 ## Example (as JSON)
 
 ```json
 {
-  "street": "street0",
+  "street": "street4",
   "number": "number2",
-  "zip_code": "zip_code4",
-  "neighborhood": "neighborhood6",
-  "city": "city0"
+  "zip_code": "zip_code8",
+  "neighborhood": "neighborhood0",
+  "city": "city4"
 }
 ```
 

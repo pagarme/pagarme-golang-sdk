@@ -11,14 +11,15 @@ Bank transfer checkout response
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `bank` | `types.Optional[[]string]` | Optional | bank list response |
+| `Bank` | `Optional[[]string]` | Optional | bank list response |
 
 ## Example (as JSON)
 
 ```json
 {
   "bank": [
-    "bank7"
+    "bank3",
+    "bank4"
   ]
 }
 ```

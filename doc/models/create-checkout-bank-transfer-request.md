@@ -11,17 +11,19 @@ Checkout bank transfer payment request
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `bank` | `[]string` | Required | Bank |
-| `retries` | `int` | Required | Number of retries for processing |
+| `Bank` | `[]string` | Required | Bank |
+| `Retries` | `int` | Required | Number of retries for processing |
 
 ## Example (as JSON)
 
 ```json
 {
   "bank": [
-    "bank7"
+    "bank7",
+    "bank8",
+    "bank9"
   ],
-  "retries": 230
+  "retries": 56
 }
 ```
 

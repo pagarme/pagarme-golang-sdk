@@ -11,7 +11,7 @@ Request for updating a charge due date
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `dueAt` | `*time.Time` | Optional | The charge's new due date |
+| `DueAt` | `*time.Time` | Optional | The charge's new due date |
 
 ## Example (as JSON)
 

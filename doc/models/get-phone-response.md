@@ -9,17 +9,17 @@
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `countryCode` | `types.Optional[string]` | Optional | - |
-| `number` | `types.Optional[string]` | Optional | - |
-| `areaCode` | `types.Optional[string]` | Optional | - |
+| `CountryCode` | `Optional[string]` | Optional | - |
+| `Number` | `Optional[string]` | Optional | - |
+| `AreaCode` | `Optional[string]` | Optional | - |
 
 ## Example (as JSON)
 
 ```json
 {
-  "country_code": "country_code0",
-  "number": "number2",
-  "area_code": "area_code0"
+  "country_code": "country_code6",
+  "number": "number4",
+  "area_code": "area_code6"
 }
 ```
 

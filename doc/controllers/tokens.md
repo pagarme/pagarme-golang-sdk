@@ -1,7 +1,7 @@
 # Tokens
 
 ```go
-tokensController := client.TokensController
+tokensController := client.TokensController()
 ```
 
 ## Class Name
@@ -20,10 +20,11 @@ tokensController := client.TokensController
 
 ```go
 CreateToken(
+    ctx context.Context,
     publicKey string,
     request models.CreateTokenRequest,
     idempotencyKey *string) (
-    https.ApiResponse[models.GetTokenResponse],
+    models.ApiResponse[models.GetTokenResponse],
     error)
 ```
 
@@ -42,16 +43,17 @@ CreateToken(
 ## Example Usage
 
 ```go
+ctx := context.Background()
 publicKey := "public_key6"
 
 requestCard := models.CreateCardTokenRequest{
-    Number:     "number2",
-    HolderName: "holder_name6",
-    ExpMonth:   80,
-    ExpYear:    216,
-    Cvv:        "cvv8",
-    Brand:      "brand4",
-    Label:      "label0",
+    Number:     "number6",
+    HolderName: "holder_name2",
+    ExpMonth:   228,
+    ExpYear:    68,
+    Cvv:        "cvv4",
+    Brand:      "brand0",
+    Label:      "label6",
 }
 
 request := models.CreateTokenRequest{
@@ -59,7 +61,7 @@ request := models.CreateTokenRequest{
     Card: requestCard,
 }
 
-apiResponse, err := tokensController.CreateToken(publicKey, &request, nil)
+apiResponse, err := tokensController.CreateToken(ctx, publicKey, &request, nil)
 if err != nil {
     log.Fatalln(err)
 } else {
@@ -78,9 +80,10 @@ Gets a token from its id
 
 ```go
 GetToken(
+    ctx context.Context,
     id string,
     publicKey string) (
-    https.ApiResponse[models.GetTokenResponse],
+    models.ApiResponse[models.GetTokenResponse],
     error)
 ```
 
@@ -98,10 +101,11 @@ GetToken(
 ## Example Usage
 
 ```go
+ctx := context.Background()
 id := "id0"
 publicKey := "public_key6"
 
-apiResponse, err := tokensController.GetToken(id, publicKey)
+apiResponse, err := tokensController.GetToken(ctx, id, publicKey)
 if err != nil {
     log.Fatalln(err)
 } else {

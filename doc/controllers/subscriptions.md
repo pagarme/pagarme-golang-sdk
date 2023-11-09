@@ -1,7 +1,7 @@
 # Subscriptions
 
 ```go
-subscriptionsController := client.SubscriptionsController
+subscriptionsController := client.SubscriptionsController()
 ```
 
 ## Class Name
@@ -52,9 +52,10 @@ subscriptionsController := client.SubscriptionsController
 
 ```go
 RenewSubscription(
+    ctx context.Context,
     subscriptionId string,
     idempotencyKey *string) (
-    https.ApiResponse[models.GetPeriodResponse],
+    models.ApiResponse[models.GetPeriodResponse],
     error)
 ```
 
@@ -72,9 +73,10 @@ RenewSubscription(
 ## Example Usage
 
 ```go
+ctx := context.Background()
 subscriptionId := "subscription_id0"
 
-apiResponse, err := subscriptionsController.RenewSubscription(subscriptionId, nil)
+apiResponse, err := subscriptionsController.RenewSubscription(ctx, subscriptionId, nil)
 if err != nil {
     log.Fatalln(err)
 } else {
@@ -91,10 +93,11 @@ Updates the credit card from a subscription
 
 ```go
 UpdateSubscriptionCard(
+    ctx context.Context,
     subscriptionId string,
     request models.UpdateSubscriptionCardRequest,
     idempotencyKey *string) (
-    https.ApiResponse[models.GetSubscriptionResponse],
+    models.ApiResponse[models.GetSubscriptionResponse],
     error)
 ```
 
@@ -113,18 +116,19 @@ UpdateSubscriptionCard(
 ## Example Usage
 
 ```go
+ctx := context.Background()
 subscriptionId := "subscription_id0"
 
-requestCard := models.CreateCardRequest{}
-requestCardType := "credit"
-requestCard.Type = &requestCardType
+requestCard := models.CreateCardRequest{
+    Type:             models.ToPointer("credit"),
+}
 
 request := models.UpdateSubscriptionCardRequest{
     CardId: "card_id2",
     Card:   requestCard,
 }
 
-apiResponse, err := subscriptionsController.UpdateSubscriptionCard(subscriptionId, &request, nil)
+apiResponse, err := subscriptionsController.UpdateSubscriptionCard(ctx, subscriptionId, &request, nil)
 if err != nil {
     log.Fatalln(err)
 } else {
@@ -141,11 +145,12 @@ Deletes a usage
 
 ```go
 DeleteUsage(
+    ctx context.Context,
     subscriptionId string,
     itemId string,
     usageId string,
     idempotencyKey *string) (
-    https.ApiResponse[models.GetUsageResponse],
+    models.ApiResponse[models.GetUsageResponse],
     error)
 ```
 
@@ -165,11 +170,12 @@ DeleteUsage(
 ## Example Usage
 
 ```go
+ctx := context.Background()
 subscriptionId := "subscription_id0"
 itemId := "item_id0"
 usageId := "usage_id0"
 
-apiResponse, err := subscriptionsController.DeleteUsage(subscriptionId, itemId, usageId, nil)
+apiResponse, err := subscriptionsController.DeleteUsage(ctx, subscriptionId, itemId, usageId, nil)
 if err != nil {
     log.Fatalln(err)
 } else {
@@ -186,10 +192,11 @@ Creates a discount
 
 ```go
 CreateDiscount(
+    ctx context.Context,
     subscriptionId string,
     request models.CreateDiscountRequest,
     idempotencyKey *string) (
-    https.ApiResponse[models.GetDiscountResponse],
+    models.ApiResponse[models.GetDiscountResponse],
     error)
 ```
 
@@ -208,15 +215,16 @@ CreateDiscount(
 ## Example Usage
 
 ```go
+ctx := context.Background()
 subscriptionId := "subscription_id0"
 
 request := models.CreateDiscountRequest{
-    Value:        185.28,
+    Value:        float64(185.28),
     DiscountType: "discount_type4",
     ItemId:       "item_id6",
 }
 
-apiResponse, err := subscriptionsController.CreateDiscount(subscriptionId, &request, nil)
+apiResponse, err := subscriptionsController.CreateDiscount(ctx, subscriptionId, &request, nil)
 if err != nil {
     log.Fatalln(err)
 } else {
@@ -233,10 +241,11 @@ Create Usage
 
 ```go
 CreateAnUsage(
+    ctx context.Context,
     subscriptionId string,
     itemId string,
     idempotencyKey *string) (
-    https.ApiResponse[models.GetUsageResponse],
+    models.ApiResponse[models.GetUsageResponse],
     error)
 ```
 
@@ -255,10 +264,11 @@ CreateAnUsage(
 ## Example Usage
 
 ```go
+ctx := context.Background()
 subscriptionId := "subscription_id0"
 itemId := "item_id0"
 
-apiResponse, err := subscriptionsController.CreateAnUsage(subscriptionId, itemId, nil)
+apiResponse, err := subscriptionsController.CreateAnUsage(ctx, subscriptionId, itemId, nil)
 if err != nil {
     log.Fatalln(err)
 } else {
@@ -273,6 +283,7 @@ if err != nil {
 
 ```go
 UpdateCurrentCycleStatus(
+    ctx context.Context,
     subscriptionId string,
     request models.UpdateCurrentCycleStatusRequest,
     idempotencyKey *string) (
@@ -295,13 +306,14 @@ UpdateCurrentCycleStatus(
 ## Example Usage
 
 ```go
+ctx := context.Background()
 subscriptionId := "subscription_id0"
 
 request := models.UpdateCurrentCycleStatusRequest{
     Status: "status8",
 }
 
-resp, err := subscriptionsController.UpdateCurrentCycleStatus(subscriptionId, &request, nil)
+resp, err := subscriptionsController.UpdateCurrentCycleStatus(ctx, subscriptionId, &request, nil)
 if err != nil {
     log.Fatalln(err)
 } else {
@@ -316,10 +328,11 @@ Deletes a discount
 
 ```go
 DeleteDiscount(
+    ctx context.Context,
     subscriptionId string,
     discountId string,
     idempotencyKey *string) (
-    https.ApiResponse[models.GetDiscountResponse],
+    models.ApiResponse[models.GetDiscountResponse],
     error)
 ```
 
@@ -338,10 +351,11 @@ DeleteDiscount(
 ## Example Usage
 
 ```go
+ctx := context.Background()
 subscriptionId := "subscription_id0"
 discountId := "discount_id8"
 
-apiResponse, err := subscriptionsController.DeleteDiscount(subscriptionId, discountId, nil)
+apiResponse, err := subscriptionsController.DeleteDiscount(ctx, subscriptionId, discountId, nil)
 if err != nil {
     log.Fatalln(err)
 } else {
@@ -358,6 +372,7 @@ Get Subscription Items
 
 ```go
 GetSubscriptionItems(
+    ctx context.Context,
     subscriptionId string,
     page *int,
     size *int,
@@ -367,7 +382,7 @@ GetSubscriptionItems(
     description *string,
     createdSince *string,
     createdUntil *string) (
-    https.ApiResponse[models.ListSubscriptionItemsResponse],
+    models.ApiResponse[models.ListSubscriptionItemsResponse],
     error)
 ```
 
@@ -392,9 +407,10 @@ GetSubscriptionItems(
 ## Example Usage
 
 ```go
+ctx := context.Background()
 subscriptionId := "subscription_id0"
 
-apiResponse, err := subscriptionsController.GetSubscriptionItems(subscriptionId, nil, nil, nil, nil, nil, nil, nil, nil)
+apiResponse, err := subscriptionsController.GetSubscriptionItems(ctx, subscriptionId, nil, nil, nil, nil, nil, nil, nil, nil)
 if err != nil {
     log.Fatalln(err)
 } else {
@@ -411,10 +427,11 @@ Updates the payment method from a subscription
 
 ```go
 UpdateSubscriptionPaymentMethod(
+    ctx context.Context,
     subscriptionId string,
     request models.UpdateSubscriptionPaymentMethodRequest,
     idempotencyKey *string) (
-    https.ApiResponse[models.GetSubscriptionResponse],
+    models.ApiResponse[models.GetSubscriptionResponse],
     error)
 ```
 
@@ -433,11 +450,12 @@ UpdateSubscriptionPaymentMethod(
 ## Example Usage
 
 ```go
+ctx := context.Background()
 subscriptionId := "subscription_id0"
 
-requestCard := models.CreateCardRequest{}
-requestCardType := "credit"
-requestCard.Type = &requestCardType
+requestCard := models.CreateCardRequest{
+    Type:             models.ToPointer("credit"),
+}
 
 request := models.UpdateSubscriptionPaymentMethodRequest{
     PaymentMethod: "payment_method4",
@@ -445,7 +463,7 @@ request := models.UpdateSubscriptionPaymentMethodRequest{
     Card:          requestCard,
 }
 
-apiResponse, err := subscriptionsController.UpdateSubscriptionPaymentMethod(subscriptionId, &request, nil)
+apiResponse, err := subscriptionsController.UpdateSubscriptionPaymentMethod(ctx, subscriptionId, &request, nil)
 if err != nil {
     log.Fatalln(err)
 } else {
@@ -462,9 +480,10 @@ Get Subscription Item
 
 ```go
 GetSubscriptionItem(
+    ctx context.Context,
     subscriptionId string,
     itemId string) (
-    https.ApiResponse[models.GetSubscriptionItemResponse],
+    models.ApiResponse[models.GetSubscriptionItemResponse],
     error)
 ```
 
@@ -482,10 +501,11 @@ GetSubscriptionItem(
 ## Example Usage
 
 ```go
+ctx := context.Background()
 subscriptionId := "subscription_id0"
 itemId := "item_id0"
 
-apiResponse, err := subscriptionsController.GetSubscriptionItem(subscriptionId, itemId)
+apiResponse, err := subscriptionsController.GetSubscriptionItem(ctx, subscriptionId, itemId)
 if err != nil {
     log.Fatalln(err)
 } else {
@@ -502,6 +522,7 @@ Gets all subscriptions
 
 ```go
 GetSubscriptions(
+    ctx context.Context,
     page *int,
     size *int,
     code *string,
@@ -514,7 +535,7 @@ GetSubscriptions(
     nextBillingUntil *time.Time,
     createdSince *time.Time,
     createdUntil *time.Time) (
-    https.ApiResponse[models.ListSubscriptionsResponse],
+    models.ApiResponse[models.ListSubscriptionsResponse],
     error)
 ```
 
@@ -542,7 +563,9 @@ GetSubscriptions(
 ## Example Usage
 
 ```go
-apiResponse, err := subscriptionsController.GetSubscriptions(nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil)
+ctx := context.Background()
+
+apiResponse, err := subscriptionsController.GetSubscriptions(ctx, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil)
 if err != nil {
     log.Fatalln(err)
 } else {
@@ -559,10 +582,11 @@ Cancels a subscription
 
 ```go
 CancelSubscription(
+    ctx context.Context,
     subscriptionId string,
     request *models.CreateCancelSubscriptionRequest,
     idempotencyKey *string) (
-    https.ApiResponse[models.GetSubscriptionResponse],
+    models.ApiResponse[models.GetSubscriptionResponse],
     error)
 ```
 
@@ -581,13 +605,14 @@ CancelSubscription(
 ## Example Usage
 
 ```go
+ctx := context.Background()
 subscriptionId := "subscription_id0"
 
 request := models.CreateCancelSubscriptionRequest{
     CancelPendingInvoices: true,
 }
 
-apiResponse, err := subscriptionsController.CancelSubscription(subscriptionId, &request, nil)
+apiResponse, err := subscriptionsController.CancelSubscription(ctx, subscriptionId, &request, nil)
 if err != nil {
     log.Fatalln(err)
 } else {
@@ -604,10 +629,11 @@ Creates a increment
 
 ```go
 CreateIncrement(
+    ctx context.Context,
     subscriptionId string,
     request models.CreateIncrementRequest,
     idempotencyKey *string) (
-    https.ApiResponse[models.GetIncrementResponse],
+    models.ApiResponse[models.GetIncrementResponse],
     error)
 ```
 
@@ -626,15 +652,16 @@ CreateIncrement(
 ## Example Usage
 
 ```go
+ctx := context.Background()
 subscriptionId := "subscription_id0"
 
 request := models.CreateIncrementRequest{
-    Value:         185.28,
+    Value:         float64(185.28),
     IncrementType: "increment_type8",
     ItemId:        "item_id6",
 }
 
-apiResponse, err := subscriptionsController.CreateIncrement(subscriptionId, &request, nil)
+apiResponse, err := subscriptionsController.CreateIncrement(ctx, subscriptionId, &request, nil)
 if err != nil {
     log.Fatalln(err)
 } else {
@@ -651,11 +678,12 @@ Creates a usage
 
 ```go
 CreateUsage(
+    ctx context.Context,
     subscriptionId string,
     itemId string,
     body models.CreateUsageRequest,
     idempotencyKey *string) (
-    https.ApiResponse[models.GetUsageResponse],
+    models.ApiResponse[models.GetUsageResponse],
     error)
 ```
 
@@ -675,6 +703,7 @@ CreateUsage(
 ## Example Usage
 
 ```go
+ctx := context.Background()
 subscriptionId := "subscription_id0"
 itemId := "item_id0"
 
@@ -688,7 +717,7 @@ body := models.CreateUsageRequest{
     UsedAt:      bodyUsedAt,
 }
 
-apiResponse, err := subscriptionsController.CreateUsage(subscriptionId, itemId, &body, nil)
+apiResponse, err := subscriptionsController.CreateUsage(ctx, subscriptionId, itemId, &body, nil)
 if err != nil {
     log.Fatalln(err)
 } else {
@@ -703,9 +732,10 @@ if err != nil {
 
 ```go
 GetDiscountById(
+    ctx context.Context,
     subscriptionId string,
     discountId string) (
-    https.ApiResponse[models.GetDiscountResponse],
+    models.ApiResponse[models.GetDiscountResponse],
     error)
 ```
 
@@ -723,10 +753,11 @@ GetDiscountById(
 ## Example Usage
 
 ```go
+ctx := context.Background()
 subscriptionId := "subscription_id0"
 discountId := "discountId0"
 
-apiResponse, err := subscriptionsController.GetDiscountById(subscriptionId, discountId)
+apiResponse, err := subscriptionsController.GetDiscountById(ctx, subscriptionId, discountId)
 if err != nil {
     log.Fatalln(err)
 } else {
@@ -743,9 +774,10 @@ Creates a new subscription
 
 ```go
 CreateSubscription(
+    ctx context.Context,
     body models.CreateSubscriptionRequest,
     idempotencyKey *string) (
-    https.ApiResponse[models.GetSubscriptionResponse],
+    models.ApiResponse[models.GetSubscriptionResponse],
     error)
 ```
 
@@ -763,59 +795,61 @@ CreateSubscription(
 ## Example Usage
 
 ```go
+ctx := context.Background()
+
 bodyCustomerAddress := models.CreateAddressRequest{
-    Street:       "street0",
-    Number:       "number8",
-    ZipCode:      "zip_code4",
-    Neighborhood: "neighborhood6",
-    City:         "city0",
-    State:        "state6",
-    Country:      "country4",
-    Complement:   "complement6",
-    Line1:        "line_16",
-    Line2:        "line_28",
+    Street:       "street6",
+    Number:       "number4",
+    ZipCode:      "zip_code0",
+    Neighborhood: "neighborhood2",
+    City:         "city6",
+    State:        "state2",
+    Country:      "country0",
+    Complement:   "complement2",
+    Line1:        "line_10",
+    Line2:        "line_24",
 }
 
-bodyCustomerPhones := models.CreatePhonesRequest{}
+bodyCustomerPhones := models.CreatePhonesRequest{
+}
 
 bodyCustomer := models.CreateCustomerRequest{
-    Name:     "{\n    \"name\": \"Tony Stark\"\n}",
-    Email:    "email2",
-    Document: "document2",
-    Type:     "type6",
-    Metadata: map[string]*string{
-"key0" : "metadata9",
-"key1" : "metadata0",
+    Name:         "{\n    \"name\": \"Tony Stark\"\n}",
+    Email:        "email6",
+    Document:     "document6",
+    Type:         "type0",
+    Metadata:     map[string]string{
+"key0" : "metadata3",
 },
-    Code:     "code2",
-    Address:  bodyCustomerAddress,
-    Phones:   bodyCustomerPhones,
+    Code:         "code8",
+    Address:      bodyCustomerAddress,
+    Phones:       bodyCustomerPhones,
 }
 
-bodyCard := models.CreateCardRequest{}
-bodyCardType := "credit"
-bodyCard.Type = &bodyCardType
+bodyCard := models.CreateCardRequest{
+    Type:             models.ToPointer("credit"),
+}
 
 bodyPricingScheme := models.CreatePricingSchemeRequest{
-    SchemeType: "scheme_type2",
+    SchemeType:    "scheme_type8",
 }
 
 bodyItems0PricingScheme := models.CreatePricingSchemeRequest{
-    SchemeType: "scheme_type5",
+    SchemeType:    "scheme_type8",
 }
 
 
 bodyItems0Discounts0 := models.CreateDiscountRequest{
-    Value:        65.46,
+    Value:        float64(90.66),
     DiscountType: "discount_type2",
     ItemId:       "item_id4",
 }
 bodyItems0Discounts := []models.CreateDiscountRequest{bodyItems0Discounts0}
 bodyItems0 := models.CreateSubscriptionItemRequest{
-    Description:   "description3",
-    Id:            "id3",
-    PlanItemId:    "plan_item_id3",
-    Name:          "name3",
+    Description:   "description2",
+    Id:            "id8",
+    PlanItemId:    "plan_item_id8",
+    Name:          "name8",
     PricingScheme: bodyItems0PricingScheme,
     Discounts:     bodyItems0Discounts,
 }
@@ -835,52 +869,52 @@ bodyShippingAddress := models.CreateAddressRequest{
 }
 
 bodyShipping := models.CreateShippingRequest{
-    Amount:         140,
-    Description:    "description0",
-    RecipientName:  "recipient_name8",
-    RecipientPhone: "recipient_phone2",
-    AddressId:      "address_id0",
-    Type:           "type0",
-    Address:        bodyShippingAddress,
+    Amount:                52,
+    Description:           "description6",
+    RecipientName:         "recipient_name2",
+    RecipientPhone:        "recipient_phone6",
+    AddressId:             "address_id6",
+    Type:                  "type6",
+    Address:               bodyShippingAddress,
 }
 
 
 bodyDiscounts0 := models.CreateDiscountRequest{
-    Value:        95.59,
-    DiscountType: "discount_type5",
-    ItemId:       "item_id7",
+    Value:        float64(90.66),
+    DiscountType: "discount_type2",
+    ItemId:       "item_id4",
 }
 bodyDiscounts := []models.CreateDiscountRequest{bodyDiscounts0}
 
 bodyIncrements0 := models.CreateIncrementRequest{
-    Value:         38.83,
-    IncrementType: "increment_type3",
-    ItemId:        "item_id9",
+    Value:         float64(252.86),
+    IncrementType: "increment_type6",
+    ItemId:        "item_id6",
 }
 bodyIncrements := []models.CreateIncrementRequest{bodyIncrements0}
 body := models.CreateSubscriptionRequest{
-    Code:                "code4",
-    PaymentMethod:       "payment_method4",
-    BillingType:         "billing_type0",
-    StatementDescriptor: "statement_descriptor6",
-    Description:         "description4",
-    Currency:            "currency6",
-    Interval:            "interval6",
-    IntervalCount:       170,
-    Metadata:            map[string]*string{
+    Code:                 "code4",
+    PaymentMethod:        "payment_method4",
+    BillingType:          "billing_type0",
+    StatementDescriptor:  "statement_descriptor6",
+    Description:          "description4",
+    Currency:             "currency6",
+    Interval:             "interval6",
+    IntervalCount:        170,
+    Metadata:             map[string]string{
 "key0" : "metadata7",
 "key1" : "metadata8",
 },
-    Customer:            bodyCustomer,
-    Card:                bodyCard,
-    PricingScheme:       bodyPricingScheme,
-    Items:               bodyItems,
-    Shipping:            bodyShipping,
-    Discounts:           bodyDiscounts,
-    Increments:          bodyIncrements,
+    Customer:             bodyCustomer,
+    Card:                 bodyCard,
+    PricingScheme:        bodyPricingScheme,
+    Items:                bodyItems,
+    Shipping:             bodyShipping,
+    Discounts:            bodyDiscounts,
+    Increments:           bodyIncrements,
 }
 
-apiResponse, err := subscriptionsController.CreateSubscription(&body, nil)
+apiResponse, err := subscriptionsController.CreateSubscription(ctx, &body, nil)
 if err != nil {
     log.Fatalln(err)
 } else {
@@ -895,9 +929,10 @@ if err != nil {
 
 ```go
 GetIncrementById(
+    ctx context.Context,
     subscriptionId string,
     incrementId string) (
-    https.ApiResponse[models.GetIncrementResponse],
+    models.ApiResponse[models.GetIncrementResponse],
     error)
 ```
 
@@ -915,10 +950,11 @@ GetIncrementById(
 ## Example Usage
 
 ```go
+ctx := context.Background()
 subscriptionId := "subscription_id0"
 incrementId := "increment_id8"
 
-apiResponse, err := subscriptionsController.GetIncrementById(subscriptionId, incrementId)
+apiResponse, err := subscriptionsController.GetIncrementById(ctx, subscriptionId, incrementId)
 if err != nil {
     log.Fatalln(err)
 } else {
@@ -933,10 +969,11 @@ if err != nil {
 
 ```go
 UpdateSubscriptionAffiliationId(
+    ctx context.Context,
     subscriptionId string,
     request models.UpdateSubscriptionAffiliationIdRequest,
     idempotencyKey *string) (
-    https.ApiResponse[models.GetSubscriptionResponse],
+    models.ApiResponse[models.GetSubscriptionResponse],
     error)
 ```
 
@@ -955,13 +992,14 @@ UpdateSubscriptionAffiliationId(
 ## Example Usage
 
 ```go
+ctx := context.Background()
 subscriptionId := "subscription_id0"
 
 request := models.UpdateSubscriptionAffiliationIdRequest{
     GatewayAffiliationId: "gateway_affiliation_id2",
 }
 
-apiResponse, err := subscriptionsController.UpdateSubscriptionAffiliationId(subscriptionId, &request, nil)
+apiResponse, err := subscriptionsController.UpdateSubscriptionAffiliationId(ctx, subscriptionId, &request, nil)
 if err != nil {
     log.Fatalln(err)
 } else {
@@ -978,10 +1016,11 @@ Updates the metadata from a subscription
 
 ```go
 UpdateSubscriptionMetadata(
+    ctx context.Context,
     subscriptionId string,
     request models.UpdateMetadataRequest,
     idempotencyKey *string) (
-    https.ApiResponse[models.GetSubscriptionResponse],
+    models.ApiResponse[models.GetSubscriptionResponse],
     error)
 ```
 
@@ -1000,15 +1039,16 @@ UpdateSubscriptionMetadata(
 ## Example Usage
 
 ```go
+ctx := context.Background()
 subscriptionId := "subscription_id0"
 
 request := models.UpdateMetadataRequest{
-    Metadata: map[string]*string{
+    Metadata: map[string]string{
 "key0" : "metadata3",
 },
 }
 
-apiResponse, err := subscriptionsController.UpdateSubscriptionMetadata(subscriptionId, &request, nil)
+apiResponse, err := subscriptionsController.UpdateSubscriptionMetadata(ctx, subscriptionId, &request, nil)
 if err != nil {
     log.Fatalln(err)
 } else {
@@ -1025,10 +1065,11 @@ Deletes a increment
 
 ```go
 DeleteIncrement(
+    ctx context.Context,
     subscriptionId string,
     incrementId string,
     idempotencyKey *string) (
-    https.ApiResponse[models.GetIncrementResponse],
+    models.ApiResponse[models.GetIncrementResponse],
     error)
 ```
 
@@ -1047,10 +1088,11 @@ DeleteIncrement(
 ## Example Usage
 
 ```go
+ctx := context.Background()
 subscriptionId := "subscription_id0"
 incrementId := "increment_id8"
 
-apiResponse, err := subscriptionsController.DeleteIncrement(subscriptionId, incrementId, nil)
+apiResponse, err := subscriptionsController.DeleteIncrement(ctx, subscriptionId, incrementId, nil)
 if err != nil {
     log.Fatalln(err)
 } else {
@@ -1065,10 +1107,11 @@ if err != nil {
 
 ```go
 GetSubscriptionCycles(
+    ctx context.Context,
     subscriptionId string,
     page string,
     size string) (
-    https.ApiResponse[models.ListCyclesResponse],
+    models.ApiResponse[models.ListCyclesResponse],
     error)
 ```
 
@@ -1087,11 +1130,12 @@ GetSubscriptionCycles(
 ## Example Usage
 
 ```go
+ctx := context.Background()
 subscriptionId := "subscription_id0"
 page := "page8"
 size := "size0"
 
-apiResponse, err := subscriptionsController.GetSubscriptionCycles(subscriptionId, page, size)
+apiResponse, err := subscriptionsController.GetSubscriptionCycles(ctx, subscriptionId, page, size)
 if err != nil {
     log.Fatalln(err)
 } else {
@@ -1106,10 +1150,11 @@ if err != nil {
 
 ```go
 GetDiscounts(
+    ctx context.Context,
     subscriptionId string,
     page int,
     size int) (
-    https.ApiResponse[models.ListDiscountsResponse],
+    models.ApiResponse[models.ListDiscountsResponse],
     error)
 ```
 
@@ -1128,11 +1173,12 @@ GetDiscounts(
 ## Example Usage
 
 ```go
+ctx := context.Background()
 subscriptionId := "subscription_id0"
 page := 30
 size := 18
 
-apiResponse, err := subscriptionsController.GetDiscounts(subscriptionId, page, size)
+apiResponse, err := subscriptionsController.GetDiscounts(ctx, subscriptionId, page, size)
 if err != nil {
     log.Fatalln(err)
 } else {
@@ -1149,10 +1195,11 @@ Updates the billing date from a subscription
 
 ```go
 UpdateSubscriptionBillingDate(
+    ctx context.Context,
     subscriptionId string,
     request models.UpdateSubscriptionBillingDateRequest,
     idempotencyKey *string) (
-    https.ApiResponse[models.GetSubscriptionResponse],
+    models.ApiResponse[models.GetSubscriptionResponse],
     error)
 ```
 
@@ -1171,6 +1218,7 @@ UpdateSubscriptionBillingDate(
 ## Example Usage
 
 ```go
+ctx := context.Background()
 subscriptionId := "subscription_id0"
 
 requestNextBillingAt, err := time.Parse(time.RFC3339, "2016-03-13T12:52:32.123Z")
@@ -1181,7 +1229,7 @@ request := models.UpdateSubscriptionBillingDateRequest{
     NextBillingAt: requestNextBillingAt,
 }
 
-apiResponse, err := subscriptionsController.UpdateSubscriptionBillingDate(subscriptionId, &request, nil)
+apiResponse, err := subscriptionsController.UpdateSubscriptionBillingDate(ctx, subscriptionId, &request, nil)
 if err != nil {
     log.Fatalln(err)
 } else {
@@ -1198,10 +1246,11 @@ Deletes a subscription item
 
 ```go
 DeleteSubscriptionItem(
+    ctx context.Context,
     subscriptionId string,
     subscriptionItemId string,
     idempotencyKey *string) (
-    https.ApiResponse[models.GetSubscriptionItemResponse],
+    models.ApiResponse[models.GetSubscriptionItemResponse],
     error)
 ```
 
@@ -1220,10 +1269,11 @@ DeleteSubscriptionItem(
 ## Example Usage
 
 ```go
+ctx := context.Background()
 subscriptionId := "subscription_id0"
 subscriptionItemId := "subscription_item_id4"
 
-apiResponse, err := subscriptionsController.DeleteSubscriptionItem(subscriptionId, subscriptionItemId, nil)
+apiResponse, err := subscriptionsController.DeleteSubscriptionItem(ctx, subscriptionId, subscriptionItemId, nil)
 if err != nil {
     log.Fatalln(err)
 } else {
@@ -1238,10 +1288,11 @@ if err != nil {
 
 ```go
 GetIncrements(
+    ctx context.Context,
     subscriptionId string,
     page *int,
     size *int) (
-    https.ApiResponse[models.ListIncrementsResponse],
+    models.ApiResponse[models.ListIncrementsResponse],
     error)
 ```
 
@@ -1260,9 +1311,10 @@ GetIncrements(
 ## Example Usage
 
 ```go
+ctx := context.Background()
 subscriptionId := "subscription_id0"
 
-apiResponse, err := subscriptionsController.GetIncrements(subscriptionId, nil, nil)
+apiResponse, err := subscriptionsController.GetIncrements(ctx, subscriptionId, nil, nil)
 if err != nil {
     log.Fatalln(err)
 } else {
@@ -1279,10 +1331,11 @@ Updates the boleto due days from a subscription
 
 ```go
 UpdateSubscriptionDueDays(
+    ctx context.Context,
     subscriptionId string,
     request models.UpdateSubscriptionDueDaysRequest,
     idempotencyKey *string) (
-    https.ApiResponse[models.GetSubscriptionResponse],
+    models.ApiResponse[models.GetSubscriptionResponse],
     error)
 ```
 
@@ -1301,13 +1354,14 @@ UpdateSubscriptionDueDays(
 ## Example Usage
 
 ```go
+ctx := context.Background()
 subscriptionId := "subscription_id0"
 
 request := models.UpdateSubscriptionDueDaysRequest{
     BoletoDueDays: 226,
 }
 
-apiResponse, err := subscriptionsController.UpdateSubscriptionDueDays(subscriptionId, &request, nil)
+apiResponse, err := subscriptionsController.UpdateSubscriptionDueDays(ctx, subscriptionId, &request, nil)
 if err != nil {
     log.Fatalln(err)
 } else {
@@ -1324,10 +1378,11 @@ Updates the start at date from a subscription
 
 ```go
 UpdateSubscriptionStartAt(
+    ctx context.Context,
     subscriptionId string,
     request models.UpdateSubscriptionStartAtRequest,
     idempotencyKey *string) (
-    https.ApiResponse[models.GetSubscriptionResponse],
+    models.ApiResponse[models.GetSubscriptionResponse],
     error)
 ```
 
@@ -1346,6 +1401,7 @@ UpdateSubscriptionStartAt(
 ## Example Usage
 
 ```go
+ctx := context.Background()
 subscriptionId := "subscription_id0"
 
 requestStartAt, err := time.Parse(time.RFC3339, "2016-03-13T12:52:32.123Z")
@@ -1356,7 +1412,7 @@ request := models.UpdateSubscriptionStartAtRequest{
     StartAt: requestStartAt,
 }
 
-apiResponse, err := subscriptionsController.UpdateSubscriptionStartAt(subscriptionId, &request, nil)
+apiResponse, err := subscriptionsController.UpdateSubscriptionStartAt(ctx, subscriptionId, &request, nil)
 if err != nil {
     log.Fatalln(err)
 } else {
@@ -1373,11 +1429,12 @@ Updates a subscription item
 
 ```go
 UpdateSubscriptionItem(
+    ctx context.Context,
     subscriptionId string,
     itemId string,
     body models.UpdateSubscriptionItemRequest,
     idempotencyKey *string) (
-    https.ApiResponse[models.GetSubscriptionItemResponse],
+    models.ApiResponse[models.GetSubscriptionItemResponse],
     error)
 ```
 
@@ -1397,17 +1454,18 @@ UpdateSubscriptionItem(
 ## Example Usage
 
 ```go
+ctx := context.Background()
 subscriptionId := "subscription_id0"
 itemId := "item_id0"
 
 bodyPricingSchemePriceBrackets0 := models.UpdatePriceBracketRequest{
-    StartQuantity: 31,
-    Price:         225,
+    StartQuantity: 144,
+    Price:         174,
 }
 
 bodyPricingSchemePriceBrackets := []models.UpdatePriceBracketRequest{bodyPricingSchemePriceBrackets0}
 bodyPricingScheme := models.UpdatePricingSchemeRequest{
-    SchemeType:    "scheme_type2",
+    SchemeType:    "scheme_type8",
     PriceBrackets: bodyPricingSchemePriceBrackets,
 }
 
@@ -1418,7 +1476,7 @@ body := models.UpdateSubscriptionItemRequest{
     PricingScheme: bodyPricingScheme,
 }
 
-apiResponse, err := subscriptionsController.UpdateSubscriptionItem(subscriptionId, itemId, &body, nil)
+apiResponse, err := subscriptionsController.UpdateSubscriptionItem(ctx, subscriptionId, itemId, &body, nil)
 if err != nil {
     log.Fatalln(err)
 } else {
@@ -1435,10 +1493,11 @@ Creates a new Subscription item
 
 ```go
 CreateSubscriptionItem(
+    ctx context.Context,
     subscriptionId string,
     request models.CreateSubscriptionItemRequest,
     idempotencyKey *string) (
-    https.ApiResponse[models.GetSubscriptionItemResponse],
+    models.ApiResponse[models.GetSubscriptionItemResponse],
     error)
 ```
 
@@ -1457,16 +1516,17 @@ CreateSubscriptionItem(
 ## Example Usage
 
 ```go
+ctx := context.Background()
 subscriptionId := "subscription_id0"
 requestPricingScheme := models.CreatePricingSchemeRequest{
-    SchemeType: "scheme_type2",
+    SchemeType:    "scheme_type8",
 }
 
 
 requestDiscounts0 := models.CreateDiscountRequest{
-    Value:        199.99,
-    DiscountType: "discount_type5",
-    ItemId:       "item_id7",
+    Value:        float64(90.66),
+    DiscountType: "discount_type2",
+    ItemId:       "item_id4",
 }
 requestDiscounts := []models.CreateDiscountRequest{requestDiscounts0}
 request := models.CreateSubscriptionItemRequest{
@@ -1479,7 +1539,7 @@ request := models.CreateSubscriptionItemRequest{
 }
 
 
-apiResponse, err := subscriptionsController.CreateSubscriptionItem(subscriptionId, &request, nil)
+apiResponse, err := subscriptionsController.CreateSubscriptionItem(ctx, subscriptionId, &request, nil)
 if err != nil {
     log.Fatalln(err)
 } else {
@@ -1496,8 +1556,9 @@ Gets a subscription
 
 ```go
 GetSubscription(
+    ctx context.Context,
     subscriptionId string) (
-    https.ApiResponse[models.GetSubscriptionResponse],
+    models.ApiResponse[models.GetSubscriptionResponse],
     error)
 ```
 
@@ -1514,9 +1575,10 @@ GetSubscription(
 ## Example Usage
 
 ```go
+ctx := context.Background()
 subscriptionId := "subscription_id0"
 
-apiResponse, err := subscriptionsController.GetSubscription(subscriptionId)
+apiResponse, err := subscriptionsController.GetSubscription(ctx, subscriptionId)
 if err != nil {
     log.Fatalln(err)
 } else {
@@ -1533,6 +1595,7 @@ Lists all usages from a subscription item
 
 ```go
 GetUsages(
+    ctx context.Context,
     subscriptionId string,
     itemId string,
     page *int,
@@ -1541,7 +1604,7 @@ GetUsages(
     group *string,
     usedSince *time.Time,
     usedUntil *time.Time) (
-    https.ApiResponse[models.ListUsagesResponse],
+    models.ApiResponse[models.ListUsagesResponse],
     error)
 ```
 
@@ -1565,10 +1628,11 @@ GetUsages(
 ## Example Usage
 
 ```go
+ctx := context.Background()
 subscriptionId := "subscription_id0"
 itemId := "item_id0"
 
-apiResponse, err := subscriptionsController.GetUsages(subscriptionId, itemId, nil, nil, nil, nil, nil, nil)
+apiResponse, err := subscriptionsController.GetUsages(ctx, subscriptionId, itemId, nil, nil, nil, nil, nil, nil)
 if err != nil {
     log.Fatalln(err)
 } else {
@@ -1583,10 +1647,11 @@ if err != nil {
 
 ```go
 UpdateLatestPeriodEndAt(
+    ctx context.Context,
     subscriptionId string,
     request models.UpdateCurrentCycleEndDateRequest,
     idempotencyKey *string) (
-    https.ApiResponse[models.GetSubscriptionResponse],
+    models.ApiResponse[models.GetSubscriptionResponse],
     error)
 ```
 
@@ -1605,11 +1670,13 @@ UpdateLatestPeriodEndAt(
 ## Example Usage
 
 ```go
+ctx := context.Background()
 subscriptionId := "subscription_id0"
 
-request := models.UpdateCurrentCycleEndDateRequest{}
+request := models.UpdateCurrentCycleEndDateRequest{
+}
 
-apiResponse, err := subscriptionsController.UpdateLatestPeriodEndAt(subscriptionId, &request, nil)
+apiResponse, err := subscriptionsController.UpdateLatestPeriodEndAt(ctx, subscriptionId, &request, nil)
 if err != nil {
     log.Fatalln(err)
 } else {
@@ -1626,10 +1693,11 @@ Atualização do valor mínimo da assinatura
 
 ```go
 UpdateSubscriptionMiniumPrice(
+    ctx context.Context,
     subscriptionId string,
     request models.UpdateSubscriptionMinimumPriceRequest,
     idempotencyKey *string) (
-    https.ApiResponse[models.GetSubscriptionResponse],
+    models.ApiResponse[models.GetSubscriptionResponse],
     error)
 ```
 
@@ -1648,11 +1716,13 @@ UpdateSubscriptionMiniumPrice(
 ## Example Usage
 
 ```go
+ctx := context.Background()
 subscriptionId := "subscription_id0"
 
-request := models.UpdateSubscriptionMinimumPriceRequest{}
+request := models.UpdateSubscriptionMinimumPriceRequest{
+}
 
-apiResponse, err := subscriptionsController.UpdateSubscriptionMiniumPrice(subscriptionId, &request, nil)
+apiResponse, err := subscriptionsController.UpdateSubscriptionMiniumPrice(ctx, subscriptionId, &request, nil)
 if err != nil {
     log.Fatalln(err)
 } else {
@@ -1667,9 +1737,10 @@ if err != nil {
 
 ```go
 GetSubscriptionCycleById(
+    ctx context.Context,
     subscriptionId string,
     cycleId string) (
-    https.ApiResponse[models.GetPeriodResponse],
+    models.ApiResponse[models.GetPeriodResponse],
     error)
 ```
 
@@ -1687,10 +1758,11 @@ GetSubscriptionCycleById(
 ## Example Usage
 
 ```go
+ctx := context.Background()
 subscriptionId := "subscription_id0"
 cycleId := "cycleId0"
 
-apiResponse, err := subscriptionsController.GetSubscriptionCycleById(subscriptionId, cycleId)
+apiResponse, err := subscriptionsController.GetSubscriptionCycleById(ctx, subscriptionId, cycleId)
 if err != nil {
     log.Fatalln(err)
 } else {
@@ -1705,9 +1777,10 @@ if err != nil {
 
 ```go
 GetUsageReport(
+    ctx context.Context,
     subscriptionId string,
     periodId string) (
-    https.ApiResponse[models.GetUsageReportResponse],
+    models.ApiResponse[models.GetUsageReportResponse],
     error)
 ```
 
@@ -1725,10 +1798,11 @@ GetUsageReport(
 ## Example Usage
 
 ```go
+ctx := context.Background()
 subscriptionId := "subscription_id0"
 periodId := "period_id0"
 
-apiResponse, err := subscriptionsController.GetUsageReport(subscriptionId, periodId)
+apiResponse, err := subscriptionsController.GetUsageReport(ctx, subscriptionId, periodId)
 if err != nil {
     log.Fatalln(err)
 } else {
@@ -1743,9 +1817,10 @@ if err != nil {
 
 ```go
 UpdateSplitSubscription(
+    ctx context.Context,
     id string,
     request models.UpdateSubscriptionSplitRequest) (
-    https.ApiResponse[models.GetSubscriptionResponse],
+    models.ApiResponse[models.GetSubscriptionResponse],
     error)
 ```
 
@@ -1763,12 +1838,13 @@ UpdateSplitSubscription(
 ## Example Usage
 
 ```go
+ctx := context.Background()
 id := "id0"
 
 requestRules0 := models.CreateSplitRequest{
-    Type:        "type6",
-    Amount:      222,
-    RecipientId: "recipient_id6",
+    Type:        "type2",
+    Amount:      118,
+    RecipientId: "recipient_id2",
 }
 
 requestRules := []models.CreateSplitRequest{requestRules0}
@@ -1777,7 +1853,7 @@ request := models.UpdateSubscriptionSplitRequest{
     Rules:   requestRules,
 }
 
-apiResponse, err := subscriptionsController.UpdateSplitSubscription(id, &request)
+apiResponse, err := subscriptionsController.UpdateSplitSubscription(ctx, id, &request)
 if err != nil {
     log.Fatalln(err)
 } else {

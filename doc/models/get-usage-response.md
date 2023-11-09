@@ -11,25 +11,25 @@ Response object for getting a usage
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `id` | `types.Optional[string]` | Optional | Id |
-| `quantity` | `types.Optional[int]` | Optional | Quantity |
-| `description` | `types.Optional[string]` | Optional | Description |
-| `usedAt` | `types.Optional[time.Time]` | Optional | Used at |
-| `createdAt` | `types.Optional[time.Time]` | Optional | Creation date |
-| `status` | `types.Optional[string]` | Optional | Status |
-| `deletedAt` | `types.Optional[time.Time]` | Optional | - |
-| `subscriptionItem` | [`types.Optional[models.GetSubscriptionItemResponse]`](../../doc/models/get-subscription-item-response.md) | Optional | Subscription item |
-| `code` | `types.Optional[string]` | Optional | Identification code in the client system |
-| `group` | `types.Optional[string]` | Optional | Identification group in the client system |
-| `amount` | `types.Optional[int]` | Optional | Field used in item scheme type 'Percent' |
+| `Id` | `Optional[string]` | Optional | Id |
+| `Quantity` | `Optional[int]` | Optional | Quantity |
+| `Description` | `Optional[string]` | Optional | Description |
+| `UsedAt` | `Optional[time.Time]` | Optional | Used at |
+| `CreatedAt` | `Optional[time.Time]` | Optional | Creation date |
+| `Status` | `Optional[string]` | Optional | Status |
+| `DeletedAt` | `Optional[time.Time]` | Optional | - |
+| `SubscriptionItem` | [`Optional[models.GetSubscriptionItemResponse]`](../../doc/models/get-subscription-item-response.md) | Optional | Subscription item |
+| `Code` | `Optional[string]` | Optional | Identification code in the client system |
+| `Group` | `Optional[string]` | Optional | Identification group in the client system |
+| `Amount` | `Optional[int]` | Optional | Field used in item scheme type 'Percent' |
 
 ## Example (as JSON)
 
 ```json
 {
-  "id": "id0",
-  "quantity": 68,
-  "description": "description0",
+  "id": "id2",
+  "quantity": 34,
+  "description": "description2",
   "used_at": "2016-03-13T12:52:32.123Z",
   "created_at": "2016-03-13T12:52:32.123Z"
 }

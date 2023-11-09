@@ -1,7 +1,7 @@
 # Plans
 
 ```go
-plansController := client.PlansController
+plansController := client.PlansController()
 ```
 
 ## Class Name
@@ -28,8 +28,9 @@ Gets a plan
 
 ```go
 GetPlan(
+    ctx context.Context,
     planId string) (
-    https.ApiResponse[models.GetPlanResponse],
+    models.ApiResponse[models.GetPlanResponse],
     error)
 ```
 
@@ -46,9 +47,10 @@ GetPlan(
 ## Example Usage
 
 ```go
+ctx := context.Background()
 planId := "plan_id8"
 
-apiResponse, err := plansController.GetPlan(planId)
+apiResponse, err := plansController.GetPlan(ctx, planId)
 if err != nil {
     log.Fatalln(err)
 } else {
@@ -65,9 +67,10 @@ Deletes a plan
 
 ```go
 DeletePlan(
+    ctx context.Context,
     planId string,
     idempotencyKey *string) (
-    https.ApiResponse[models.GetPlanResponse],
+    models.ApiResponse[models.GetPlanResponse],
     error)
 ```
 
@@ -85,9 +88,10 @@ DeletePlan(
 ## Example Usage
 
 ```go
+ctx := context.Background()
 planId := "plan_id8"
 
-apiResponse, err := plansController.DeletePlan(planId, nil)
+apiResponse, err := plansController.DeletePlan(ctx, planId, nil)
 if err != nil {
     log.Fatalln(err)
 } else {
@@ -104,10 +108,11 @@ Updates the metadata from a plan
 
 ```go
 UpdatePlanMetadata(
+    ctx context.Context,
     planId string,
     request models.UpdateMetadataRequest,
     idempotencyKey *string) (
-    https.ApiResponse[models.GetPlanResponse],
+    models.ApiResponse[models.GetPlanResponse],
     error)
 ```
 
@@ -126,15 +131,16 @@ UpdatePlanMetadata(
 ## Example Usage
 
 ```go
+ctx := context.Background()
 planId := "plan_id8"
 
 request := models.UpdateMetadataRequest{
-    Metadata: map[string]*string{
+    Metadata: map[string]string{
 "key0" : "metadata3",
 },
 }
 
-apiResponse, err := plansController.UpdatePlanMetadata(planId, &request, nil)
+apiResponse, err := plansController.UpdatePlanMetadata(ctx, planId, &request, nil)
 if err != nil {
     log.Fatalln(err)
 } else {
@@ -151,11 +157,12 @@ Updates a plan item
 
 ```go
 UpdatePlanItem(
+    ctx context.Context,
     planId string,
     planItemId string,
     body models.UpdatePlanItemRequest,
     idempotencyKey *string) (
-    https.ApiResponse[models.GetPlanItemResponse],
+    models.ApiResponse[models.GetPlanItemResponse],
     error)
 ```
 
@@ -175,17 +182,18 @@ UpdatePlanItem(
 ## Example Usage
 
 ```go
+ctx := context.Background()
 planId := "plan_id8"
 planItemId := "plan_item_id0"
 
 bodyPricingSchemePriceBrackets0 := models.UpdatePriceBracketRequest{
-    StartQuantity: 31,
-    Price:         225,
+    StartQuantity: 144,
+    Price:         174,
 }
 
 bodyPricingSchemePriceBrackets := []models.UpdatePriceBracketRequest{bodyPricingSchemePriceBrackets0}
 bodyPricingScheme := models.UpdatePricingSchemeRequest{
-    SchemeType:    "scheme_type2",
+    SchemeType:    "scheme_type8",
     PriceBrackets: bodyPricingSchemePriceBrackets,
 }
 
@@ -196,7 +204,7 @@ body := models.UpdatePlanItemRequest{
     PricingScheme: bodyPricingScheme,
 }
 
-apiResponse, err := plansController.UpdatePlanItem(planId, planItemId, &body, nil)
+apiResponse, err := plansController.UpdatePlanItem(ctx, planId, planItemId, &body, nil)
 if err != nil {
     log.Fatalln(err)
 } else {
@@ -213,10 +221,11 @@ Adds a new item to a plan
 
 ```go
 CreatePlanItem(
+    ctx context.Context,
     planId string,
     request models.CreatePlanItemRequest,
     idempotencyKey *string) (
-    https.ApiResponse[models.GetPlanItemResponse],
+    models.ApiResponse[models.GetPlanItemResponse],
     error)
 ```
 
@@ -235,10 +244,11 @@ CreatePlanItem(
 ## Example Usage
 
 ```go
+ctx := context.Background()
 planId := "plan_id8"
 
 requestPricingScheme := models.CreatePricingSchemeRequest{
-    SchemeType: "scheme_type2",
+    SchemeType:    "scheme_type8",
 }
 
 request := models.CreatePlanItemRequest{
@@ -248,7 +258,7 @@ request := models.CreatePlanItemRequest{
     PricingScheme: requestPricingScheme,
 }
 
-apiResponse, err := plansController.CreatePlanItem(planId, &request, nil)
+apiResponse, err := plansController.CreatePlanItem(ctx, planId, &request, nil)
 if err != nil {
     log.Fatalln(err)
 } else {
@@ -265,9 +275,10 @@ Gets a plan item
 
 ```go
 GetPlanItem(
+    ctx context.Context,
     planId string,
     planItemId string) (
-    https.ApiResponse[models.GetPlanItemResponse],
+    models.ApiResponse[models.GetPlanItemResponse],
     error)
 ```
 
@@ -285,10 +296,11 @@ GetPlanItem(
 ## Example Usage
 
 ```go
+ctx := context.Background()
 planId := "plan_id8"
 planItemId := "plan_item_id0"
 
-apiResponse, err := plansController.GetPlanItem(planId, planItemId)
+apiResponse, err := plansController.GetPlanItem(ctx, planId, planItemId)
 if err != nil {
     log.Fatalln(err)
 } else {
@@ -305,9 +317,10 @@ Creates a new plan
 
 ```go
 CreatePlan(
+    ctx context.Context,
     body models.CreatePlanRequest,
     idempotencyKey *string) (
-    https.ApiResponse[models.GetPlanResponse],
+    models.ApiResponse[models.GetPlanResponse],
     error)
 ```
 
@@ -325,19 +338,22 @@ CreatePlan(
 ## Example Usage
 
 ```go
+ctx := context.Background()
+
+
 bodyItems0PricingScheme := models.CreatePricingSchemeRequest{
-    SchemeType: "scheme_type5",
+    SchemeType:    "scheme_type8",
 }
 
 bodyItems0 := models.CreatePlanItemRequest{
-    Name:          "name3",
-    Id:            "id3",
-    Description:   "description3",
+    Name:          "name8",
+    Id:            "id8",
+    Description:   "description2",
     PricingScheme: bodyItems0PricingScheme,
 }
 bodyItems := []models.CreatePlanItemRequest{bodyItems0}
 bodyPricingScheme := models.CreatePricingSchemeRequest{
-    SchemeType: "scheme_type2",
+    SchemeType:    "scheme_type8",
 }
 
 body := models.CreatePlanRequest{
@@ -352,7 +368,7 @@ body := models.CreatePlanRequest{
     IntervalCount:       170,
     BillingDays:         []int{201, 200},
     BillingType:         "billing_type0",
-    Metadata:            map[string]*string{
+    Metadata:            map[string]string{
 "key0" : "metadata7",
 "key1" : "metadata8",
 },
@@ -360,7 +376,7 @@ body := models.CreatePlanRequest{
     PricingScheme:       bodyPricingScheme,
 }
 
-apiResponse, err := plansController.CreatePlan(&body, nil)
+apiResponse, err := plansController.CreatePlan(ctx, &body, nil)
 if err != nil {
     log.Fatalln(err)
 } else {
@@ -377,10 +393,11 @@ Removes an item from a plan
 
 ```go
 DeletePlanItem(
+    ctx context.Context,
     planId string,
     planItemId string,
     idempotencyKey *string) (
-    https.ApiResponse[models.GetPlanItemResponse],
+    models.ApiResponse[models.GetPlanItemResponse],
     error)
 ```
 
@@ -399,10 +416,11 @@ DeletePlanItem(
 ## Example Usage
 
 ```go
+ctx := context.Background()
 planId := "plan_id8"
 planItemId := "plan_item_id0"
 
-apiResponse, err := plansController.DeletePlanItem(planId, planItemId, nil)
+apiResponse, err := plansController.DeletePlanItem(ctx, planId, planItemId, nil)
 if err != nil {
     log.Fatalln(err)
 } else {
@@ -419,6 +437,7 @@ Gets all plans
 
 ```go
 GetPlans(
+    ctx context.Context,
     page *int,
     size *int,
     name *string,
@@ -426,7 +445,7 @@ GetPlans(
     billingType *string,
     createdSince *time.Time,
     createdUntil *time.Time) (
-    https.ApiResponse[models.ListPlansResponse],
+    models.ApiResponse[models.ListPlansResponse],
     error)
 ```
 
@@ -449,7 +468,9 @@ GetPlans(
 ## Example Usage
 
 ```go
-apiResponse, err := plansController.GetPlans(nil, nil, nil, nil, nil, nil, nil)
+ctx := context.Background()
+
+apiResponse, err := plansController.GetPlans(ctx, nil, nil, nil, nil, nil, nil, nil)
 if err != nil {
     log.Fatalln(err)
 } else {
@@ -466,10 +487,11 @@ Updates a plan
 
 ```go
 UpdatePlan(
+    ctx context.Context,
     planId string,
     request models.UpdatePlanRequest,
     idempotencyKey *string) (
-    https.ApiResponse[models.GetPlanResponse],
+    models.ApiResponse[models.GetPlanResponse],
     error)
 ```
 
@@ -488,6 +510,7 @@ UpdatePlan(
 ## Example Usage
 
 ```go
+ctx := context.Background()
 planId := "plan_id8"
 
 request := models.UpdatePlanRequest{
@@ -503,12 +526,12 @@ request := models.UpdatePlanRequest{
     Status:              "status8",
     Shippable:           false,
     BillingDays:         []int{115},
-    Metadata:            map[string]*string{
+    Metadata:            map[string]string{
 "key0" : "metadata3",
 },
 }
 
-apiResponse, err := plansController.UpdatePlan(planId, &request, nil)
+apiResponse, err := plansController.UpdatePlan(ctx, planId, &request, nil)
 if err != nil {
     log.Fatalln(err)
 } else {

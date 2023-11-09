@@ -11,19 +11,19 @@ Response object for getting the setup from a subscription
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `id` | `types.Optional[string]` | Optional | - |
-| `description` | `types.Optional[string]` | Optional | - |
-| `amount` | `types.Optional[int]` | Optional | - |
-| `status` | `types.Optional[string]` | Optional | - |
+| `Id` | `Optional[string]` | Optional | - |
+| `Description` | `Optional[string]` | Optional | - |
+| `Amount` | `Optional[int]` | Optional | - |
+| `Status` | `Optional[string]` | Optional | - |
 
 ## Example (as JSON)
 
 ```json
 {
-  "id": "id0",
-  "description": "description0",
-  "amount": 46,
-  "status": "status8"
+  "id": "id6",
+  "description": "description4",
+  "amount": 152,
+  "status": "status2"
 }
 ```
 

@@ -11,17 +11,17 @@ Pix payer data.
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `name` | `types.Optional[string]` | Optional | - |
-| `document` | `types.Optional[string]` | Optional | - |
-| `documentType` | `types.Optional[string]` | Optional | - |
-| `bankAccount` | [`types.Optional[models.GetPixBankAccountResponse]`](../../doc/models/get-pix-bank-account-response.md) | Optional | - |
+| `Name` | `Optional[string]` | Optional | - |
+| `Document` | `Optional[string]` | Optional | - |
+| `DocumentType` | `Optional[string]` | Optional | - |
+| `BankAccount` | [`Optional[models.GetPixBankAccountResponse]`](../../doc/models/get-pix-bank-account-response.md) | Optional | - |
 
 ## Example (as JSON)
 
 ```json
 {
   "name": "name0",
-  "document": "document6",
+  "document": "document4",
   "document_type": "document_type8",
   "bank_account": {
     "bank_name": "bank_name0",

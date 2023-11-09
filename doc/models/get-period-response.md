@@ -11,16 +11,16 @@ Response object for getting a period
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `startAt` | `types.Optional[time.Time]` | Optional | - |
-| `endAt` | `types.Optional[time.Time]` | Optional | - |
-| `id` | `types.Optional[string]` | Optional | - |
-| `billingAt` | `types.Optional[time.Time]` | Optional | - |
-| `subscription` | [`types.Optional[models.GetSubscriptionResponse]`](../../doc/models/get-subscription-response.md) | Optional | - |
-| `status` | `types.Optional[string]` | Optional | - |
-| `duration` | `types.Optional[int]` | Optional | - |
-| `createdAt` | `types.Optional[string]` | Optional | - |
-| `updatedAt` | `types.Optional[string]` | Optional | - |
-| `cycle` | `types.Optional[int]` | Optional | - |
+| `StartAt` | `Optional[time.Time]` | Optional | - |
+| `EndAt` | `Optional[time.Time]` | Optional | - |
+| `Id` | `Optional[string]` | Optional | - |
+| `BillingAt` | `Optional[time.Time]` | Optional | - |
+| `Subscription` | [`Optional[models.GetSubscriptionResponse]`](../../doc/models/get-subscription-response.md) | Optional | - |
+| `Status` | `Optional[string]` | Optional | - |
+| `Duration` | `Optional[int]` | Optional | - |
+| `CreatedAt` | `Optional[string]` | Optional | - |
+| `UpdatedAt` | `Optional[string]` | Optional | - |
+| `Cycle` | `Optional[int]` | Optional | - |
 
 ## Example (as JSON)
 

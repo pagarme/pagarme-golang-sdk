@@ -11,13 +11,13 @@ Gateway Response
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `message` | `types.Optional[string]` | Optional | The message error |
+| `Message` | `Optional[string]` | Optional | The message error |
 
 ## Example (as JSON)
 
 ```json
 {
-  "message": "message0"
+  "message": "message4"
 }
 ```
 

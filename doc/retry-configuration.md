@@ -18,14 +18,14 @@ The following parameters are configurable for the RetryConfiguration:
 The retryConfiguration can be initialized as follows:
 
 ```go
-retryConfiguration := https.NewRetryConfiguration(
-    https.WithMaxRetryAttempts(0),
-    https.WithRetryOnTimeout(true),
-    https.WithRetryInterval(1),
-    https.WithMaximumRetryWaitTime(0),
-    https.WithBackoffFactor(2),
-    https.WithHttpStatusCodesToRetry([]int64{408, 413, 429, 500, 502, 503, 504, 521, 522, 524}),
-    https.WithHttpMethodsToRetry([]string{"GET", "PUT"}),
+retryConfiguration := CreateRetryConfiguration(
+    pagarmeapisdk.WithMaxRetryAttempts(0),
+    pagarmeapisdk.WithRetryOnTimeout(true),
+    pagarmeapisdk.WithRetryInterval(1),
+    pagarmeapisdk.WithMaximumRetryWaitTime(0),
+    pagarmeapisdk.WithBackoffFactor(2),
+    pagarmeapisdk.WithHttpStatusCodesToRetry([]int64{408, 413, 429, 500, 502, 503, 504, 521, 522, 524}),
+    pagarmeapisdk.WithHttpMethodsToRetry([]string{"GET", "PUT"}),
 )
 ```
 

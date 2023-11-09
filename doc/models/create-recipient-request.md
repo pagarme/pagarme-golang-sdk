@@ -11,26 +11,26 @@ Request for creating a recipient
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `name` | `string` | Required | Recipient name |
-| `email` | `string` | Required | Recipient email |
-| `description` | `string` | Required | Recipient description |
-| `document` | `string` | Required | Recipient document number |
-| `mType` | `string` | Required | Recipient type |
-| `defaultBankAccount` | [`models.CreateBankAccountRequest`](../../doc/models/create-bank-account-request.md) | Required | Bank account |
-| `metadata` | `map[string]string` | Required | Metadata |
-| `transferSettings` | [`*models.CreateTransferSettingsRequest`](../../doc/models/create-transfer-settings-request.md) | Optional | Receiver Transfer Information |
-| `code` | `string` | Required | Recipient code |
-| `paymentMode` | `string` | Required | Payment mode<br>**Default**: `"bank_transfer"` |
+| `Name` | `string` | Required | Recipient name |
+| `Email` | `string` | Required | Recipient email |
+| `Description` | `string` | Required | Recipient description |
+| `Document` | `string` | Required | Recipient document number |
+| `Type` | `string` | Required | Recipient type |
+| `DefaultBankAccount` | [`models.CreateBankAccountRequest`](../../doc/models/create-bank-account-request.md) | Required | Bank account |
+| `Metadata` | `map[string]string` | Required | Metadata |
+| `TransferSettings` | [`*models.CreateTransferSettingsRequest`](../../doc/models/create-transfer-settings-request.md) | Optional | Receiver Transfer Information |
+| `Code` | `string` | Required | Recipient code |
+| `PaymentMode` | `string` | Required | Payment mode<br>**Default**: `"bank_transfer"` |
 
 ## Example (as JSON)
 
 ```json
 {
-  "name": "name0",
-  "email": "email6",
-  "description": "description0",
-  "document": "document6",
-  "type": "type0",
+  "name": "name6",
+  "email": "email0",
+  "description": "description6",
+  "document": "document0",
+  "type": "type4",
   "default_bank_account": {
     "holder_name": "holder_name4",
     "holder_type": "holder_type0",
@@ -49,11 +49,9 @@ Request for creating a recipient
     "pix_key": "pix_key8"
   },
   "metadata": {
-    "key0": "metadata3",
-    "key1": "metadata4",
-    "key2": "metadata5"
+    "key0": "metadata3"
   },
-  "code": "code8",
+  "code": "code4",
   "payment_mode": "bank_transfer",
   "transfer_settings": {
     "transfer_enabled": false,

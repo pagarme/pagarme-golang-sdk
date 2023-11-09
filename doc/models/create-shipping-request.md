@@ -11,25 +11,25 @@ Shipping data
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `amount` | `int` | Required | Shipping amount |
-| `description` | `string` | Required | Description |
-| `recipientName` | `string` | Required | Recipient name |
-| `recipientPhone` | `string` | Required | Recipient phone number |
-| `addressId` | `string` | Required | The id of the address that will be used for shipping |
-| `address` | [`models.CreateAddressRequest`](../../doc/models/create-address-request.md) | Required | Address data |
-| `maxDeliveryDate` | `*time.Time` | Optional | Data máxima de entrega |
-| `estimatedDeliveryDate` | `*time.Time` | Optional | Prazo estimado de entrega |
-| `mType` | `string` | Required | Shipping type |
+| `Amount` | `int` | Required | Shipping amount |
+| `Description` | `string` | Required | Description |
+| `RecipientName` | `string` | Required | Recipient name |
+| `RecipientPhone` | `string` | Required | Recipient phone number |
+| `AddressId` | `string` | Required | The id of the address that will be used for shipping |
+| `Address` | [`models.CreateAddressRequest`](../../doc/models/create-address-request.md) | Required | Address data |
+| `MaxDeliveryDate` | `*time.Time` | Optional | Data máxima de entrega |
+| `EstimatedDeliveryDate` | `*time.Time` | Optional | Prazo estimado de entrega |
+| `Type` | `string` | Required | Shipping type |
 
 ## Example (as JSON)
 
 ```json
 {
-  "amount": 46,
-  "description": "description0",
-  "recipient_name": "recipient_name8",
-  "recipient_phone": "recipient_phone2",
-  "address_id": "address_id0",
+  "amount": 136,
+  "description": "description4",
+  "recipient_name": "recipient_name4",
+  "recipient_phone": "recipient_phone8",
+  "address_id": "address_id4",
   "address": {
     "street": "street6",
     "number": "number4",
@@ -49,7 +49,7 @@ Shipping data
   },
   "max_delivery_date": "2016-03-13T12:52:32.123Z",
   "estimated_delivery_date": "2016-03-13T12:52:32.123Z",
-  "type": "type0"
+  "type": "type4"
 }
 ```
 

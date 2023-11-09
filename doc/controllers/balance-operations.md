@@ -1,7 +1,7 @@
 # Balance Operations
 
 ```go
-balanceOperationsController := client.BalanceOperationsController
+balanceOperationsController := client.BalanceOperationsController()
 ```
 
 ## Class Name
@@ -18,10 +18,12 @@ balanceOperationsController := client.BalanceOperationsController
 
 ```go
 GetBalanceOperations(
+    ctx context.Context,
     status *string,
     createdSince *time.Time,
-    createdUntil *time.Time) (
-    https.ApiResponse[models.ListBalanceOperationResponse],
+    createdUntil *time.Time,
+    recipientId *string) (
+    models.ApiResponse[models.ListBalanceOperationResponse],
     error)
 ```
 
@@ -32,6 +34,7 @@ GetBalanceOperations(
 | `status` | `*string` | Query, Optional | - |
 | `createdSince` | `*time.Time` | Query, Optional | - |
 | `createdUntil` | `*time.Time` | Query, Optional | - |
+| `recipientId` | `*string` | Query, Optional | - |
 
 ## Response Type
 
@@ -40,7 +43,9 @@ GetBalanceOperations(
 ## Example Usage
 
 ```go
-apiResponse, err := balanceOperationsController.GetBalanceOperations(nil, nil, nil)
+ctx := context.Background()
+
+apiResponse, err := balanceOperationsController.GetBalanceOperations(ctx, nil, nil, nil, nil)
 if err != nil {
     log.Fatalln(err)
 } else {
@@ -55,8 +60,9 @@ if err != nil {
 
 ```go
 GetBalanceOperationById(
+    ctx context.Context,
     id int64) (
-    https.ApiResponse[models.GetBalanceOperationResponse],
+    models.ApiResponse[models.GetBalanceOperationResponse],
     error)
 ```
 
@@ -73,9 +79,10 @@ GetBalanceOperationById(
 ## Example Usage
 
 ```go
+ctx := context.Background()
 id := int64(112)
 
-apiResponse, err := balanceOperationsController.GetBalanceOperationById(id)
+apiResponse, err := balanceOperationsController.GetBalanceOperationById(ctx, id)
 if err != nil {
     log.Fatalln(err)
 } else {

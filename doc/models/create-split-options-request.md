@@ -11,9 +11,9 @@ The Split Options Request
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `liable` | `*bool` | Optional | Liable options |
-| `chargeProcessingFee` | `*bool` | Optional | Charge processing fee |
-| `chargeRemainderFee` | `*bool` | Optional | - |
+| `Liable` | `*bool` | Optional | Liable options |
+| `ChargeProcessingFee` | `*bool` | Optional | Charge processing fee |
+| `ChargeRemainderFee` | `*bool` | Optional | - |
 
 ## Example (as JSON)
 

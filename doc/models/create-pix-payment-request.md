@@ -11,24 +11,24 @@ Contains information to create a pix payment
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `expiresAt` | `*time.Time` | Optional | Datetime when pix payment will expire |
-| `expiresIn` | `*int` | Optional | Seconds until pix payment expires |
-| `additionalInformation` | [`*[]models.PixAdditionalInformation`](../../doc/models/pix-additional-information.md) | Optional | Pix additional information |
+| `ExpiresAt` | `*time.Time` | Optional | Datetime when pix payment will expire |
+| `ExpiresIn` | `*int` | Optional | Seconds until pix payment expires |
+| `AdditionalInformation` | [`[]models.PixAdditionalInformation`](../../doc/models/pix-additional-information.md) | Optional | Pix additional information |
 
 ## Example (as JSON)
 
 ```json
 {
   "expires_at": "2016-03-13T12:52:32.123Z",
-  "expires_in": 226,
+  "expires_in": 216,
   "additional_information": [
     {
-      "Name": "Name5",
-      "Value": "Value7"
+      "Name": "Name0",
+      "Value": "Value2"
     },
     {
-      "Name": "Name6",
-      "Value": "Value6"
+      "Name": "Name0",
+      "Value": "Value2"
     }
   ]
 }

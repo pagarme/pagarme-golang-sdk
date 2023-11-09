@@ -9,8 +9,8 @@
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `enabled` | `bool` | Required | Defines if the split is enabled |
-| `rules` | [`[]models.CreateSplitRequest`](../../doc/models/create-split-request.md) | Required | Split |
+| `Enabled` | `bool` | Required | Defines if the split is enabled |
+| `Rules` | [`[]models.CreateSplitRequest`](../../doc/models/create-split-request.md) | Required | Split |
 
 ## Example (as JSON)
 
@@ -19,15 +19,15 @@
   "enabled": false,
   "rules": [
     {
-      "type": "type6",
-      "amount": 210,
-      "recipient_id": "recipient_id6",
+      "type": "type2",
+      "amount": 118,
+      "recipient_id": "recipient_id2",
       "options": {
         "liable": false,
         "charge_processing_fee": false,
         "charge_remainder_fee": false
       },
-      "split_rule_id": "split_rule_id6"
+      "split_rule_id": "split_rule_id0"
     }
   ]
 }

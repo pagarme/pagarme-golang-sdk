@@ -11,11 +11,11 @@ Request for updating a pricing scheme
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `schemeType` | `string` | Required | Scheme type |
-| `priceBrackets` | [`[]models.UpdatePriceBracketRequest`](../../doc/models/update-price-bracket-request.md) | Required | Price brackets |
-| `price` | `*int` | Optional | Price |
-| `minimumPrice` | `*int` | Optional | Minimum price |
-| `percentage` | `*float64` | Optional | percentual value used in pricing_scheme Percent |
+| `SchemeType` | `string` | Required | Scheme type |
+| `PriceBrackets` | [`[]models.UpdatePriceBracketRequest`](../../doc/models/update-price-bracket-request.md) | Required | Price brackets |
+| `Price` | `*int` | Optional | Price |
+| `MinimumPrice` | `*int` | Optional | Minimum price |
+| `Percentage` | `*float64` | Optional | percentual value used in pricing_scheme Percent |
 
 ## Example (as JSON)
 
@@ -24,15 +24,15 @@ Request for updating a pricing scheme
   "scheme_type": "scheme_type0",
   "price_brackets": [
     {
-      "start_quantity": 193,
-      "price": 125,
-      "end_quantity": 201,
-      "overage_price": 215
+      "start_quantity": 144,
+      "price": 174,
+      "end_quantity": 152,
+      "overage_price": 166
     }
   ],
-  "price": 16,
-  "minimum_price": 176,
-  "percentage": 4.18
+  "price": 162,
+  "minimum_price": 2,
+  "percentage": 62.28
 }
 ```
 

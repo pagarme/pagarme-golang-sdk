@@ -11,22 +11,26 @@ Response object for getting an order item
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `id` | `types.Optional[string]` | Optional | Id |
-| `amount` | `types.Optional[int]` | Optional | - |
-| `description` | `types.Optional[string]` | Optional | - |
-| `quantity` | `types.Optional[int]` | Optional | - |
-| `category` | `types.Optional[string]` | Optional | Category |
-| `code` | `types.Optional[string]` | Optional | Code |
+| `Id` | `Optional[string]` | Optional | Id |
+| `Type` | `Optional[string]` | Optional | - |
+| `Description` | `Optional[string]` | Optional | - |
+| `Amount` | `Optional[int]` | Optional | - |
+| `Quantity` | `Optional[int]` | Optional | - |
+| `Category` | `Optional[string]` | Optional | Category |
+| `Code` | `Optional[string]` | Optional | Code |
+| `Status` | `Optional[string]` | Optional | - |
+| `CreatedAt` | `Optional[time.Time]` | Optional | - |
+| `UpdatedAt` | `Optional[time.Time]` | Optional | - |
 
 ## Example (as JSON)
 
 ```json
 {
-  "id": "id0",
-  "amount": 46,
-  "description": "description0",
-  "quantity": 68,
-  "category": "category2"
+  "id": "id8",
+  "type": "type8",
+  "description": "description8",
+  "amount": 224,
+  "quantity": 82
 }
 ```
 

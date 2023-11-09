@@ -1,7 +1,7 @@
 # Invoices
 
 ```go
-invoicesController := client.InvoicesController
+invoicesController := client.InvoicesController()
 ```
 
 ## Class Name
@@ -25,10 +25,11 @@ Updates the metadata from an invoice
 
 ```go
 UpdateInvoiceMetadata(
+    ctx context.Context,
     invoiceId string,
     request models.UpdateMetadataRequest,
     idempotencyKey *string) (
-    https.ApiResponse[models.GetInvoiceResponse],
+    models.ApiResponse[models.GetInvoiceResponse],
     error)
 ```
 
@@ -47,15 +48,16 @@ UpdateInvoiceMetadata(
 ## Example Usage
 
 ```go
+ctx := context.Background()
 invoiceId := "invoice_id0"
 
 request := models.UpdateMetadataRequest{
-    Metadata: map[string]*string{
+    Metadata: map[string]string{
 "key0" : "metadata3",
 },
 }
 
-apiResponse, err := invoicesController.UpdateInvoiceMetadata(invoiceId, &request, nil)
+apiResponse, err := invoicesController.UpdateInvoiceMetadata(ctx, invoiceId, &request, nil)
 if err != nil {
     log.Fatalln(err)
 } else {
@@ -70,8 +72,9 @@ if err != nil {
 
 ```go
 GetPartialInvoice(
+    ctx context.Context,
     subscriptionId string) (
-    https.ApiResponse[models.GetInvoiceResponse],
+    models.ApiResponse[models.GetInvoiceResponse],
     error)
 ```
 
@@ -88,9 +91,10 @@ GetPartialInvoice(
 ## Example Usage
 
 ```go
+ctx := context.Background()
 subscriptionId := "subscription_id0"
 
-apiResponse, err := invoicesController.GetPartialInvoice(subscriptionId)
+apiResponse, err := invoicesController.GetPartialInvoice(ctx, subscriptionId)
 if err != nil {
     log.Fatalln(err)
 } else {
@@ -107,9 +111,10 @@ Cancels an invoice
 
 ```go
 CancelInvoice(
+    ctx context.Context,
     invoiceId string,
     idempotencyKey *string) (
-    https.ApiResponse[models.GetInvoiceResponse],
+    models.ApiResponse[models.GetInvoiceResponse],
     error)
 ```
 
@@ -127,9 +132,10 @@ CancelInvoice(
 ## Example Usage
 
 ```go
+ctx := context.Background()
 invoiceId := "invoice_id0"
 
-apiResponse, err := invoicesController.CancelInvoice(invoiceId, nil)
+apiResponse, err := invoicesController.CancelInvoice(ctx, invoiceId, nil)
 if err != nil {
     log.Fatalln(err)
 } else {
@@ -146,11 +152,12 @@ Create an Invoice
 
 ```go
 CreateInvoice(
+    ctx context.Context,
     subscriptionId string,
     cycleId string,
     request *models.CreateInvoiceRequest,
     idempotencyKey *string) (
-    https.ApiResponse[models.GetInvoiceResponse],
+    models.ApiResponse[models.GetInvoiceResponse],
     error)
 ```
 
@@ -170,10 +177,11 @@ CreateInvoice(
 ## Example Usage
 
 ```go
+ctx := context.Background()
 subscriptionId := "subscription_id0"
 cycleId := "cycle_id6"
 
-apiResponse, err := invoicesController.CreateInvoice(subscriptionId, cycleId, nil, nil)
+apiResponse, err := invoicesController.CreateInvoice(ctx, subscriptionId, cycleId, nil, nil)
 if err != nil {
     log.Fatalln(err)
 } else {
@@ -190,6 +198,7 @@ Gets all invoices
 
 ```go
 GetInvoices(
+    ctx context.Context,
     page *int,
     size *int,
     code *string,
@@ -201,7 +210,7 @@ GetInvoices(
     dueSince *time.Time,
     dueUntil *time.Time,
     customerDocument *string) (
-    https.ApiResponse[models.ListInvoicesResponse],
+    models.ApiResponse[models.ListInvoicesResponse],
     error)
 ```
 
@@ -228,7 +237,9 @@ GetInvoices(
 ## Example Usage
 
 ```go
-apiResponse, err := invoicesController.GetInvoices(nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil)
+ctx := context.Background()
+
+apiResponse, err := invoicesController.GetInvoices(ctx, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil)
 if err != nil {
     log.Fatalln(err)
 } else {
@@ -245,8 +256,9 @@ Gets an invoice
 
 ```go
 GetInvoice(
+    ctx context.Context,
     invoiceId string) (
-    https.ApiResponse[models.GetInvoiceResponse],
+    models.ApiResponse[models.GetInvoiceResponse],
     error)
 ```
 
@@ -263,9 +275,10 @@ GetInvoice(
 ## Example Usage
 
 ```go
+ctx := context.Background()
 invoiceId := "invoice_id0"
 
-apiResponse, err := invoicesController.GetInvoice(invoiceId)
+apiResponse, err := invoicesController.GetInvoice(ctx, invoiceId)
 if err != nil {
     log.Fatalln(err)
 } else {
@@ -282,10 +295,11 @@ Updates the status from an invoice
 
 ```go
 UpdateInvoiceStatus(
+    ctx context.Context,
     invoiceId string,
     request models.UpdateInvoiceStatusRequest,
     idempotencyKey *string) (
-    https.ApiResponse[models.GetInvoiceResponse],
+    models.ApiResponse[models.GetInvoiceResponse],
     error)
 ```
 
@@ -304,13 +318,14 @@ UpdateInvoiceStatus(
 ## Example Usage
 
 ```go
+ctx := context.Background()
 invoiceId := "invoice_id0"
 
 request := models.UpdateInvoiceStatusRequest{
     Status: "status8",
 }
 
-apiResponse, err := invoicesController.UpdateInvoiceStatus(invoiceId, &request, nil)
+apiResponse, err := invoicesController.UpdateInvoiceStatus(ctx, invoiceId, &request, nil)
 if err != nil {
     log.Fatalln(err)
 } else {

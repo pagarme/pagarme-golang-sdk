@@ -11,38 +11,38 @@ Response object for getting an payable
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `id` | `types.Optional[int64]` | Optional | - |
-| `status` | `types.Optional[string]` | Optional | - |
-| `amount` | `types.Optional[int]` | Optional | - |
-| `fee` | `types.Optional[int]` | Optional | - |
-| `anticipationFee` | `types.Optional[int]` | Optional | - |
-| `fraudCoverageFee` | `types.Optional[int]` | Optional | - |
-| `installment` | `types.Optional[int]` | Optional | - |
-| `gatewayId` | `types.Optional[int]` | Optional | - |
-| `chargeId` | `types.Optional[string]` | Optional | - |
-| `splitId` | `types.Optional[string]` | Optional | - |
-| `bulkAnticipationId` | `types.Optional[string]` | Optional | - |
-| `anticipationId` | `types.Optional[string]` | Optional | - |
-| `recipientId` | `types.Optional[string]` | Optional | - |
-| `originatorModel` | `types.Optional[string]` | Optional | - |
-| `originatorModelId` | `types.Optional[string]` | Optional | - |
-| `paymentDate` | `types.Optional[time.Time]` | Optional | - |
-| `originalPaymentDate` | `types.Optional[time.Time]` | Optional | - |
-| `mType` | `types.Optional[string]` | Optional | - |
-| `paymentMethod` | `types.Optional[string]` | Optional | - |
-| `accrualAt` | `types.Optional[time.Time]` | Optional | - |
-| `createdAt` | `types.Optional[time.Time]` | Optional | - |
-| `liquidationArrangementId` | `types.Optional[string]` | Optional | - |
+| `Id` | `Optional[int64]` | Optional | - |
+| `Status` | `Optional[string]` | Optional | - |
+| `Amount` | `Optional[int]` | Optional | - |
+| `Fee` | `Optional[int]` | Optional | - |
+| `AnticipationFee` | `Optional[int]` | Optional | - |
+| `FraudCoverageFee` | `Optional[int]` | Optional | - |
+| `Installment` | `Optional[int]` | Optional | - |
+| `GatewayId` | `Optional[int]` | Optional | - |
+| `ChargeId` | `Optional[string]` | Optional | - |
+| `SplitId` | `Optional[string]` | Optional | - |
+| `BulkAnticipationId` | `Optional[string]` | Optional | - |
+| `AnticipationId` | `Optional[string]` | Optional | - |
+| `RecipientId` | `Optional[string]` | Optional | - |
+| `OriginatorModel` | `Optional[string]` | Optional | - |
+| `OriginatorModelId` | `Optional[string]` | Optional | - |
+| `PaymentDate` | `Optional[time.Time]` | Optional | - |
+| `OriginalPaymentDate` | `Optional[time.Time]` | Optional | - |
+| `Type` | `Optional[string]` | Optional | - |
+| `PaymentMethod` | `Optional[string]` | Optional | - |
+| `AccrualAt` | `Optional[time.Time]` | Optional | - |
+| `CreatedAt` | `Optional[time.Time]` | Optional | - |
+| `LiquidationArrangementId` | `Optional[string]` | Optional | - |
 
 ## Example (as JSON)
 
 ```json
 {
-  "id": 112,
+  "id": 134,
   "status": "status8",
-  "amount": 46,
-  "fee": 168,
-  "anticipation_fee": 140
+  "amount": 24,
+  "fee": 190,
+  "anticipation_fee": 118
 }
 ```
 

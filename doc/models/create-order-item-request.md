@@ -11,21 +11,21 @@ Request for creating an order item
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `amount` | `int` | Required | Amount |
-| `description` | `string` | Required | Description |
-| `quantity` | `int` | Required | Quantity |
-| `category` | `string` | Required | Category |
-| `code` | `*string` | Optional | The item code passed by the client |
+| `Amount` | `int` | Required | Amount |
+| `Description` | `string` | Required | Description |
+| `Quantity` | `int` | Required | Quantity |
+| `Category` | `string` | Required | Category |
+| `Code` | `*string` | Optional | The item code passed by the client |
 
 ## Example (as JSON)
 
 ```json
 {
-  "amount": 46,
-  "description": "description0",
-  "quantity": 68,
-  "category": "category2",
-  "code": "code8"
+  "amount": 102,
+  "description": "description4",
+  "quantity": 216,
+  "category": "category4",
+  "code": "code4"
 }
 ```
 

@@ -1,7 +1,7 @@
 # Transactions
 
 ```go
-transactionsController := client.TransactionsController
+transactionsController := client.TransactionsController()
 ```
 
 ## Class Name
@@ -13,8 +13,9 @@ transactionsController := client.TransactionsController
 
 ```go
 GetTransaction(
+    ctx context.Context,
     transactionId string) (
-    https.ApiResponse[models.GetTransactionResponseInterface],
+    models.ApiResponse[models.GetTransactionResponseInterface],
     error)
 ```
 
@@ -31,9 +32,10 @@ GetTransaction(
 ## Example Usage
 
 ```go
+ctx := context.Background()
 transactionId := "transaction_id8"
 
-apiResponse, err := transactionsController.GetTransaction(transactionId)
+apiResponse, err := transactionsController.GetTransaction(ctx, transactionId)
 if err != nil {
     log.Fatalln(err)
 } else {

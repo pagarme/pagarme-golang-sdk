@@ -11,19 +11,19 @@ Split response
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `mType` | `types.Optional[string]` | Optional | Type |
-| `amount` | `types.Optional[int]` | Optional | Amount |
-| `recipient` | [`types.Optional[models.GetRecipientResponse]`](../../doc/models/get-recipient-response.md) | Optional | Recipient |
-| `gatewayId` | `types.Optional[string]` | Optional | The split rule gateway id |
-| `options` | [`types.Optional[models.GetSplitOptionsResponse]`](../../doc/models/get-split-options-response.md) | Optional | - |
-| `id` | `types.Optional[string]` | Optional | - |
+| `Type` | `Optional[string]` | Optional | Type |
+| `Amount` | `Optional[int]` | Optional | Amount |
+| `Recipient` | [`Optional[models.GetRecipientResponse]`](../../doc/models/get-recipient-response.md) | Optional | Recipient |
+| `GatewayId` | `Optional[string]` | Optional | The split rule gateway id |
+| `Options` | [`Optional[models.GetSplitOptionsResponse]`](../../doc/models/get-split-options-response.md) | Optional | - |
+| `Id` | `Optional[string]` | Optional | - |
 
 ## Example (as JSON)
 
 ```json
 {
   "type": "type0",
-  "amount": 46,
+  "amount": 252,
   "recipient": {
     "id": "id8",
     "name": "name8",

@@ -11,15 +11,15 @@ Options for card installment
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `number` | `int` | Required | Installment quantity |
-| `total` | `int` | Required | Total amount |
+| `Number` | `int` | Required | Installment quantity |
+| `Total` | `int` | Required | Total amount |
 
 ## Example (as JSON)
 
 ```json
 {
-  "number": 158,
-  "total": 10
+  "number": 154,
+  "total": 46
 }
 ```
 

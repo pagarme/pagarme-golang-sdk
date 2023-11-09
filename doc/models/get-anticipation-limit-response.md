@@ -11,15 +11,15 @@ Anticipation limit
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `amount` | `types.Optional[int]` | Optional | Amount |
-| `anticipationFee` | `types.Optional[int]` | Optional | Anticipation fee |
+| `Amount` | `Optional[int]` | Optional | Amount |
+| `AnticipationFee` | `Optional[int]` | Optional | Anticipation fee |
 
 ## Example (as JSON)
 
 ```json
 {
-  "amount": 46,
-  "anticipation_fee": 140
+  "amount": 6,
+  "anticipation_fee": 88
 }
 ```
 

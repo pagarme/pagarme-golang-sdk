@@ -11,27 +11,26 @@ Checkout Payment Settings Response
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `successUrl` | `types.Optional[string]` | Optional | Success Url |
-| `paymentUrl` | `types.Optional[string]` | Optional | Payment Url |
-| `acceptedPaymentMethods` | `types.Optional[[]string]` | Optional | Accepted Payment Methods |
-| `status` | `types.Optional[string]` | Optional | Status |
-| `customer` | [`types.Optional[models.GetCustomerResponse]`](../../doc/models/get-customer-response.md) | Optional | Customer |
-| `amount` | `types.Optional[int]` | Optional | Payment amount |
-| `defaultPaymentMethod` | `types.Optional[string]` | Optional | Default Payment Method |
-| `gatewayAffiliationId` | `types.Optional[string]` | Optional | Gateway Affiliation Id |
+| `SuccessUrl` | `Optional[string]` | Optional | Success Url |
+| `PaymentUrl` | `Optional[string]` | Optional | Payment Url |
+| `AcceptedPaymentMethods` | `Optional[[]string]` | Optional | Accepted Payment Methods |
+| `Status` | `Optional[string]` | Optional | Status |
+| `Customer` | [`Optional[models.GetCustomerResponse]`](../../doc/models/get-customer-response.md) | Optional | Customer |
+| `Amount` | `Optional[int]` | Optional | Payment amount |
+| `DefaultPaymentMethod` | `Optional[string]` | Optional | Default Payment Method |
+| `GatewayAffiliationId` | `Optional[string]` | Optional | Gateway Affiliation Id |
 
 ## Example (as JSON)
 
 ```json
 {
-  "success_url": "success_url2",
-  "payment_url": "payment_url6",
+  "success_url": "success_url0",
+  "payment_url": "payment_url8",
   "accepted_payment_methods": [
-    "accepted_payment_methods3",
-    "accepted_payment_methods4",
-    "accepted_payment_methods5"
+    "accepted_payment_methods1",
+    "accepted_payment_methods2"
   ],
-  "status": "status8",
+  "status": "status0",
   "customer": {
     "id": "id0",
     "name": "name0",

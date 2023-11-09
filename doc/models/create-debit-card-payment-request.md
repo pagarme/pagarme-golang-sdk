@@ -11,19 +11,19 @@ The settings for creating a debit card payment
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `statementDescriptor` | `*string` | Optional | The text that will be shown on the debit card's statement |
-| `card` | [`*models.CreateCardRequest`](../../doc/models/create-card-request.md) | Optional | Debit card data |
-| `cardId` | `*string` | Optional | The debit card id |
-| `cardToken` | `*string` | Optional | The debit card token |
-| `recurrence` | `*bool` | Optional | Indicates a recurrence |
-| `authentication` | [`*models.CreatePaymentAuthenticationRequest`](../../doc/models/create-payment-authentication-request.md) | Optional | The payment authentication request |
-| `token` | [`*models.CreateCardPaymentContactlessRequest`](../../doc/models/create-card-payment-contactless-request.md) | Optional | The Debit card payment token request |
+| `StatementDescriptor` | `*string` | Optional | The text that will be shown on the debit card's statement |
+| `Card` | [`*models.CreateCardRequest`](../../doc/models/create-card-request.md) | Optional | Debit card data |
+| `CardId` | `*string` | Optional | The debit card id |
+| `CardToken` | `*string` | Optional | The debit card token |
+| `Recurrence` | `*bool` | Optional | Indicates a recurrence |
+| `Authentication` | [`*models.CreatePaymentAuthenticationRequest`](../../doc/models/create-payment-authentication-request.md) | Optional | The payment authentication request |
+| `Token` | [`*models.CreateCardPaymentContactlessRequest`](../../doc/models/create-card-payment-contactless-request.md) | Optional | The Debit card payment token request |
 
 ## Example (as JSON)
 
 ```json
 {
-  "statement_descriptor": "statement_descriptor0",
+  "statement_descriptor": "statement_descriptor8",
   "card": {
     "number": "number6",
     "holder_name": "holder_name2",
@@ -32,7 +32,7 @@ The settings for creating a debit card payment
     "cvv": "cvv4"
   },
   "card_id": "card_id4",
-  "card_token": "card_token0",
+  "card_token": "card_token2",
   "recurrence": false
 }
 ```

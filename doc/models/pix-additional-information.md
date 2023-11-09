@@ -11,15 +11,15 @@ Pix Additional Information
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `name` | `types.Optional[string]` | Optional | - |
-| `value` | `types.Optional[string]` | Optional | - |
+| `Name` | `Optional[string]` | Optional | - |
+| `Value` | `Optional[string]` | Optional | - |
 
 ## Example (as JSON)
 
 ```json
 {
-  "Name": "Name0",
-  "Value": "Value2"
+  "Name": "Name6",
+  "Value": "Value6"
 }
 ```
 

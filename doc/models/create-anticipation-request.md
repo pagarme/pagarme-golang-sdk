@@ -11,15 +11,15 @@ Request for creating an anticipation
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `amount` | `int` | Required | Amount requested for the anticipation |
-| `timeframe` | `string` | Required | Timeframe |
-| `paymentDate` | `time.Time` | Required | Payment date |
+| `Amount` | `int` | Required | Amount requested for the anticipation |
+| `Timeframe` | `string` | Required | Timeframe |
+| `PaymentDate` | `time.Time` | Required | Payment date |
 
 ## Example (as JSON)
 
 ```json
 {
-  "amount": 46,
+  "amount": 68,
   "timeframe": "timeframe2",
   "payment_date": "2016-03-13T12:52:32.123Z"
 }

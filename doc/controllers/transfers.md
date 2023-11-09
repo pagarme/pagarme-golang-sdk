@@ -1,7 +1,7 @@
 # Transfers
 
 ```go
-transfersController := client.TransfersController
+transfersController := client.TransfersController()
 ```
 
 ## Class Name
@@ -19,8 +19,9 @@ transfersController := client.TransfersController
 
 ```go
 GetTransferById(
+    ctx context.Context,
     transferId string) (
-    https.ApiResponse[models.GetTransfer],
+    models.ApiResponse[models.GetTransfer],
     error)
 ```
 
@@ -37,9 +38,10 @@ GetTransferById(
 ## Example Usage
 
 ```go
+ctx := context.Background()
 transferId := "transfer_id6"
 
-apiResponse, err := transfersController.GetTransferById(transferId)
+apiResponse, err := transfersController.GetTransferById(ctx, transferId)
 if err != nil {
     log.Fatalln(err)
 } else {
@@ -54,8 +56,9 @@ if err != nil {
 
 ```go
 CreateTransfer(
+    ctx context.Context,
     request models.CreateTransfer) (
-    https.ApiResponse[models.GetTransfer],
+    models.ApiResponse[models.GetTransfer],
     error)
 ```
 
@@ -72,13 +75,15 @@ CreateTransfer(
 ## Example Usage
 
 ```go
+ctx := context.Background()
+
 request := models.CreateTransfer{
     Amount:   242,
     SourceId: "source_id0",
     TargetId: "target_id6",
 }
 
-apiResponse, err := transfersController.CreateTransfer(&request)
+apiResponse, err := transfersController.CreateTransfer(ctx, &request)
 if err != nil {
     log.Fatalln(err)
 } else {
@@ -94,8 +99,9 @@ if err != nil {
 Gets all transfers
 
 ```go
-GetTransfers() (
-    https.ApiResponse[models.ListTransfers],
+GetTransfers(
+    ctx context.Context) (
+    models.ApiResponse[models.ListTransfers],
     error)
 ```
 
@@ -106,7 +112,8 @@ GetTransfers() (
 ## Example Usage
 
 ```go
-apiResponse, err := transfersController.GetTransfers()
+ctx := context.Background()
+apiResponse, err := transfersController.GetTransfers(ctx)
 if err != nil {
     log.Fatalln(err)
 } else {
